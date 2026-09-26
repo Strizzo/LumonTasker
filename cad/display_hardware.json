@@ -1,0 +1,200 @@
+{
+  "status": "V49 physical corner tests passed: simultaneous glass/lug seating without bending and 4 mm screws reach/tighten. Select 0.12 mm support gap. Proceed to full display-bay print preparation.",
+  "photo_evidence_date": "2026-09-23",
+  "display_family": "Appears consistent with original Raspberry Pi 7-inch Touch Display; exact variant not yet confirmed",
+  "observed_assembly": "Pi mounted directly behind display on existing standoffs; four outer threaded mounting lugs visible on metal display back; orange flex and DSI ribbon present",
+  "connector_status": "User confirms wire plugs slipped off; no pins reported broken. Display-controller labels identify black GND, yellow SCL, blue SDA, red 5V. Pi-side reconnection not yet physically confirmed.",
+  "nominal_manufacturer_reference": {
+    "glass_outline_mm_from_product_brief": [
+      192.96,
+      110.76
+    ],
+    "active_area_mm": [
+      154.08,
+      85.92
+    ],
+    "outer_mount_thread": "M3 (4 places)",
+    "outer_mount_pitch_mm": [
+      126.2,
+      65.65
+    ],
+    "inner_controller_mount_thread": "M2.5 (4 places), distinct from outer enclosure lugs",
+    "inner_mount_pitch_mm": [
+      58.0,
+      49.0
+    ],
+    "glass_variants_mm": [
+      0.7,
+      1.1
+    ],
+    "authority": "Official drawing and enclosure whitepaper; nominal dimensions must be checked against user hardware",
+    "glass_corner_radius_inferred_mm": 8.0,
+    "glass_corner_radius_status": "Approximately 7.9 mm from scaled PDF vector geometry, rounded to R8 for provisional CAD; not explicitly dimensioned.",
+    "thread_depth_correction": "Earlier project files called 2.5 mm a maximum thread depth. Drawing does not explicitly label it that way; do not treat this as a verified universal limit. Mounting guide says screws must not reach backlight. V49 targets 2 mm protrusion with actual short screws and requires physical trial."
+  },
+  "awaiting_measurements": [],
+  "mount_design": {
+    "front_tilt_degrees": 25,
+    "load_path": "Continuous recessed seat under rear glass perimeter stops inward movement without screws. Four screws into metal lugs retain against front withdrawal; four support arms integral with case.",
+    "glass": "Own black border visible in white recessed seat, supported from behind on 3 mm bearing width. No separate bezel or front overlap.",
+    "service": "Remove four rear M3 screws, unplug cables, extract display and attached Pi through the front; integral mounts stay in place",
+    "spacers": "Seat and rear lug lands must meet the freely seated display simultaneously. Correct lug gaps with measured rigid shims or revised pads; screws must not pull the glass across a gap. No gasket assumed.",
+    "wiring": "Keep ribbon bends, GPIO jumpers, USB/Ethernet plugs, SD access and airflow clear",
+    "lightweight": "Thin front skin with local reinforcement; replace old full-depth side ribs and generic box retainer; remove separate Pi wall mounts only when revised complete assembly clearances are checked",
+    "glass_outline_reference": "V49 retains V48 opening 193.6 x111.4 mm, R8.2; revised depth and screw grip passed corner tests.",
+    "glass_clearance_per_side_mm": {
+      "horizontal": 0.3,
+      "vertical": 0.2
+    },
+    "fit_kit": "output/v49_measured_display_depth/01_V49_depth_and_screw_coupons.3mf",
+    "candidate_glass_recess_mm": 1.0,
+    "candidate_review": "output/v49_measured_display_depth/whole_enclosure_with_hardware.step",
+    "fastener_count": 4,
+    "separate_brackets_in_final_design": false,
+    "case_side_mount_inserts_required": false,
+    "fit_kit_purpose": "Two small identical corner samples: measured lug depth and 4 mm screw reach; compare 0.20 and 0.12 mm support gap in restored front-down orientation",
+    "seat_gap_behind_glass_mm": 0.0,
+    "seat_bearing_width_mm": 3.0,
+    "selected_glass_thickness_mm": 0.8,
+    "bearing_seat_physical_fit_verified": true,
+    "candidate_seat_y_mm": 1.8,
+    "raised_band_relief": "Not needed: user explicitly confirms band stays inside central area and clears outermost 3 mm bearing strip.",
+    "seat_bearing_width_note": "3 mm inward from glass perimeter; integral rigid support width, not padding thickness. Full width has 2.3 mm material thickness.",
+    "candidate_seat_material_thickness_mm": 2.3,
+    "hole_alignment_physically_confirmed": true,
+    "candidate_lug_contact_y_mm": 9.4,
+    "candidate_screw_head_seat_y_mm": 11.4,
+    "candidate_screw_grip_mm": 2.0,
+    "nominal_screw_engagement_mm": 2.0,
+    "fastener": "Four M3 screws measured 4 mm under head; tested on both V49 corner samples",
+    "bearing_seat_verification_scope": "One corner geometry tested twice; original four-hole XY pattern separately confirmed on the earlier full-frame test. Full enclosure not yet printed.",
+    "selected_support_top_gap_mm": 0.12
+  },
+  "sources": {
+    "drawing": "https://pip-assets.raspberrypi.com/categories/647-raspberry-pi-touch-display/documents/RP-008246-DS-1-7-inch-display-mechanical-drawing.pdf",
+    "mounting_guide": "https://pip-assets.raspberrypi.com/categories/1259-audio-camera-and-display/documents/RP-003473-WP/Touch-Display-Enclosure-Mechanical-Design",
+    "connection_guide": "https://www.raspberrypi.com/documentation/accessories/display.html",
+    "product_brief": "https://datasheets.raspberrypi.com/display/7-inch-display-product-brief.pdf"
+  },
+  "user_measured_hardware": {
+    "glass_outline_mm": [
+      193.0,
+      111.0
+    ],
+    "measurement_date": "2026-09-23",
+    "glass_corner_radius_mm": null,
+    "corner_radius_note": "User has not measured radius; drawing-derived provisional reference below.",
+    "total_attached_assembly_depth_mm": 40.0,
+    "glass_thickness_mm": 0.8,
+    "glass_thickness_note": "User reports mostly 0.8 mm; treat as working measured thickness, not exact uniformity or manufacturer-variant confirmation.",
+    "local_raised_band": {
+      "total_thickness_mm": 1.3,
+      "extra_over_normal_glass_mm": 0.5,
+      "user_description": "Black band, possibly a data bus",
+      "identity_verified": false,
+      "edge_and_extent": null,
+      "bearing_perimeter_overlap": false,
+      "geometry_clearance_verified": true,
+      "bearing_perimeter_confirmation": "User explicitly confirms the band clears the outermost 3 mm of the glass rear surface.",
+      "verification_scope": "V45 CAD conservative envelope: all glass area inset 3 mm, plus 0.3 mm extra rearward clearance. Seated and front sweep clear of case. Exact band shape and physical seating untested.",
+      "bearing_perimeter_clear_width_mm": 3.0
+    },
+    "glass_front_to_metal_lug_face_mm": 8.4,
+    "mounting_screw_under_head_length_mm": 4.0,
+    "mounting_screw_head_fits_counterbore": true,
+    "mounting_depth_measurement_date": "2026-09-24"
+  },
+  "physical_glass_fit": {
+    "date": "2026-09-24",
+    "user_report": "It fits perfectly",
+    "scope": "Full-outline frame around the display glass, including corners; rear brackets not yet confirmed.",
+    "photos": [
+      "/tmp/codex-remote-attachments/01a0bf3e-2220-7252-adef-d07f9ff37b1f/39BBDB13-CC13-469A-9589-C771CC743279/1-Foto-1.jpg",
+      "/tmp/codex-remote-attachments/01a0bf3e-2220-7252-adef-d07f9ff37b1f/39BBDB13-CC13-469A-9589-C771CC743279/2-Foto-2.jpg"
+    ],
+    "opening_mm": [
+      193.4,
+      111.4
+    ],
+    "opening_radius_mm": 8.2,
+    "interpretation": "Printed opening contour fits actual glass. Does not establish exact measured glass radius or rear lug/bracket stack.",
+    "rear_bracket_fit_verified": false,
+    "requested_appearance": "User correction: no separate navy bezel or lip. Existing black glass border stays visible; glass fits a recessed seat integrated into the white front panel.",
+    "original_reference": "cad/lumon_v19.py bezel_overlap=6.0; cad/review/prepare_fit_plate.py cuts the original blue bezel coupon.",
+    "current_cad_difference": "V40 subtracts the complete glass outline through both body and bezel; no front overlap remains.",
+    "next_revision": "V49 measured contact depth and 3 mm bearing seat passed corner trials; original full-frame hole pattern confirmed separately.",
+    "not_yet_done": "Full-case power/cable layout, screw access and slicing. Fusion V39; full display body not printed.",
+    "superseded_interpretation": "Assistant interpreted the blue corner as a request for overlapping navy trim; user explicitly rejected this."
+  },
+  "physical_seat_test_v46": {
+    "date": "2026-09-24",
+    "photos": [
+      "/tmp/codex-remote-attachments/01a0bf3e-2220-7252-adef-d07f9ff37b1f/33E3CF60-560B-48E0-8FC0-8ADD84C7F9C0/1-Foto-1.jpg",
+      "/tmp/codex-remote-attachments/01a0bf3e-2220-7252-adef-d07f9ff37b1f/33E3CF60-560B-48E0-8FC0-8ADD84C7F9C0/2-Foto-2.jpg"
+    ],
+    "glass": "Almost fits; one corner tight",
+    "requested_opening_width_increase_mm": 0.2,
+    "interpretation": "Total width +0.2 mm, centred; height unchanged",
+    "corrected_mounts_local_xz_mm": [
+      0.0,
+      0.0
+    ],
+    "ledge": "User reports loose support and filament not attached on one side; photo shows loose strands along inner ledge. Bearing flatness/strength not accepted.",
+    "simultaneous_glass_and_lug_bearing_verified": false,
+    "withdrawn_mount_pattern_correction_rear_view_mm": {
+      "right": 3.6,
+      "down": 2.0
+    },
+    "orientation_correction": "User reoriented the assembly and confirms original mount holes match; do not shift them.",
+    "original_hole_alignment_verified": true
+  },
+  "print_quality_v48": {
+    "photo": "/tmp/codex-remote-attachments/01a0bf3e-2220-7252-adef-d07f9ff37b1f/E4D6E3C7-4DCB-467E-A393-EA903649E511/1-Foto-1.jpg",
+    "reported_issue": "Fraying continues on opposite side; user suggests calibration or support gap",
+    "during_print": true,
+    "device_layer_when_checked": [
+      103,
+      121
+    ],
+    "support_gap_mm": 0.2,
+    "diagnosis": "Support-contact/bridging hypothesis; filament miscalibration not proven",
+    "bearing_finish_verified": false,
+    "before_final_case": "Resolved by small V49 comparison: user confirms 0.12 mm support gap gives better result. Return to front-face-down where full-part geometry permits.",
+    "detail": "output/v48_display_original_mounts/PRINT_QUALITY_FEEDBACK.md"
+  },
+  "physical_seat_test_v48": {
+    "date": "2026-09-24",
+    "photo": "/tmp/codex-remote-attachments/01a0bf3e-2220-7252-adef-d07f9ff37b1f/09ECC453-18E3-47CC-869F-F9088ED5CCE9/1-Foto-1.jpg",
+    "completed": true,
+    "completion_evidence": "User fitting completed frame; Bambu Device shows Finished 100%,121/121",
+    "issue": "Integral arms bow when glass is pushed onto its seat; 4 mm screws cannot reach metal holes through old 3.9 mm grip",
+    "original_hole_alignment_retained": true,
+    "bearing_depth_fit_accepted": false,
+    "print_orientation_request": "Return to original front-face-down orientation; flipped frame cost more without useful improvement"
+  },
+  "physical_seat_test_v49": {
+    "date": "2026-09-24",
+    "completed": true,
+    "source": "User: yes to both and in both cases; 0.12 mm is better, measured to identify samples",
+    "samples": "Two identical upper-right production corner / integral mount samples",
+    "glass_and_lug_seat_without_arm_bending": true,
+    "actual_4mm_screws_reach_and_tighten_gently": true,
+    "both_samples_pass": true,
+    "selected_support_top_gap_mm": 0.12,
+    "support_gap_identification": "User measured after mixing the samples",
+    "limits": "One corner geometry tested twice; original four-hole XY pattern separately confirmed on the earlier full-frame test. Full enclosure not yet printed."
+  },
+  "pi_model": {
+    "model": "Raspberry Pi 3 Model B",
+    "confirmed_by_user": "2026-09-24",
+    "power_input": "Micro-USB, regulated 5 V"
+  },
+  "v51_full_body_feedback": {
+    "date": "2026-09-26",
+    "glass_seat": "Too tight; user needed extensive sanding to insert actual glass",
+    "next_revision_opening_increase_over_v51_mm": [2.0, 2.0],
+    "increase_interpretation": "Total width and height, centred; preserve four screw axes, screw reach and effective 3 mm bearing on actual glass",
+    "print_support": "Several default automatic tree supports broke; roof bridge completed with loose strands. Redesign/re-slice support strategy for the next full-body print.",
+    "wiring": "User read display-controller labels: black GND, yellow SCL, blue SDA, red 5V. For Pi 3 Model B with original Touch Display, connect display red 5V to Pi physical pin 4 and black GND to physical pin 6 while powered off; DSI ribbon carries data/touch and yellow/blue are not needed. Pi-side reconnection not yet physically confirmed."
+  }
+}

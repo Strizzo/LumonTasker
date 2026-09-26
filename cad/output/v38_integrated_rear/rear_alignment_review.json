@@ -1,0 +1,19 @@
+{
+  "status": "Confirmed design mismatch; print on hold; geometry not yet revised",
+  "display_rear_y_mm": 161.0,
+  "printer_rear_y_mm": 170.75,
+  "difference_mm": 9.75,
+  "display_base_rear_y_mm": 158.5,
+  "printer_base_rear_y_mm": 168.25,
+  "cause": "Main shells end at Y161 but printer retaining cover adds9.75mm to assembled envelope. Display bay was left at shell depth.",
+  "proposed_correction": "Extend display bay rear enclosure, roof and base to common170.75mm rear datum; keep tested printer pose and25degree display front. Regenerate rear hatch/vent/IEC features and dependent mounting features together; do not translate entire display bay.",
+  "dependent_left_features": [
+    "rear service hatch and screw seats",
+    "rear exhaust slots",
+    "IEC mounting recess and clearance",
+    "Pi/PSU positions derived from depth if regenerated",
+    "roof rear skirt and screws",
+    "base mounts and ventilation channels"
+  ],
+  "print_started": false
+}

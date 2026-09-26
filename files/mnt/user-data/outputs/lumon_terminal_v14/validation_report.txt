@@ -1,0 +1,178 @@
+=== ENVELOPE ===
+overall 378.96 x 159.00 x 168.00 mm (W x D x H)
+seam plane x = 220.96   left module 221 | right module 158
+base block 33 mm tall, standing 0.0 mm proud
+spine wall 9 mm (inserts sunk into it, nothing protrudes)
+rake 14 deg on BOTH modules -> one continuous front face, leaning back 41.9 mm
+display block raked 14 deg about the base top; printer block upright
+edge breaks: r6 outer verticals, r12 every top edge
+ID mark: deboss, 0.8 mm relief, 58 mm wide, artwork = logo_src.png
+  minimum feature width should be >= 0.8 mm at a 0.4 nozzle
+  logo_fill.stl fills the recess exactly - second filament, blue
+
+=== MARK KEEP-OUT ===
+mark occupies x 271..329, z 47..76
+  clearance to base block top    13.5 mm  PASS
+  clearance to seam gap          49.0 mm  PASS
+  clearance to right edge        50.0 mm  PASS
+  clearance to bottom of case    45.3 mm  PASS
+
+=== M4 DETAILING ===
+bottom edge chamfer 1.2 mm
+display window chamfer 1.2 mm on the raked plane
+seam shadow gap 2 mm wide x 1 mm deep (half cut into each module, front and top)
+base steps in: body -> band inset 1.5 (24 tall) -> dark foot inset 2.5 (9 tall)
+display surround 215 x 131, r14, 3 thick in a 1 mm rebate
+rear exhaust restyled as 5 stacked rules (Lumon print motif)
+finish: shells #DEE9EE pale grey, mark #0B4F7E blue, display surround #10161E
+
+=== PART LIST / PRINT BED FIT ===
+part                       X       Y       Z   Prusa MK4 / Ende   Bambu P1S / X1C          Prusa XL
+tub_left               221.0   159.0   156.0               PASS              PASS              PASS  
+tub_right              158.0   159.0   156.0               PASS              PASS              PASS  
+top_plate_left         219.2   122.0     4.5               PASS              PASS              PASS  
+top_plate_right        156.2   155.4     4.5               PASS              PASS              PASS  
+display_retainer       194.4    36.8   133.2               PASS              PASS              PASS  
+rear_panel_left        140.0     6.0   114.0               PASS              PASS              PASS  
+rear_panel_right       110.0     6.0    90.0               PASS              PASS              PASS  
+foot_left              218.5   154.0     9.0               PASS              PASS              PASS  
+foot_right             155.5   154.0     9.0               PASS              PASS              PASS  
+display_bezel          215.0    34.5   127.6               PASS              PASS              PASS  
+
+=== INTERFERENCE ===
+display vs tub_left             0.00 mm3  PASS
+display vs retainer             0.00 mm3  PASS
+printer vs tub_right            0.00 mm3  PASS
+pi vs tub_left                  0.00 mm3  PASS
+psu vs tub_left                 0.00 mm3  PASS
+tub_left vs tub_right           0.00 mm3  PASS
+top_plate vs tub_left           0.00 mm3  PASS
+(retainer is expected to touch the display: that is the clamp)
+
+=== POWER BAY ===
+PSU pocket 129 x 97 x 30 at x=86 y=46  (LRS-100-24, or LRS-75-24 with shorter blocks)
+headroom above the PSU mesh case: 122 mm
+mains barrier at x=79, height 46 mm
+mains inlet cutout 47.2 x 28.3 in the FIXED rear wall, outer face thinned to 1.5 mm
+PSU       vs tub_left            0.00 mm3  PASS
+Pi        vs tub_left            0.00 mm3  PASS
+IEC body  vs tub_left            0.00 mm3  PASS
+buck      vs tub_left            0.00 mm3  PASS
+IEC body vs PSU                 0.00 mm3  PASS
+Pi vs PSU                       0.00 mm3  PASS
+buck vs Pi                      0.00 mm3  PASS
+PSU vs display                  0.00 mm3  PASS
+mains zone to LV zone separation: barrier + 1 mm air
+
+=== PRINTER SERVICE ===
+top well 146 x 126 mm, open to the top face
+inward overhang over the lid: 0.0 mm  PASS (must stay 0 until the lid is measured)
+printer drops in from above, captured by the tub walls on 4 sides
+riser height 37 mm -> cable space under the printer
+
+=== FASTENER SCHEDULE ===
+M3 heat-set inserts (short, OD 4.6 x 4.0): 21
+  spine 5 | top plate 4 | display retainer 4 | rear panels 8
+M3 socket head screws: 21   lengths 8-12 mm
+steel dowel pins 4 mm: 2 (spine alignment)
+rubber feet pads: 8 recesses, 4 needed
+
+=== STILL UNVERIFIED ===
+printer_w/d/h, lid swing, LED and button positions, port positions
+display_t, Pi model, PSU, cable types
+
+=== PARAMETERS ===
+display_w                 192.96
+display_h                 110.76
+display_t                  21.00
+display_clear               1.00
+bezel_overlap               6.00
+printer_w                 142.00
+printer_d                 122.00
+printer_h                 122.00
+printer_clear               2.00
+printer_top_rim             0.00
+printer_sink                5.00
+paper_slot_w               86.00
+paper_slot_d                9.00
+paper_slot_y               45.00
+psu_w                     129.00
+psu_d                      97.00
+psu_h                      30.00
+psu_clear                   3.00
+psu_headroom               20.00
+iec_cut_w                  47.20
+iec_cut_h                  28.30
+iec_body_w                 50.00
+iec_body_h                 31.00
+iec_body_d                 31.00
+iec_panel_t                 1.50
+partition_t                 3.00
+rake_deg                   14.00
+fillet_main                14.00
+fillet_top_r               12.00
+chamfer_bottom              1.20
+bezel_chamfer               1.20
+bezel_margin               10.00
+bezel_t                     3.00
+bezel_rebate                1.00
+bezel_r                    14.00
+gap_w                       1.00
+gap_d                       1.00
+foot_h                      9.00
+foot_taper                  5.00
+foot_inset                  2.50
+band_h                     24.00
+band_inset                  1.50
+skirt_h                    33.00
+skirt_out                   0.00
+plinth_z                   17.00
+plinth_gap_h                1.50
+plinth_gap_d                0.00
+logo_mode                 deboss
+logo_w                     58.00
+drop_w                     16.00
+drop_zl                   118.00
+logo_zl                    62.00
+logo_clear                  8.00
+logo_relief                 0.80
+logo_thicken                0.20
+plate_w                    64.00
+plate_h                    18.00
+plate_depth                 1.20
+plate_clear                 0.20
+buck_w                     35.00
+buck_d                     65.00
+buck_h                     20.00
+pi_w                       85.00
+pi_d                       56.00
+pi_h                       22.00
+pi_hole_dx                 58.00
+pi_hole_dy                 49.00
+pi_hole_inset               3.50
+pi_standoff                 6.00
+wall                        3.00
+base_thickness              4.00
+plinth                     42.00
+rear_cavity                25.00
+printer_front               9.00
+spine_wall                  9.00
+top_flange                 15.00
+top_flange_t                3.00
+lid_rebate                  3.00
+shadow_gap                  1.50
+insert_hole_d               4.20
+insert_depth                6.00
+boss_d                      9.00
+screw_clear_d               3.40
+cbore_d                     6.20
+cbore_depth                 2.20
+dowel_d                     4.00
+dowel_fit                   0.15
+fit_clear                   0.30
+foot_d                     14.00
+foot_recess                 1.50
+W                         378.96
+D                         159.00
+H                         168.00
+x_split                   220.96

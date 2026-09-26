@@ -1,0 +1,367 @@
+{
+  "parts": {
+    "tub_left": {
+      "solids": 1,
+      "valid": true,
+      "volume_mm3": 400504.2957274915,
+      "bounds_mm": [
+        [
+          -1.0000000177635683e-07,
+          -1.0001793587500742e-07,
+          9.0
+        ],
+        [
+          218.96,
+          161.0,
+          165.0000001
+        ]
+      ]
+    },
+    "tub_right": {
+      "solids": 1,
+      "valid": true,
+      "volume_mm3": 664976.3837825849,
+      "bounds_mm": [
+        [
+          218.96,
+          -1.7763568394e-15,
+          9.0
+        ],
+        [
+          376.96,
+          161.0,
+          165.0
+        ]
+      ]
+    },
+    "top_plate_left": {
+      "solids": 1,
+      "valid": true,
+      "volume_mm3": 130182.98219659858,
+      "bounds_mm": [
+        [
+          -1.7763568394e-15,
+          32.9112963753,
+          160.0
+        ],
+        [
+          218.96,
+          161.0,
+          181.0
+        ]
+      ]
+    },
+    "printer_lid": {
+      "solids": 1,
+      "valid": true,
+      "volume_mm3": 104487.04805502639,
+      "bounds_mm": [
+        [
+          218.96,
+          -1.7763568394e-15,
+          160.0
+        ],
+        [
+          376.96,
+          161.0,
+          181.0
+        ]
+      ]
+    },
+    "display_retainer": {
+      "solids": 1,
+      "valid": true,
+      "volume_mm3": 42545.83153253498,
+      "bounds_mm": [
+        [
+          12.3,
+          22.958204501576873,
+          24.90706943416909
+        ],
+        [
+          206.66,
+          59.80366490113306,
+          158.0872526789228
+        ]
+      ]
+    },
+    "rear_panel_left": {
+      "solids": 1,
+      "valid": true,
+      "volume_mm3": 41919.03862086912,
+      "bounds_mm": [
+        [
+          8.0,
+          158.0,
+          19.999999999997335
+        ],
+        [
+          148.0,
+          161.0,
+          134.00000000000267
+        ]
+      ]
+    },
+    "rear_panel_right": {
+      "solids": 1,
+      "valid": true,
+      "volume_mm3": 25073.9186208693,
+      "bounds_mm": [
+        [
+          242.96,
+          158.0,
+          17.999999999997343
+        ],
+        [
+          352.96,
+          161.0,
+          108.00000000000266
+        ]
+      ]
+    },
+    "foot_left": {
+      "solids": 1,
+      "valid": true,
+      "volume_mm3": 292910.3172094908,
+      "bounds_mm": [
+        [
+          2.4999999999999996,
+          2.499999999998996,
+          -5.773043016856624e-16
+        ],
+        [
+          218.96,
+          158.5,
+          9.0
+        ]
+      ]
+    },
+    "foot_right": {
+      "solids": 1,
+      "valid": true,
+      "volume_mm3": 208846.4772094916,
+      "bounds_mm": [
+        [
+          218.95999999999532,
+          2.4999999999999996,
+          -2.3417035384852646e-12
+        ],
+        [
+          374.46,
+          158.5,
+          9.0
+        ]
+      ]
+    },
+    "display_bezel": {
+      "solids": 1,
+      "valid": true,
+      "volume_mm3": 28142.61648031113,
+      "bounds_mm": [
+        [
+          3.0,
+          -1.0598749035971187,
+          36.29043924674814
+        ],
+        [
+          215.96,
+          33.000875552683304,
+          161.9514826488325
+        ]
+      ]
+    },
+    "ref_display": {
+      "solids": 1,
+      "valid": true,
+      "volume_mm3": 448817.24160000007,
+      "bounds_mm": [
+        [
+          13.0,
+          5.968900788168,
+          39.458897184436424
+        ],
+        [
+          205.96,
+          53.14038019661605,
+          152.00921163435677
+        ]
+      ]
+    },
+    "ref_printer": {
+      "solids": 1,
+      "valid": true,
+      "volume_mm3": 2113527.9999999995,
+      "bounds_mm": [
+        [
+          229.96,
+          11.0,
+          52.5
+        ],
+        [
+          371.96000000000004,
+          133.0,
+          174.5
+        ]
+      ]
+    },
+    "ref_pi": {
+      "solids": 1,
+      "valid": true,
+      "volume_mm3": 104720.0,
+      "bounds_mm": [
+        [
+          18.0,
+          94.0,
+          39.0
+        ],
+        [
+          40.0,
+          150.0,
+          124.0
+        ]
+      ]
+    },
+    "ref_psu": {
+      "solids": 1,
+      "valid": true,
+      "volume_mm3": 375390.0,
+      "bounds_mm": [
+        [
+          83.96,
+          48.0,
+          13.0
+        ],
+        [
+          212.95999999999998,
+          145.0,
+          43.0
+        ]
+      ]
+    },
+    "ref_iec": {
+      "solids": 1,
+      "valid": true,
+      "volume_mm3": 42802.31999999999,
+      "bounds_mm": [
+        [
+          151.98,
+          128.5,
+          46.5
+        ],
+        [
+          201.98,
+          161.0,
+          77.5
+        ]
+      ]
+    },
+    "ref_buck": {
+      "solids": 1,
+      "valid": true,
+      "volume_mm3": 45500.00000000001,
+      "bounds_mm": [
+        [
+          10.0,
+          30.0,
+          13.0
+        ],
+        [
+          45.0,
+          95.0,
+          33.0
+        ]
+      ]
+    }
+  },
+  "interferences": [],
+  "meshes": {
+    "tub_right": {
+      "watertight": true,
+      "components": 5,
+      "component_volumes": [
+        665300.1234,
+        -83.0922,
+        -83.0922,
+        -83.0922,
+        -83.0922
+      ]
+    },
+    "display_retainer": {
+      "watertight": true,
+      "components": 1,
+      "component_volumes": [
+        42545.9763
+      ]
+    },
+    "logo_fill": {
+      "watertight": true,
+      "components": 6,
+      "component_volumes": [
+        274.2144,
+        32.5339,
+        26.5977,
+        22.7716,
+        19.8906,
+        13.4581
+      ]
+    },
+    "foot_right": {
+      "watertight": true,
+      "components": 1,
+      "component_volumes": [
+        208845.9306
+      ]
+    },
+    "foot_left": {
+      "watertight": true,
+      "components": 1,
+      "component_volumes": [
+        292909.7991
+      ]
+    },
+    "rear_panel_left": {
+      "watertight": true,
+      "components": 1,
+      "component_volumes": [
+        41919.1177
+      ]
+    },
+    "printer_lid": {
+      "watertight": true,
+      "components": 1,
+      "component_volumes": [
+        104465.1784
+      ]
+    },
+    "tub_left": {
+      "watertight": true,
+      "components": 3,
+      "component_volumes": [
+        400662.7957,
+        -83.0921,
+        -83.0921
+      ]
+    },
+    "display_bezel": {
+      "watertight": true,
+      "components": 1,
+      "component_volumes": [
+        28141.8751
+      ]
+    },
+    "top_plate_left": {
+      "watertight": true,
+      "components": 1,
+      "component_volumes": [
+        130159.7889
+      ]
+    },
+    "rear_panel_right": {
+      "watertight": true,
+      "components": 1,
+      "component_volumes": [
+        25073.993
+      ]
+    }
+  }
+}

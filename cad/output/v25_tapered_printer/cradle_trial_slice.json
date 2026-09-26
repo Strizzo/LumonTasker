@@ -1,0 +1,16 @@
+{
+  "source": "Bambu Studio GUI preview, 2026-09-21",
+  "project": "06_cradle_fit_only.3mf",
+  "total_minutes_displayed": 83,
+  "material_g": 48.85,
+  "material_m": 16.38,
+  "layers": 100,
+  "height_mm": 20,
+  "filament": 2,
+  "ams_slot": "A2 light-grey Generic PLA",
+  "status": "Started 2026-09-21 13:06 Europe/Luxembourg; device confirms active job, Pause/Stop available, layer 0/100 during preparation.",
+  "authorization": "User allows printing until 15:30 today. Finish with margin before 15:30; meeting 15:30\u201316:00.",
+  "auto_bed_leveling": false,
+  "bed_clear": "Explicitly confirmed by user before dispatch",
+  "device_estimated_finish": "2026-09-21 14:29 Europe/Luxembourg"
+}

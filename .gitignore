@@ -1,0 +1,29 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Credentials and personal runtime configuration stay on the device/local disk.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+software/taskticket/config/settings.py
+software/taskticket/config/user_preferences.py
+software/taskticket/data/
+
+# Temporary files, machine logs and generated deployment bundles.
+tmp/
+*.log
+software/release/*.tar
+.agents/
+.codex/
+
+# Original personal photos and third-party scene clips stay local.
+files/original pictures/
+software/references/*.gif
+software/references/*-frames.jpg

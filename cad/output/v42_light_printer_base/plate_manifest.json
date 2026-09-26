@@ -1,0 +1,16 @@
+{
+  "file": "02_V42_printer_base_lean.3mf",
+  "material": "A1 Bambu Navy Blue PLA only",
+  "layer_mm": 0.2,
+  "walls": 3,
+  "top_layers": 4,
+  "bottom_layers": 4,
+  "infill": "10% gyroid",
+  "supports": false,
+  "colour_swaps": 0,
+  "status": "Selected after GUI comparison, saved and dispatched; matching job verified heating0/45",
+  "dispatch_authorization": "User says go on with the project and retains printing authorization; confirm current plate is clear before dispatch.",
+  "dispatched": true,
+  "toolpath": "02_V42_printer_base_lean.gcode.3mf",
+  "geometry": "Original V39 base, no CAD pockets"
+}

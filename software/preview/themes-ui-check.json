@@ -1,0 +1,18 @@
+{
+  "version": "Classic default, optional MDR",
+  "viewport": "800x480",
+  "touch_target_height": 55,
+  "cursor_hidden_in_both_layouts": true,
+  "layout_switch_preserves_task_and_timer_without_printing": true,
+  "double_tap_print_calls": 1,
+  "elapsed_progress_tracks_focus_timer": true,
+  "numbers_animate_during_focus": true,
+  "animation_pauses_at_timer_end_and_for_reduced_motion": true,
+  "elapsed_timer_does_not_auto_complete": true,
+  "failed_complete_and_skip_keep_assignment": true,
+  "success_completion": true,
+  "no_suitable_task_distinct_from_offline": true,
+  "api_outage_does_not_claim_ticket_printed": true,
+  "offline_clears_counts": true,
+  "browser_exceptions": []
+}

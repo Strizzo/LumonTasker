@@ -1,0 +1,116 @@
+=== ENVELOPE ===
+overall 358.96 x 153.00 x 144.00 mm (W x D x H)
+seam plane x = 200.96   left module 201 | right module 158
+height check 135-145: PASS
+spine wall 9 mm (inserts sunk into it, nothing protrudes)
+display rake 10 deg -> front face leans back 25.4 mm over the full height
+
+=== PART LIST / PRINT BED FIT ===
+part                       X       Y       Z   Prusa MK4 / Ende   Bambu P1S / X1C          Prusa XL
+tub_left               201.0   153.0   144.0               PASS              PASS              PASS  
+tub_right              158.0   153.0   144.0               PASS              PASS              PASS  
+top_plate_left         197.4   124.5     3.0               PASS              PASS              PASS  
+display_retainer       194.4    28.0   137.3               PASS              PASS              PASS  
+rear_panel_left        140.0     6.0   114.0               PASS              PASS              PASS  
+rear_panel_right       110.0     6.0    90.0               PASS              PASS              PASS  
+
+=== INTERFERENCE ===
+display vs tub_left             0.00 mm3  PASS
+display vs retainer             0.00 mm3  PASS
+printer vs tub_right            0.00 mm3  PASS
+pi vs tub_left                  0.00 mm3  PASS
+psu vs tub_left                 0.00 mm3  PASS
+tub_left vs tub_right           0.00 mm3  PASS
+top_plate vs tub_left           0.00 mm3  PASS
+(retainer is expected to touch the display: that is the clamp)
+
+=== POWER BAY ===
+PSU pocket 129 x 97 x 30 at x=66 y=40  (LRS-100-24, or LRS-75-24 with shorter blocks)
+headroom above the PSU mesh case: 107 mm
+mains barrier at x=59, height 46 mm
+mains inlet cutout 47.2 x 28.3 in the FIXED rear wall, outer face thinned to 1.5 mm
+PSU       vs tub_left            0.00 mm3  PASS
+Pi        vs tub_left            0.00 mm3  PASS
+IEC body  vs tub_left            0.00 mm3  PASS
+buck      vs tub_left            0.01 mm3  PASS
+IEC body vs PSU                 0.00 mm3  PASS
+Pi vs PSU                       0.00 mm3  PASS
+buck vs Pi                      0.00 mm3  PASS
+PSU vs display                  0.00 mm3  PASS
+mains zone to LV zone separation: barrier + 1 mm air
+
+=== PRINTER SERVICE ===
+top well 146 x 126 mm, open to the top face
+inward overhang over the lid: 0.0 mm  PASS (must stay 0 until the lid is measured)
+printer drops in from above, captured by the tub walls on 4 sides
+riser height 18 mm -> cable space under the printer
+
+=== FASTENER SCHEDULE ===
+M3 heat-set inserts (short, OD 4.6 x 4.0): 21
+  spine 5 | top plate 4 | display retainer 4 | rear panels 8
+M3 socket head screws: 21   lengths 8-12 mm
+steel dowel pins 4 mm: 2 (spine alignment)
+rubber feet pads: 8 recesses, 4 needed
+
+=== STILL UNVERIFIED ===
+printer_w/d/h, lid swing, LED and button positions, port positions
+display_t, Pi model, PSU, cable types
+
+=== PARAMETERS ===
+display_w                 192.96
+display_h                 110.76
+display_t                  21.00
+display_clear               1.00
+bezel_overlap               6.00
+printer_w                 142.00
+printer_d                 122.00
+printer_h                 122.00
+printer_clear               2.00
+printer_top_rim             0.00
+psu_w                     129.00
+psu_d                      97.00
+psu_h                      30.00
+psu_clear                   3.00
+psu_headroom               20.00
+iec_cut_w                  47.20
+iec_cut_h                  28.30
+iec_body_w                 50.00
+iec_body_h                 31.00
+iec_body_d                 31.00
+iec_panel_t                 1.50
+partition_t                 3.00
+rake_deg                   10.00
+buck_w                     35.00
+buck_d                     65.00
+buck_h                     20.00
+pi_w                       85.00
+pi_d                       56.00
+pi_h                       22.00
+pi_hole_dx                 58.00
+pi_hole_dy                 49.00
+pi_hole_inset               3.50
+pi_standoff                 6.00
+wall                        3.00
+base_thickness              4.00
+plinth                     18.00
+rear_cavity                25.00
+spine_wall                  9.00
+top_flange                 15.00
+top_flange_t                3.00
+lid_rebate                  3.00
+shadow_gap                  1.50
+insert_hole_d               4.20
+insert_depth                6.00
+boss_d                      9.00
+screw_clear_d               3.40
+cbore_d                     6.20
+cbore_depth                 2.20
+dowel_d                     4.00
+dowel_fit                   0.15
+fit_clear                   0.30
+foot_d                     14.00
+foot_recess                 1.50
+W                         358.96
+D                         153.00
+H                         144.00
+x_split                   200.96

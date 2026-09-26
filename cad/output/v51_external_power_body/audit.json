@@ -1,0 +1,38 @@
+{
+  "status": "V51 geometry prepared; see BUILD_STATUS.md for print and Fusion status",
+  "source": "V49 accepted display geometry and V39 already printed roof/hatch",
+  "changes": [
+    "removed internal AC PSU divider and corner blocks",
+    "removed unused left-wall Pi standoffs",
+    "restored a closed base underside in place of exposed pockets",
+    "closed obsolete PSU floor and base intake slots",
+    "kept IEC-sized rear aperture as replaceable low-voltage inlet carrier"
+  ],
+  "body_volume_mm3_before": 492085.2266213179,
+  "body_volume_mm3_after": 474936.5984816874,
+  "base_volume_mm3_before": 165685.81939702647,
+  "base_volume_mm3_after": 312639.91650208377,
+  "measured_display_zone_difference_mm3": 0.0,
+  "printed_roof_rear_hatch_interfaces_unchanged": true,
+  "body_print_bounds_mm": [
+    218.9600066138672,
+    231.33413696286794,
+    164.16984548105467
+  ],
+  "body_upright_print_bounds_mm": [
+    218.9600067138672,
+    170.7499999999863,
+    176.00000000004184
+  ],
+  "base_print_bounds_mm": [
+    216.4600067138672,
+    165.75,
+    9.000000000000002
+  ],
+  "inlet_blank_bounds_mm": [
+    56.0,
+    2.9900054931640625,
+    37.10000228881836
+  ],
+  "inlet_plate": "Pilot only. Bore for actual selected bulkhead connector later."
+}

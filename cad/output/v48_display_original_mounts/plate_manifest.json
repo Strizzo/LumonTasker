@@ -1,0 +1,50 @@
+{
+  "project": "01_V48_display_original_mounts_seat_up.3mf",
+  "filament": "PolyTerra Cotton White PLA, A2 only",
+  "colour_swaps": 0,
+  "objects": 1,
+  "placement_xy_mm": [
+    21.81999969482422,
+    61.0
+  ],
+  "changes": {
+    "support_style": "snug",
+    "support_top_z_distance": "0.2",
+    "support_interface_top_layers": "3",
+    "support_interface_spacing": "0.15",
+    "support_interface_pattern": "rectilinear",
+    "support_interface_speed": [
+      "40",
+      "40"
+    ],
+    "support_speed": [
+      "100",
+      "100"
+    ],
+    "support_object_xy_distance": "0.3",
+    "support_base_pattern_spacing": "4",
+    "support_interface_loop_pattern": "1",
+    "top_surface_speed": [
+      "50",
+      "50"
+    ],
+    "bridge_speed": [
+      "30",
+      "30"
+    ],
+    "brim_type": "outer_only",
+    "brim_width": "3",
+    "support_filament": "0",
+    "support_interface_filament": "0",
+    "enable_prime_tower": "0"
+  },
+  "support_reason": "Rear-down print puts glass and metal bearing lands upward; supports touch non-contact reverse faces",
+  "support_gap_reason": "Retain 0.2 mm same-PLA release gap, use denser three-layer interface; never set zero gap for this same-material print",
+  "source_reference": "https://csm.bblcdn.com/hub/4668d0ca43994ff3bff4b37f1a65c2e7.pdf#page=66",
+  "status": "Dispatched; matching V48 job active/heating0/121; estimated finish16:15 local",
+  "bed_clear": true,
+  "bed_clear_evidence": "User: Ok then you can print I\u2019ve cleared the plate",
+  "dispatched": true,
+  "slice_review": "slice_review.json",
+  "print_dispatch": "print_dispatch.json"
+}

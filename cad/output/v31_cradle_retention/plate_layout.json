@@ -1,0 +1,32 @@
+{
+  "status": "Sliced and reviewed in Bambu Studio; not dispatched. Awaiting user launch approval, bed-clear confirmation, and current PLA slot.",
+  "parts": [
+    "cradle_tray",
+    "retaining_bar_58",
+    "retaining_bar_137"
+  ],
+  "brim_inclusive_bounds_xy_mm": {
+    "cradle_tray": [
+      42.0,
+      7.0,
+      204.0,
+      170.0
+    ],
+    "retaining_bar_58": [
+      32.0,
+      173.0,
+      213.0,
+      230.5
+    ],
+    "retaining_bar_137": [
+      32.0,
+      233.0,
+      213.0,
+      253.0
+    ]
+  },
+  "filament": "Single PLA project filament 2; verify actual AMS slot/material before release.",
+  "print_time": "3h 6m 28s",
+  "reviewed_project": "02_cradle_and_bars_reviewed.3mf",
+  "sliced_file": "02_cradle_and_bars_reviewed.gcode.3mf"
+}

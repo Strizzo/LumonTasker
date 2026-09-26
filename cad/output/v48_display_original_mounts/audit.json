@@ -1,0 +1,148 @@
+{
+  "status": "Original mounts retained exactly; wider-pocket test sliced and reviewed, not dispatched",
+  "source": "V45 body, original mounts confirmed by user after correcting test orientation; V47 shift withdrawn",
+  "opening_mm": [
+    193.6,
+    111.4
+  ],
+  "opening_radius_mm": 8.2,
+  "width_change_mm": 0.2,
+  "width_change_interpretation": "Overall width increase, centred; +0.1 mm each side",
+  "glass_recess_mm": 1.0,
+  "glass_thickness_mm": 0.8,
+  "ledge_width_mm": 3.0,
+  "ledge_thickness_mm": 2.3,
+  "full_depth_bearing_fraction": 1.0,
+  "mount_correction_user_rear_view_mm": {
+    "right": 0.0,
+    "down": 0.0
+  },
+  "mount_correction_local_xz_mm": [
+    0.0,
+    0.0
+  ],
+  "rear_view_mapping": "Rear is camera at +Y looking toward -Y, up +Z: image-right=-X",
+  "old_lug_centres_local_xz": [
+    [
+      47.87000000000001,
+      84.82672184114938
+    ],
+    [
+      47.87000000000001,
+      150.47672184114938
+    ],
+    [
+      174.07000000000002,
+      84.82672184114938
+    ],
+    [
+      174.07000000000002,
+      150.47672184114938
+    ]
+  ],
+  "lug_centres_local_xz": [
+    [
+      47.87000000000001,
+      84.82672184114938
+    ],
+    [
+      47.87000000000001,
+      150.47672184114938
+    ],
+    [
+      174.07000000000002,
+      84.82672184114938
+    ],
+    [
+      174.07000000000002,
+      150.47672184114938
+    ]
+  ],
+  "lug_pitch_mm": [
+    126.2,
+    65.65
+  ],
+  "mount_checks": {
+    "47.87,84.83": {
+      "bore_obstruction_mm3": 0.0,
+      "counterbore_obstruction_mm3": 0.0,
+      "bearing_land_fraction": 1.0
+    },
+    "47.87,150.48": {
+      "bore_obstruction_mm3": 0.0,
+      "counterbore_obstruction_mm3": 0.0,
+      "bearing_land_fraction": 1.0
+    },
+    "174.07,84.83": {
+      "bore_obstruction_mm3": 0.0,
+      "counterbore_obstruction_mm3": 0.0,
+      "bearing_land_fraction": 1.0
+    },
+    "174.07,150.48": {
+      "bore_obstruction_mm3": 0.0,
+      "counterbore_obstruction_mm3": 0.0,
+      "bearing_land_fraction": 1.0
+    }
+  },
+  "original_mount_geometry_checks": {
+    "47.87,84.83": {
+      "symmetric_difference_vs_v45_mm3": 0.0,
+      "missing_from_fixture_mm3": 0.0
+    },
+    "47.87,150.48": {
+      "symmetric_difference_vs_v45_mm3": 0.0,
+      "missing_from_fixture_mm3": 0.0
+    },
+    "174.07,84.83": {
+      "symmetric_difference_vs_v45_mm3": 0.0,
+      "missing_from_fixture_mm3": 0.0
+    },
+    "174.07,150.48": {
+      "symmetric_difference_vs_v45_mm3": 0.0,
+      "missing_from_fixture_mm3": 0.0
+    }
+  },
+  "original_hole_alignment_physically_confirmed": true,
+  "simultaneous_glass_lug_bearing_verified": false,
+  "mounts_integral": true,
+  "separate_bezel": false,
+  "front_overlap_mm": 0,
+  "nominal_front_sweep_clashes_mm3": {
+    "glass": {},
+    "chassis_nominal_not_remeasured": {},
+    "Pi_nominal_not_remeasured": {},
+    "band_conservative": {}
+  },
+  "case_part_clashes_mm3": {},
+  "production_body_valid": true,
+  "fixture_valid": true,
+  "single_solids": true,
+  "watertight": true,
+  "unchanged_outside_interface_edit_masks": true,
+  "fixture_volume_mm3": 39844.283173906464,
+  "print_extents_mm": [
+    212.36000061035156,
+    134.0,
+    15.899999618529847
+  ],
+  "print_orientation": "Rear faces of four arms on bed; glass-bearing seat and lug contact lands upward",
+  "print_seat_top_z_mm": 14.1,
+  "print_lug_land_z_mm": 8.940000000000001,
+  "fasteners": "4 M3x6, nominal 3.9 mm grip and 2.1 mm engagement; verify actual simultaneous seating",
+  "physical_test": [
+    "Remove supports under frame without scraping glass seat",
+    "Glass enters freely without forcing the tight corner",
+    "Glass rests on full 3 mm ledge without rocking, screws absent",
+    "Original bores align in correct display orientation; lug pads meet metal without forcing",
+    "Only then install four M3x6 gently"
+  ],
+  "limits": [
+    "Original hole pattern alignment confirmed; chassis and Pi references remain nominal",
+    "Actual simultaneous glass/metal-lug bearing stack and improved surface still need testing",
+    "Full-body print orientation/screw access/power routing remain unresolved",
+    "Inherited provisional cable/divider clash remains; not a full-case print release"
+  ],
+  "provisional_cable_divider_clash_mm3": 237.4790641798072,
+  "fusion_synced": false,
+  "print_dispatched": false
+}

@@ -1,0 +1,41 @@
+{
+  "status": "Corrected closed-surface base sliced and printing on P1S 3DP-01P-994; completion and physical fit pending",
+  "project": "04_V51_closed_display_base_top_down.3mf",
+  "base_down_comparison_project": "03_V51_closed_display_base.3mf",
+  "filament": "A1 Bambu navy blue PLA only",
+  "mesh_bounds_mm": [
+    [
+      2.5,
+      2.5,
+      -1.7763568394002505e-15
+    ],
+    [
+      218.9600067138672,
+      168.25,
+      9.0
+    ]
+  ],
+  "profile_changes": {
+    "wall_loops": "3",
+    "top_shell_layers": "4",
+    "bottom_shell_layers": "4",
+    "sparse_infill_density": "8%",
+    "sparse_infill_pattern": "gyroid",
+    "enable_support": "0",
+    "enable_prime_tower": "0",
+    "brim_type": "no_brim"
+  },
+  "superseded_open_pocket_slice": "4h38m, 124.03g, floating-cantilever warning; not sent",
+  "native_slice": {
+    "orientation": "top face down",
+    "estimated_time": "3h23m17s",
+    "estimated_filament_g": 114.16,
+    "layer_count": 45,
+    "support": "off",
+    "ams_slot": "A1 Bambu navy blue PLA",
+    "timelapse": "off",
+    "auto_bed_leveling": "off"
+  },
+  "print_dispatch": "Bambu Studio reported successfully sent; Device page showed active 0/45-layer job, 0%, on 25 September 2026",
+  "note": "Old vent slots are filled; plugs were trimmed to the chamfered outer envelope to remove six preview tabs. Do not mark complete until user confirms finished print and fit."
+}

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lumon · Macrodata Refinement</title>
+  <link rel="stylesheet" href="/static/terminal.css?v=1">
+  <script defer src="/static/terminal.js?v=1"></script>
+</head>
+<body>
+  <main class="terminal">
+    <header class="masthead">
+      <div>
+        <div class="eyebrow">LUMON INDUSTRIES / SEVERED FLOOR</div>
+        <h1>Macrodata Refinement</h1>
+        <div class="department">TASK ALLOCATION <span>— MDR-775</span></div>
+      </div>
+      <img class="logo" src="/static/lumon.svg" alt="Lumon Industries" width="112" height="58">
+    </header>
+    <section class="workspace" aria-label="Current assignment">
+      <div class="workspace-header">
+        <span id="assignmentLabel">REFINEMENT DESK</span>
+        <span class="connection" id="connectionState">CHECKING CONNECTION</span>
+      </div>
+      <div class="workspace-body">
+        <div class="assignment" id="taskDisplay" aria-live="polite">
+          <div class="eyebrow" id="taskEyebrow">PLEASE ENJOY YOUR WORK EQUALLY</div>
+          <h2 id="taskTitle">Welcome, Refiner.</h2>
+          <p id="taskDescription">The work is mysterious and important.<br>Select New Task to receive your assignment.</p>
+          <div class="terminal-prompt" id="taskPrompt">&gt; AWAITING REFINEMENT<span class="cursor" aria-hidden="true"></span></div>
+        </div>
+        <aside class="timer" id="taskTimer" hidden aria-label="Assignment timer">
+          <div class="eyebrow">TIME REMAINING</div>
+          <div class="timer-value" id="estimatedTimeDisplay">--:--</div>
+          <div class="time-track"><div id="timeProgress"></div></div>
+          <div class="timer-caption" id="timerCaption">0% ELAPSED</div>
+          <div class="challenge" id="challengeRow" hidden>CHALLENGE <span id="challengeTimeDisplay">--:--</span></div>
+        </aside>
+      </div>
+    </section>
+    <section class="bins" aria-label="Trello queues and this session">
+      <div class="bin"><span class="bin-label">01 / TODO</span><strong id="todoCount">—</strong></div>
+      <div class="bin"><span class="bin-label">02 / DOING</span><strong id="doingCount">—</strong></div>
+      <div class="bin"><span class="bin-label">03 / BETTER THAN NOTHING</span><strong id="btnCount">—</strong></div>
+      <div class="bin"><span class="bin-label">04 / REFINED THIS SESSION</span><strong id="completedCount">0</strong></div>
+    </section>
+    <nav class="actions" aria-label="Task actions">
+      <button id="newTaskBtn" class="primary"><kbd>N</kbd><span>NEW TASK</span><span class="button-symbol" aria-hidden="true">↗</span></button>
+      <button id="yesBtn" disabled><kbd>Y</kbd><span>COMPLETE</span><span class="button-symbol" aria-hidden="true">✓</span></button>
+      <button id="noBtn" disabled><kbd>X</kbd><span>SKIP</span><span class="button-symbol" aria-hidden="true">→</span></button>
+    </nav>
+    <footer class="status-bar">
+      <span>MDR-775 <span class="footer-divider">/</span> TASK TERMINAL</span>
+      <time id="dateTime"></time>
+      <span id="systemStatus" role="status">STANDBY</span>
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "time_local": "2026-09-22T21:45:02+02:00",
+  "file": "01_V39_printer_shell.gcode.3mf",
+  "printer": "P1S 3DP-01P-994",
+  "job_name": "01_V39_printer_shell.gcode_01_V38_shell_with_logo",
+  "user_authorized": true,
+  "user_confirmed_plate_clear": true,
+  "filament_mapping": {
+    "A1": "Bambu navy blue PLA",
+    "A2": "PolyTerra cotton white PLA"
+  },
+  "auto_bed_leveling": false,
+  "timelapse": false,
+  "estimated_seconds": 66654,
+  "estimated_grams": 634.49,
+  "layers": 805,
+  "send_result": "Successfully sent, 100%",
+  "device_status": "Finished 805/805; shell removed; user confirms plate clear",
+  "first_layer_verified": false,
+  "completion_verified": true,
+  "estimated_finish_local": "2026-09-23 16:19",
+  "last_observed_local": "2026-09-23T16:34:32+02:00",
+  "completion_evidence": "User photos and P1S reports finished 805/805 layers",
+  "physical_fit": {
+    "existing_v31_cradle_in_shell": "User confirms perfect fit",
+    "printer_on_cradle_in_shell": "User confirms perfect fit",
+    "secured_rear_cover": "Not yet printed or tested"
+  }
+}

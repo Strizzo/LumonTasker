@@ -1,0 +1,38 @@
+{
+  "status": "V48 printing103/121; user reports fraying on reverse face. Final surface quality unverified.",
+  "reviewed_local": "2026-09-24T13:08:55.643944+02:00",
+  "project": "01_V48_display_original_mounts_seat_up.3mf",
+  "toolpath": "01_V48_display_original_mounts_seat_up.gcode.3mf",
+  "sha256": "04b0bd61859fdbfef0ea8381ccf28457947ad10bc3e9ddfc74d31b72ca638137",
+  "estimated_seconds": 11098,
+  "filament_grams": 63.32,
+  "layers_including_support_heights": 121,
+  "maximum_preview_height_mm": 15.8,
+  "original_mount_holes_preserved": true,
+  "user_confirmed_original_hole_alignment": true,
+  "opening_mm": [
+    193.6,
+    111.4
+  ],
+  "ledge_mm": 3.0,
+  "orientation": "Rear down, glass bearing and metal lug lands up",
+  "visual_review": "Matching V48 model loaded; full plate and Z14.2 layer113 checked for continuous bearing top paths and four original-position pads; full height restored.",
+  "filament": "Cotton white PLA / project filament2 / intended A2",
+  "inter_colour_swaps": 0,
+  "supports": "Normal snug, same PLA, three-layer interface at0.15mm spacing,0.2mm release gap;4mm scaffold spacing",
+  "planned_options": {
+    "auto_bed_leveling": false,
+    "timelapse": false
+  },
+  "dispatch": {
+    "sent": true,
+    "plate_clear_confirmed": true,
+    "reason": "User explicitly authorizes printing and confirms plate cleared",
+    "options_verified_in_send_dialog": true,
+    "device_job_verified": true,
+    "record": "print_dispatch.json"
+  },
+  "full_case_released": false,
+  "fusion_synced": false,
+  "physical_quality_feedback": "PRINT_QUALITY_FEEDBACK.md"
+}

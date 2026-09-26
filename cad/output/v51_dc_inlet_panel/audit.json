@@ -1,0 +1,54 @@
+{
+  "status": "Print finished and plate cleared by user; socket/panel physical fit unconfirmed",
+  "socket_nominal_mount_diameter_mm": 10.0,
+  "printed_bore_mm": 10.2,
+  "diametral_fit_allowance_mm": 0.1999999999999993,
+  "outer_face_mm": [
+    56.0,
+    37.1
+  ],
+  "locating_shoulder_mm": [
+    46.9,
+    28.0
+  ],
+  "panel_and_locating_shoulder_thickness_mm": 2.99,
+  "inward_sleeve_length_mm": 5.0,
+  "sleeve_radial_wall_mm": 2.0,
+  "sleeve_outer_diameter_mm": 14.2,
+  "total_thickness_mm": 7.99,
+  "printed_case_interface_preserved": true,
+  "body_overlap_mm3": 0.0,
+  "assembly_clashes": {},
+  "watertight": true,
+  "support_required": false,
+  "filament": "Cotton White PLA, AMS slot 2",
+  "socket_retention": "User chooses glue to the 5 mm inward sleeve; no separate clamp or black-body measurements required",
+  "panel_retention": "Glue fitted locating shoulder/outer face into existing rear recess; no drilling",
+  "physical_fit": "Dry fit socket neck, sleeve clearance and case recess before glue; dimensions of rectangular rear socket body remain unmeasured",
+  "dispatch": true,
+  "native_slice": {
+    "bambu_version": "02.05.00.66",
+    "estimated_seconds": 1227,
+    "filament_g": 5.62,
+    "layers": 40,
+    "layer_height_mm": 0.2,
+    "maximum_z_mm": 8.0,
+    "support_used": false,
+    "filament": "PolyTerra PLA cotton white, project extruder 2",
+    "nozzle_c": 220,
+    "textured_pei_bed_c": 55,
+    "preview_checked": "Continuous first layer around through-bore; continuous vertical sleeve; no supports or prime tower.",
+    "profile_warning": "Native generic PLA chamber/bed heat advisory (bed_temperature_too_high_than_filament). Stock installed PolyTerra PLA profile itself inherits bed 55 C and vitrification 45 C. No artificial profile change made to suppress advisory.",
+    "slice_sha256": "5ff1e0ef8a27ee176efb830d086fd0fb4ff22754abde86cbb7c1273cfbca100d"
+  },
+  "fusion": {
+    "document": "LUMON_v51_GLUE_DC_INLET_ASSEMBLY",
+    "project": "lumon",
+    "saved": true,
+    "prior_review_made_read_only": "LUMON_v30_MATCHING_BASE_REVIEW",
+    "only_current_document_open": true
+  },
+  "print_dispatch": "print_dispatch.json",
+  "completion_confirmed": true,
+  "removed_from_plate_confirmed": true
+}

@@ -1,0 +1,14 @@
+{
+  "status": "Nominal front extraction geometry clear",
+  "method": "Exact prism sweeps along display normal; four detachable rear brackets removed",
+  "clashes_mm3": {
+    "glass_1p1mm": {},
+    "chassis": {},
+    "attached_Pi_nominal": {}
+  },
+  "limits": [
+    "Nominal board/chassis references only; actual loose wires and cables must be disconnected and kept clear",
+    "Rear bracket physical fit remains unconfirmed"
+  ],
+  "printed_parts_reused": "V40 frame and four brackets remain useful for mount validation; V41 bracket shapes unchanged"
+}

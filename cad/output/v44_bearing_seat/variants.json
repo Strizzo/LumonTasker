@@ -1,0 +1,23 @@
+{
+  "selected_variant": "glass_0p8",
+  "actual_glass_thickness_mm": 0.8,
+  "selection_requires": null,
+  "variants": {
+    "glass_0p7": {
+      "glass_mm": 0.7,
+      "seat_y_mm": 1.7
+    },
+    "glass_1p1": {
+      "glass_mm": 1.1,
+      "seat_y_mm": 2.1
+    },
+    "glass_0p8": {
+      "glass_mm": 0.8,
+      "seat_y_mm": 1.8
+    }
+  },
+  "measured_baseline_variant": "glass_0p8",
+  "local_band_total_thickness_mm": 1.3,
+  "print_released": false,
+  "selection_scope": "Seat geometry only; full-case physical fit and print review remain pending"
+}

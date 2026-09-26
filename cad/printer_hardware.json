@@ -1,0 +1,161 @@
+{
+  "units": "mm",
+  "source": "User measurements, 20 September 2026",
+  "model_listing": "Sunydog POS 8370",
+  "desktop_body": {
+    "width": 131,
+    "depth": 175,
+    "height": 120
+  },
+  "front_output_candidate_body": {
+    "width": 143,
+    "depth": 120,
+    "height": 175,
+    "front_width": 132,
+    "rear_width": 143
+  },
+  "front_output_feed_cut_test": "CONFIRMED: user tested upper-half outlet orientation; previous requests to repeat were assistant error",
+  "includes_external_cable_clearance": false,
+  "lid_sweep": "unmeasured",
+  "v19_printer_housing_status": "obsolete dimensions; do not print",
+  "front_output_revision": "output/v28_integrated_top/printer_bay.step",
+  "native_keyhole_mount_measurements": {
+    "centres_mm": 61,
+    "large_hole_centres_to_rear_cable_edge_mm": 132,
+    "source": "user measurement"
+  },
+  "service_preference": "Integral structural front; accept slower paper changes through top/rear and printer removal",
+  "mounting_decision": "rear-loading guided cradle with removable retaining bars; native keyholes not used",
+  "paper_outlet": {
+    "width_mm": 90,
+    "height_mm": 14,
+    "horizontal_position": "centred on 132mm front face",
+    "distance_from_upper_body_edge_mm": 60,
+    "distance_datum": "vertical centre, corrected +4mm from printed-template fit",
+    "upper_edge_from_body_top_mm": 53,
+    "lower_edge_from_body_top_mm": 67,
+    "original_reported_centre_from_top_mm": 56,
+    "source": "User physical fit feedback, 21 September 2026"
+  },
+  "connected_plugs": {
+    "power_mm": 15,
+    "usb_square_mm": 12,
+    "interpretation": "provisional protrusion allowances; not connector cutout diameters; bend space and positions unmeasured"
+  },
+  "cradle_fit_test": {
+    "status": "V26 mostly fits; user requests refinement and explicitly waives another cradle trial",
+    "front_gap_v26_mm": 134,
+    "rear_gap_v26_mm": 145,
+    "requested_total_gap_reduction_mm": 0.6,
+    "new_front_gap_mm": 133.4,
+    "new_rear_gap_mm": 144.4,
+    "bottom_support_rise_old_mm": 5.4,
+    "bottom_support_rise_new_mm": 8.1,
+    "interpretation": "50% higher refers to rise above rear bearing level, not absolute world height; 0.6mm narrowing is total gap, 0.3mm per side"
+  },
+  "paper_through_template_test": "Alignment accepted with +4mm downward correction; feed/cut through template not explicitly reported",
+  "physical_shape_review": {
+    "source": "User photos and observations, 21 September 2026",
+    "body": "Original front/rear faces nonparallel; rotated top/bottom cannot be treated as parallel flat support faces",
+    "power_switch": "Downward-facing rocker, measured outline23x16mm, offsets65/16mm; offset datum and protrusion pending",
+    "buttons": "User permits concealment; needed only for paper service; retain noncontact clearance",
+    "status_light": "User wants visible indication; sloped/chamfered LED surface; optical geometry unmeasured",
+    "support_status": "Width gauge passed only; full load-bearing support and tilt not verified",
+    "led_proposal": "Separate recessed translucent insert with noncontact light collection cavity; optical sample before fixing thickness"
+  },
+  "v23_status": "HOLD: width verified but rectangular-box support assumption invalidated by tapered casing and downward rocker; geometry collision audit does not validate actual hardware fit",
+  "taper_measurements": {
+    "source": "User, 21 September 2026",
+    "original_top_front_to_rear_mm": 166,
+    "original_bottom_front_to_rear_mm": 175,
+    "chosen_orientation_front_vertical_span_mm": 166,
+    "chosen_orientation_rear_vertical_span_mm": 175,
+    "span_difference_mm": 9,
+    "front_back_depth_mm": 120,
+    "upper_lower_offset_split": "Approximate60% lower/switch face and40% upper",
+    "reference_policy": "Keep conservative 175mm bounding height; do not assume all 9mm belongs to lower support face",
+    "lower_switch_face_fraction": 0.6,
+    "upper_face_fraction": 0.4,
+    "lower_delta_mm": 5.4,
+    "upper_delta_mm": 3.6,
+    "source_approximation": "User authorizes approximate symmetric taper, suggests60/40 with more tilt on switch side",
+    "chosen_orientation_front_width_mm": 132,
+    "chosen_orientation_rear_width_mm": 143,
+    "lateral_split_assumption": "Symmetric 5.5mm per side, provisional",
+    "rear_face_definition": "Rear-facing panel with cable plugs; NOT downward switch-bearing face",
+    "fit_refined_lower_delta_mm": 8.1,
+    "fit_refined_upper_delta_mm": 0.9,
+    "refinement_note": "Keep front/rear vertical spans166/175. Raise front reference, aperture and LED by2.7mm with the support correction; estimated envelope, not measured rigid-body pose."
+  },
+  "power_switch_measurements": {
+    "outline_mm": [
+      23,
+      16
+    ],
+    "distance_from_original_top_now_front_edge_mm": 65,
+    "distance_from_nearest_side_edge_mm": 16,
+    "distance_datum": "CONFIRMED: distances to nearest switch edges",
+    "protrusion_mm": 4.5,
+    "transverse_side": "User describes upper left viewed from above; modeled on left with front edge at top of plan, confirm via CAD plan",
+    "outline_axis_assignment": "provisional 23mm across printer width, 16mm along front-back depth",
+    "front_back_extent_from_front_mm": [
+      65,
+      81
+    ],
+    "transverse_extent_from_nearest_side_mm": [
+      16,
+      39
+    ],
+    "clearance_design": {
+      "lateral_margin_mm": 2,
+      "minimum_free_depth_mm": 6.5,
+      "opening_size_mm": [
+        27,
+        20
+      ],
+      "front_back_extent_from_front_mm": [
+        63,
+        83
+      ],
+      "transverse_extent_from_nearest_side_mm": [
+        14,
+        41
+      ],
+      "status": "design allowance; not yet installed in validated support CAD",
+      "constraints": "Apply to tray AND floor/base; retain clearance in both rocker positions and during rear insertion/removal. Transverse side mapping and tapered support pose still need resolution."
+    }
+  },
+  "status_light_measurements": {
+    "distance_from_upper_edge_mm": 2,
+    "datum_interpretation": "upper edge of projected illuminated rectangle",
+    "width_mm": 40,
+    "projected_height_mm": 4.5,
+    "horizontal_position": "assumed centred from photographs",
+    "surface": "angled; setback and angle not measured"
+  },
+  "diffuser_material": {
+    "preferred": "translucent PETG",
+    "availability": "User confirms translucent PETG on hand and in AMS slot 3, 2026-09-26",
+    "construction": "Separate printed insert assembled into PLA shell; do not rely on PLA/PETG interlayer bonding",
+    "trial": "Dispatched light-grey PLA insert remains useful for geometry and fit checks",
+    "pending": "Dispatched from A3; print completion, PETG fit and blue-light transmission check pending",
+    "ams_slot": "A3",
+    "bambu_preset": "Installed Generic PETG; physical brand unspecified",
+    "device_registration": "Verified A3 PETG K0.040 in Bambu Device",
+    "final_project": "output/v51_petg_led_insert/01_LED_insert_PETG.3mf",
+    "native_slice": "output/v51_petg_led_insert/01_LED_insert_PETG.gcode.3mf"
+  },
+  "v25_status": "Superseded: constant 131mm width assumption invalid; preserve as printed history.",
+  "top_construction": "Integrated into shell at explicit user request; rear-only printer loading and service; no top screws",
+  "power_adapter": {
+    "source": "User adapter label photo,24 September2026",
+    "photo": "/tmp/codex-remote-attachments/01a0bf3e-2220-7252-adef-d07f9ff37b1f/4B1068A9-85E6-4CD7-A844-7FA3CD5221B9/1-Foto-1.jpg",
+    "rated_output_voltage_v_dc": 24.0,
+    "rated_output_current_a": 1.5,
+    "rated_output_power_w": 36.0,
+    "rated_input": "100\u2013240 V AC,50/60 Hz,0.9 A max",
+    "connector_observation": "Round keyed three-contact DC connector; exact family, dimensions and pin allocation NOT established",
+    "label_is_power_supply_rating_not_measured_printer_demand": true,
+    "model_label": "XY36SC-240150VQ-EW (provisional transcription; not used to infer pinout)"
+  }
+}

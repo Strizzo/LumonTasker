@@ -1,0 +1,46 @@
+{
+  "status": "Mechanical checks/slices complete, but whole assembly has confirmed9.75mm rear-depth mismatch. PRINT HOLD; send dialog closed. No print dispatched.",
+  "shell_front_unchanged": true,
+  "cradle_unchanged": true,
+  "retention_contacts_unchanged": true,
+  "cover_solids": 1,
+  "fastener_count": 4,
+  "screw": "M3x14",
+  "grip_mm": 9.75,
+  "thread_engagement_mm": 4.25,
+  "axes_xz_mm": [
+    [
+      4.5,
+      40.0
+    ],
+    [
+      4.5,
+      180.0
+    ],
+    [
+      161.0,
+      40.0
+    ],
+    [
+      161.0,
+      180.0
+    ]
+  ],
+  "outer_rear_radius_mm": 9.5,
+  "seam_mm": 0.25,
+  "closed_depth_mm": 170.75,
+  "previous_closed_depth_mm": 170.5,
+  "clearance_checks_mm3": {
+    "cover_vs_shell": 0.0,
+    "cover_vs_cradle": 0.0,
+    "cover_vs_printer": 0.0,
+    "cover_vs_base": 0.0,
+    "shell_printer": 0.0,
+    "shell_tray": 0.0,
+    "rear_clear": 0.0,
+    "up_clear": 0.0,
+    "rear_captured": 12.499999999999996,
+    "up_captured": 19.999999999999996
+  },
+  "printability": "Shell front-down with auto tree supports; cover rear-face-down with normal supports; base flat without supports. All slices inside build volume."
+}

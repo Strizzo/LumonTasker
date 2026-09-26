@@ -1,0 +1,33 @@
+{
+  "time_local": "2026-09-24T00:57:00+02:00",
+  "job_name": "V42_Navy_Printer_Base_Lean",
+  "project": "02_V42_printer_base_lean.3mf",
+  "toolpath": "02_V42_printer_base_lean.gcode.3mf",
+  "sha256": "42694f79e0428f4d64215447d5297e45d9ca7a48843fda94b43c18c0eefd888f",
+  "printer": "P1S 3DP-01P-994",
+  "user_authorized": true,
+  "user_confirmed_plate_clear": true,
+  "geometry": "Original V39 printer base; pocketed candidate rejected after slice comparison",
+  "filament_mapping": {
+    "A1": "Bambu Navy Blue PLA"
+  },
+  "estimated_seconds": 7509,
+  "estimated_grams": 75.89,
+  "layers": 45,
+  "auto_bed_leveling": false,
+  "timelapse": false,
+  "supports": false,
+  "colour_swaps": 0,
+  "device_status": "Finished,100%,45/45 layers",
+  "estimated_finish_local": "2026-09-24 03:02",
+  "first_layer_verified": false,
+  "completion_verified": true,
+  "physical_fit_verified": true,
+  "physical_fit_evidence": "24 September: user confirms the navy base fits and will glue it later. Bonding not performed.",
+  "bonding_verified": false,
+  "next_revision_feedback": "User prefers a closed flat underside instead of through-openings matching the shell floor. Develop a thin bottom skin with internal switch/cable recesses and only necessary rear/side exits; verify hardware and rear extraction clearance before release.",
+  "completion_observed_local": "2026-09-24T10:28:46+02:00",
+  "completion_evidence": "User says previous thing printed; Bambu Device shows V42_Navy_Printer_Base_Lean 100%, 45/45 Finished",
+  "current_plate_clear": false,
+  "current_plate_clear_evidence": "User subsequently confirmed the plate clear; V46 display-seat test was dispatched at 10:39 on 24 September and is the latest known occupant. See ../v46_display_seat_fit/print_dispatch.json."
+}

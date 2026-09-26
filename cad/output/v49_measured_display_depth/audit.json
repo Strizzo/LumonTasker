@@ -1,0 +1,129 @@
+{
+  "status": "Measured-depth CAD verified; compact coupons need slice review and clear bed before dispatch",
+  "measurements": {
+    "glass_front_to_metal_lug_mm": 8.4,
+    "screw_under_head_mm": 4.0,
+    "head_fits_existing_counterbore": true,
+    "source": "User measurement 24 September 2026"
+  },
+  "old_front_to_lug_mm": 5.96,
+  "pad_relief_mm": 2.44,
+  "old_plastic_grip_mm": 3.9,
+  "plastic_grip_mm": 2.0,
+  "nominal_thread_engagement_mm": 2.0,
+  "screw_depth_limit_note": "2 mm protrusion is a design target. The earlier 2.5 mm maximum-thread-depth claim is not explicitly specified as such in the drawing; actual blind-hole clearance still needs a gentle physical trial.",
+  "glass_front_local_y_mm": 1.0,
+  "metal_contact_local_y_mm": 9.4,
+  "screw_head_seat_local_y_mm": 11.4,
+  "rear_arm_extent_y_mm": 15.9,
+  "opening_mm": [
+    193.6,
+    111.4
+  ],
+  "opening_radius_mm": 8.2,
+  "glass_recess_mm": 1.0,
+  "glass_thickness_mm": 0.8,
+  "ledge_width_mm": 3.0,
+  "ledge_thickness_mm": 2.3,
+  "full_depth_bearing_fraction": 1.0,
+  "lug_centres_local_xz": [
+    [
+      47.87000000000001,
+      84.82672184114938
+    ],
+    [
+      47.87000000000001,
+      150.47672184114938
+    ],
+    [
+      174.07000000000002,
+      84.82672184114938
+    ],
+    [
+      174.07000000000002,
+      150.47672184114938
+    ]
+  ],
+  "lug_pitch_mm": [
+    126.2,
+    65.65
+  ],
+  "hole_xy_shift_mm": [
+    0.0,
+    0.0
+  ],
+  "original_hole_alignment_physically_confirmed": true,
+  "mount_checks": {
+    "47.87,84.83": {
+      "bore_obstruction_mm3": 0.0,
+      "counterbore_obstruction_mm3": 0.0,
+      "relieved_material_remaining_mm3": 0.0,
+      "contact_land_fraction": 1.0,
+      "screw_grip_fraction": 1.0
+    },
+    "47.87,150.48": {
+      "bore_obstruction_mm3": 0.0,
+      "counterbore_obstruction_mm3": 0.0,
+      "relieved_material_remaining_mm3": 0.0,
+      "contact_land_fraction": 1.0,
+      "screw_grip_fraction": 1.0
+    },
+    "174.07,84.83": {
+      "bore_obstruction_mm3": 0.0,
+      "counterbore_obstruction_mm3": 0.0,
+      "relieved_material_remaining_mm3": 0.0,
+      "contact_land_fraction": 1.0,
+      "screw_grip_fraction": 1.0
+    },
+    "174.07,150.48": {
+      "bore_obstruction_mm3": 0.0,
+      "counterbore_obstruction_mm3": 0.0,
+      "relieved_material_remaining_mm3": 0.0,
+      "contact_land_fraction": 1.0,
+      "screw_grip_fraction": 1.0
+    }
+  },
+  "removed_outside_pad_masks_mm3": 0.0,
+  "added_outside_pad_masks_mm3": 0.0,
+  "nominal_front_sweep_clashes_mm3": {
+    "glass": {},
+    "chassis_conservative_xy_nominal": {},
+    "Pi_nominal_not_remeasured": {},
+    "band_conservative": {}
+  },
+  "case_part_clashes_mm3": {},
+  "production_body_valid": true,
+  "fixture_valid": true,
+  "watertight": true,
+  "single_solids": true,
+  "simultaneous_glass_lug_bearing_physically_verified": false,
+  "print_orientation": "Front panel face on bed, as V46; rear arms upward",
+  "full_fixture_volume_mm3": 39218.41194386969,
+  "coupon_volume_mm3": 6292.468050166892,
+  "two_coupon_vs_full_fixture_volume_ratio": 0.32089356698954663,
+  "coupon_extents_mm": [
+    48.790000915527344,
+    38.58000183105466,
+    15.899999618509918
+  ],
+  "coupon_location": "Upper-right glass corner as viewed from front, original upper-right mount",
+  "mounts_integral": true,
+  "separate_bezel": false,
+  "front_overlap_mm": 0,
+  "physical_test": [
+    "Remove support without leaving high spots on glass or metal bearing faces",
+    "Seat corner on matching upper-right glass corner with screw absent; arm must not bow",
+    "Check pad meets metal at same time as glass meets 3 mm seat, without forcing",
+    "Use measured 4 mm under-head screw; stop if it resists before its head seats",
+    "Compare 0.20 and 0.12 support-gap copies for bearing finish and clean release"
+  ],
+  "limits": [
+    "Only lug depth is measured; full chassis/Pi geometry remains provisional",
+    "Printed tolerances and actual screw blind-hole clearance require physical trial",
+    "Full-body print orientation/screw access/power routing remain unresolved",
+    "Inherited provisional cable/divider clash remains; not a full-case print release"
+  ],
+  "provisional_cable_divider_clash_mm3": 237.4790641794251,
+  "fusion_synced": false,
+  "print_dispatched": false
+}

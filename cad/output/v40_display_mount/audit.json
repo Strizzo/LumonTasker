@@ -1,0 +1,158 @@
+{
+  "status": "CAD and fit-kit preparation; physical test not yet performed",
+  "user_dimensions_mm": [
+    193,
+    111,
+    40
+  ],
+  "glass_clearance_per_side_mm": 0.2,
+  "opening_mm": [
+    193.4,
+    111.4
+  ],
+  "glass_radius_reference_mm": 8,
+  "opening_radius_mm": 8.2,
+  "radius_status": "Estimated from drawing; verify against actual glass with fit frame.",
+  "display_front_recess_below_navy_bezel_mm": 1.0,
+  "outer_lug_pitch_mm": [
+    126.2,
+    65.65
+  ],
+  "lug_datum_status": "Nominal drawing, mirrored from rear view; test required",
+  "lug_centres_local_xz": [
+    [
+      47.87000000000001,
+      84.82672184114938
+    ],
+    [
+      47.87000000000001,
+      150.47672184114938
+    ],
+    [
+      174.07000000000002,
+      84.82672184114938
+    ],
+    [
+      174.07000000000002,
+      150.47672184114938
+    ]
+  ],
+  "lug_bearing_y_mm": 4.96,
+  "case_anchor_y_mm": 10.0,
+  "screws": {
+    "metal_lugs": "4 x M3x6; 3.9mm bearing pad leaves nominal 2.1mm engagement in 2.5mm thread; verify actual screw/washer stack before tightening",
+    "case_anchors": "4 x M3x8; 3.9mm bracket leaves nominal 4.1mm engagement in tested 4.2mm insert bores"
+  },
+  "parts": {
+    "tub_left": {
+      "volume_mm3": 471078.99948298564,
+      "solid_count": 1,
+      "volume_change_percent": -6.693242771543151
+    },
+    "top_plate_left": {
+      "volume_mm3": 119496.60511439302,
+      "solid_count": 1,
+      "volume_change_percent": 0.0
+    },
+    "rear_panel_left": {
+      "volume_mm3": 32081.14174006414,
+      "solid_count": 1,
+      "volume_change_percent": 0.0
+    },
+    "foot_left": {
+      "volume_mm3": 165685.8193970245,
+      "solid_count": 1,
+      "volume_change_percent": -44.290913595132096
+    },
+    "display_bezel": {
+      "volume_mm3": 16703.707305369575,
+      "solid_count": 1,
+      "volume_change_percent": -39.36948473151624
+    },
+    "shell": {
+      "volume_mm3": 693779.5030081783,
+      "solid_count": 1,
+      "volume_change_percent": 0.0
+    },
+    "cradle_tray": {
+      "volume_mm3": 70498.49999999124,
+      "solid_count": 1,
+      "volume_change_percent": 0.0
+    },
+    "logo": {
+      "volume_mm3": 389.4663328738275,
+      "solid_count": 6,
+      "volume_change_percent": 0.0
+    },
+    "led_diffuser": {
+      "volume_mm3": 429.16399999999925,
+      "solid_count": 1,
+      "volume_change_percent": 0.0
+    },
+    "foot_right_bonded": {
+      "volume_mm3": 186087.88395042252,
+      "solid_count": 1,
+      "volume_change_percent": 0.0
+    },
+    "rear_cover_integrated": {
+      "volume_mm3": 155302.4660022905,
+      "solid_count": 1,
+      "volume_change_percent": 0.0
+    },
+    "display_mount_left_lower": {
+      "volume_mm3": 1677.61020784124,
+      "solid_count": 1
+    },
+    "display_mount_left_upper": {
+      "volume_mm3": 1615.6002078412398,
+      "solid_count": 1
+    },
+    "display_mount_right_lower": {
+      "volume_mm3": 1677.61020784124,
+      "solid_count": 1
+    },
+    "display_mount_right_upper": {
+      "volume_mm3": 1615.6002078412398,
+      "solid_count": 1
+    }
+  },
+  "interferences": [],
+  "hardware_clashes_mm3": {
+    "REFERENCE_glass_measured_193x111": {},
+    "REFERENCE_chassis_nominal": {},
+    "REFERENCE_attached_Pi_nominal_40mm_total": {}
+  },
+  "keepout_clashes_mm3": {
+    "Pi_5mm_lateral_1mm_rear_allowance": {},
+    "provisional_20mm_rear_cable_space": {
+      "tub_left": 188.72383698382518
+    }
+  },
+  "limits": [
+    "Fit frame not physically tested; 0.2mm per-side FDM fit is a target, not a guaranteed result.",
+    "Board/lug placement is nominal; only outer glass and full depth are physically measured.",
+    "Power parts and cable routes remain inherited placeholders, not purchased-hardware verification.",
+    "Lightweight foot stiffness and actual fitted clearance require physical review."
+  ],
+  "print_release": "Fit kit only after slicer verification; large display bay remains on hold.",
+  "hardware_to_power_mm": {
+    "REFERENCE_glass_measured_193x111": {
+      "PSU_placeholder": 39.577,
+      "buck_placeholder": 31.646,
+      "IEC_placeholder": 107.361
+    },
+    "REFERENCE_chassis_nominal": {
+      "PSU_placeholder": 34.398,
+      "buck_placeholder": 29.261,
+      "IEC_placeholder": 102.101
+    },
+    "REFERENCE_attached_Pi_nominal_40mm_total": {
+      "PSU_placeholder": 26.996,
+      "buck_placeholder": 41.636,
+      "IEC_placeholder": 68.122
+    }
+  },
+  "unchanged_printer_side": true,
+  "fixture_volume_mm3": 19054.88417350415,
+  "all_brackets_volume_mm3": 6586.42083136496
+}

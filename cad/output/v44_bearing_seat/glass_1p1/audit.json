@@ -1,0 +1,101 @@
+{
+  "status": "Conditional CAD candidate only; actual glass thickness and physical lug stack unconfirmed",
+  "glass_thickness_assumption_mm": 1.1,
+  "glass_front_y_mm": 1.0,
+  "seat_y_mm": 2.1,
+  "gap_behind_glass_mm": 0.0,
+  "seat_overlap_under_glass_mm": 2.0,
+  "seat_material_thickness_mm": 1.9999999999999996,
+  "bearing_contact_area_mm2": 1175.964594300504,
+  "seat_contact_fraction": 0.9999999999996543,
+  "side_bearing_fractions": {
+    "left": 1.0000000000000109,
+    "right": 1.0000000000000109,
+    "lower": 0.9999999999999862,
+    "upper": 1.000000000000025
+  },
+  "glass_alone_0p05mm_inward_collision_mm3": 58.798229715020284,
+  "glass_alone_0p05mm_outward_collision_mm3": 0.0,
+  "recessed_opening_mm": [
+    193.4,
+    111.4
+  ],
+  "opening_R_mm": 8.2,
+  "front_overlap_mm": 0,
+  "separate_bezel": false,
+  "metal_lug_plane_y_mm": 6.96,
+  "lug_centres_local_xz": [
+    [
+      47.87000000000001,
+      84.82672184114938
+    ],
+    [
+      47.87000000000001,
+      150.47672184114938
+    ],
+    [
+      174.07000000000002,
+      84.82672184114938
+    ],
+    [
+      174.07000000000002,
+      150.47672184114938
+    ]
+  ],
+  "retention_screws": 4,
+  "screw_nominal": "M3x6; 3.9 mm plastic bearing pad, 2.1 mm engagement before any physical shim correction",
+  "mount_depth_relation": "Seat and lug lands touch the nominal assembly simultaneously; screws must not draw across a gap",
+  "hardware_clashes_mm3": {
+    "REFERENCE_glass": 0.0,
+    "REFERENCE_chassis_nominal": 0.0,
+    "REFERENCE_attached_Pi_nominal": 0.0
+  },
+  "front_sweep_clashes_mm3": {
+    "glass": {},
+    "chassis_nominal": {},
+    "Pi_nominal": {}
+  },
+  "part_clashes_mm3": {},
+  "lug_hole_checks": {
+    "47.87,84.83": {
+      "bore_obstruction_mm3": 0.0,
+      "counterbore_obstruction_mm3": 0.0,
+      "bearing_land_fraction": 0.9999999999999972
+    },
+    "47.87,150.48": {
+      "bore_obstruction_mm3": 0.0,
+      "counterbore_obstruction_mm3": 0.0,
+      "bearing_land_fraction": 1.0000000000000038
+    },
+    "174.07,84.83": {
+      "bore_obstruction_mm3": 0.0,
+      "counterbore_obstruction_mm3": 0.0,
+      "bearing_land_fraction": 0.999999999999997
+    },
+    "174.07,150.48": {
+      "bore_obstruction_mm3": 0.0,
+      "counterbore_obstruction_mm3": 0.0,
+      "bearing_land_fraction": 1.0000000000000038
+    }
+  },
+  "body_valid": true,
+  "body_solid_count": 1,
+  "body_watertight": true,
+  "added_body_volume_vs_v43_mm3": 517.9773417906254,
+  "provisional_cable_divider_clash_mm3": 237.47906417980624,
+  "physical_checks_remaining": [
+    "Measure actual glass-only edge thickness to select or regenerate seat depth",
+    "Confirm display metal lug pattern and simultaneous bearing with glass freely resting on seat",
+    "Inspect printed bearing for high spots/warp; never pull the glass into place with screws",
+    "Correct any rear lug gap with measured rigid shims or revised pads, then recalculate screw engagement",
+    "No gasket thickness assumed; adding bedding requires updating the seat and lug stack together"
+  ],
+  "release_holds": [
+    "Actual glass thickness unconfirmed",
+    "Physical mounting stack unconfirmed",
+    "Power/cable layout unresolved",
+    "Screw access and full-body slicing pending"
+  ],
+  "fusion_synced": false,
+  "print_dispatched": false
+}

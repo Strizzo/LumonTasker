@@ -1,0 +1,15 @@
+{
+  "file": "V38_rear_cover.gcode.3mf",
+  "header": "; HEADER_BLOCK_START\n; BambuStudio 02.05.00.66\n; model printing time: 3h 57m 32s; total estimated time: 4h 4m 51s\n; total layer number: 231\n; total filament length [mm] : 44715.83\n; total filament volume [cm^3] : 107554.17\n; total filament weight [g] : 140.90\n; filament_density: 1.32,1.31\n; filament_diameter: 1.75,1.75\n; max_z_height: 46.20\n; filament: 2\n",
+  "slice_info_xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<config>\n  <header>\n    <header_item key=\"X-BBL-Client-Type\" value=\"slicer\"/>\n    <header_item key=\"X-BBL-Client-Version\" value=\"02.05.00.66\"/>\n  </header>\n  <plate>\n    <metadata key=\"index\" value=\"1\"/>\n    <metadata key=\"extruder_type\" value=\"0\"/>\n    <metadata key=\"nozzle_volume_type\" value=\"0\"/>\n    <metadata key=\"printer_model_id\" value=\"C12\"/>\n    <metadata key=\"nozzle_diameters\" value=\"0.4\"/>\n    <metadata key=\"timelapse_type\" value=\"0\"/>\n    <metadata key=\"prediction\" value=\"14691\"/>\n    <metadata key=\"weight\" value=\"140.90\"/>\n    <metadata key=\"first_layer_time\" value=\"987.112305\"/>\n    <metadata key=\"outside\" value=\"false\"/>\n    <metadata key=\"support_used\" value=\"true\"/>\n    <metadata key=\"label_object_enabled\" value=\"false\"/>\n    <metadata key=\"filament_maps\" value=\"1 1\"/>\n    <metadata key=\"limit_filament_maps\" value=\"0 0\"/>\n    <object identify_id=\"430\" name=\"V38 integrated rear retaining cover\" skipped=\"false\" />\n    <filament id=\"2\" tray_info_idx=\"GFL01\" type=\"PLA\" color=\"#FFFFFF\" used_m=\"44.72\" used_g=\"140.90\" used_for_object=\"true\" used_for_support=\"true\" group_id=\"0\" nozzle_diameter=\"0.40\" volume_type=\"Standard\"/>\n    <warning msg=\"bed_temperature_too_high_than_filament\" level=\"3\" error_code =\"1000C001\"  />\n    <layer_filament_lists>\n      <layer_filament_list filament_list=\"1\" layer_ranges=\"0 230\" />\n    </layer_filament_lists>\n  </plate>\n</config>\n",
+  "dispatched": false,
+  "effective_gcode_settings": {
+    "filament_flow_ratio": "; filament_flow_ratio = 0.98,0.98",
+    "filament_max_volumetric_speed": "; filament_max_volumetric_speed = 22,22",
+    "nozzle_temperature": "; nozzle_temperature = 220,220",
+    "textured_plate_temp": "; textured_plate_temp = 55,55",
+    "wall_loops": "; wall_loops = 4",
+    "enable_support": "; enable_support = 1",
+    "enable_prime_tower": "; enable_prime_tower = 0"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "classic_default": true,
+  "optional_mdr": true,
+  "cursor_rule_served": true,
+  "active_assignment_restored": false,
+  "history_unchanged": true,
+  "trello_online": true,
+  "selection_mode": "LOCAL SELECTION",
+  "services_active": [
+    "taskiosk",
+    "thermal-printer-subscriber"
+  ],
+  "pointer_enabled_screenshot": "preview/pi-themes.png",
+  "native_cursor_hiding_running": true,
+  "screenshot_pointer_overlay_note": "scrot -p composites the cursor resource even when XFixes hides it. The final capture has a transparent Chromium cursor resource after one-pixel motion.",
+  "browser_cursor_image_transparent_after_motion": true,
+  "native_cursor_command": "unclutter --timeout 1 --ignore-scrolling --debug",
+  "pointer_absent_in_final_pointer_enabled_screenshot": true
+}

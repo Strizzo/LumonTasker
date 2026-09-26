@@ -1,0 +1,13 @@
+{
+  "version": "MDR-inspired task terminal",
+  "viewport": "800x480",
+  "touch_target_height": 68,
+  "double_tap_print_calls": 1,
+  "elapsed_progress_tracks_focus_timer": true,
+  "failed_complete_and_skip_keep_assignment": true,
+  "success_completion": true,
+  "no_suitable_task_distinct_from_offline": true,
+  "api_outage_does_not_claim_ticket_printed": true,
+  "offline_clears_counts": true,
+  "browser_exceptions": []
+}

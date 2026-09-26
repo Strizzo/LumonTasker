@@ -1,0 +1,87 @@
+{
+  "left_plates": [
+    {
+      "project": "04_V39_display_body.3mf",
+      "part": "tub_left",
+      "filament": 2,
+      "dimensions_mm": [
+        218.9600067138672,
+        170.75,
+        176.0
+      ],
+      "supports": true
+    },
+    {
+      "project": "05_V39_display_roof.3mf",
+      "part": "top_plate_left",
+      "filament": 2,
+      "dimensions_mm": [
+        218.9600066138672,
+        99.8712387084961,
+        20.999999899999978
+      ],
+      "supports": true
+    },
+    {
+      "project": "06_V39_display_rear_hatch.3mf",
+      "part": "rear_panel_left",
+      "filament": 2,
+      "dimensions_mm": [
+        132.0,
+        94.0,
+        3.0
+      ],
+      "supports": false
+    },
+    {
+      "project": "07_V39_display_base.3mf",
+      "part": "foot_left",
+      "filament": 1,
+      "dimensions_mm": [
+        216.4600067138672,
+        165.75,
+        9.0
+      ],
+      "supports": false
+    }
+  ],
+  "right_plates_reused": [
+    {
+      "file": "01_V39_printer_shell.gcode.3mf",
+      "source": "/Users/srizzo/Documents/Projects/LumonTasker/cad/output/v38_integrated_rear/V38_final_shell_tree.gcode.3mf",
+      "sha256": "a2ef6b26c6bbae26379cb0a3e753a928ffd401b43d3e51677271ca82d42252cf",
+      "reason": "V39 CAD validation proves all printer-side components unchanged"
+    },
+    {
+      "file": "02_V39_printer_rear_cover.gcode.3mf",
+      "source": "/Users/srizzo/Documents/Projects/LumonTasker/cad/output/v38_integrated_rear/V38_rear_cover.gcode.3mf",
+      "sha256": "b5396c1f636a767c3fd4ffd1ec7d272a91a70eefccfab8b8a334fc636a7f0ef3",
+      "reason": "V39 CAD validation proves all printer-side components unchanged"
+    },
+    {
+      "file": "03_V39_printer_base.gcode.3mf",
+      "source": "/Users/srizzo/Documents/Projects/LumonTasker/cad/output/v38_integrated_rear/V38_navy_base.gcode.3mf",
+      "sha256": "23a000bf43bb5e4415fbbf6eb577a3e1048d6360a514d4aad852aad61f85e0dd",
+      "reason": "V39 CAD validation proves all printer-side components unchanged"
+    },
+    {
+      "file": "01_V39_printer_shell.3mf",
+      "source": "/Users/srizzo/Documents/Projects/LumonTasker/cad/output/v38_integrated_rear/01_V38_shell_reviewed.3mf",
+      "sha256": "8a1dac2433b61eeea1c697dbf2796ea004b1089ce31048c92f1fa88fd496b78b",
+      "reason": "V39 CAD validation proves all printer-side components unchanged"
+    },
+    {
+      "file": "02_V39_printer_rear_cover.3mf",
+      "source": "/Users/srizzo/Documents/Projects/LumonTasker/cad/output/v38_integrated_rear/02_V38_integrated_rear_cover.3mf",
+      "sha256": "afcf7362271aac5d43517d0226b6691f71a09cfe62f87bc2fe41c21409fa8c5e",
+      "reason": "V39 CAD validation proves all printer-side components unchanged"
+    },
+    {
+      "file": "03_V39_printer_base.3mf",
+      "source": "/Users/srizzo/Documents/Projects/LumonTasker/cad/output/v38_integrated_rear/03_V38_navy_base.3mf",
+      "sha256": "777a1373665e8404e3994a369ad6fa4369a72158b7c99fea15e196f93890a7be",
+      "reason": "V39 CAD validation proves all printer-side components unchanged"
+    }
+  ],
+  "left_release": "Prepared for slicing and fit review; actual electronics fit is unverified"
+}

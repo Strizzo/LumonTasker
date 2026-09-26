@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lumon · Task Refinement</title>
+  <link rel="stylesheet" href="/static/terminal-mdr.css?v=4">
+  <link rel="stylesheet" href="/static/terminal-shared.css?v=4">
+  <script defer src="/static/terminal.js?v=4"></script>
+</head>
+<body>
+  <main class="terminal">
+    <header class="masthead">
+      <h1>Task Refinement</h1>
+      <div class="file-progress" aria-label="Focus session elapsed">
+        <span class="progress-label" id="sessionProgress">Awaiting task</span>
+        <div class="progress-track"><div id="focusProgress"></div></div>
+      </div>
+      <a class="theme-link" href="/display?theme=classic" aria-label="Switch terminal layout" title="Switch terminal layout"><img class="logo" src="/static/lumon.svg" alt="Lumon Industries" width="76" height="38"></a>
+    </header>
+    <section class="workspace" aria-label="Current assignment">
+      <div class="assignment" id="taskDisplay" aria-live="polite">
+        <h2 id="taskTitle">Welcome, Refiner.</h2>
+        <p id="taskDescription">Select New Task to open a task file.<br>Please enjoy your work equally.</p>
+      </div>
+      <div class="refinement-field" id="numberField" hidden aria-hidden="true"><canvas id="numberCanvas"></canvas></div>
+      <div class="workspace-bottom">
+        <span class="file-label">Macrodata Refinement</span>
+        <aside class="timer" id="taskTimer" hidden aria-label="Assignment timer">
+          <span>Focus <span class="timer-value" id="estimatedTimeDisplay">--:--</span></span>
+          <span class="challenge" id="challengeRow" hidden>Challenge <span id="challengeTimeDisplay">--:--</span></span>
+        </aside>
+      </div>
+    </section>
+    <nav class="actions" aria-label="Task actions">
+      <button id="newTaskBtn" aria-label="New Task, shortcut N"><span class="bin-number" aria-hidden="true">01</span><span class="bin-action">New Task</span></button>
+      <button id="yesBtn" disabled aria-label="Complete task, shortcut C"><span class="bin-number" aria-hidden="true">02</span><span class="bin-action">Complete</span></button>
+      <button id="noBtn" disabled aria-label="Skip task, shortcut S"><span class="bin-number" aria-hidden="true">03</span><span class="bin-action">Skip</span></button>
+    </nav>
+    <footer class="status-bar">
+      <span>MDR-775</span>
+      <time id="dateTime"></time>
+      <span class="connection" id="connectionState" role="status">STATUS: CHECKING</span>
+    </footer>
+  </main>
+</body>
+</html>

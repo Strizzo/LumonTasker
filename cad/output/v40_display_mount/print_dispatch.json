@@ -1,0 +1,26 @@
+{
+  "time_local": "2026-09-23T21:39:00+02:00",
+  "project": "01_V40_display_fit_kit.3mf",
+  "exported_toolpath": "01_V40_display_fit_kit.gcode.3mf",
+  "job_name": "01_V40_display_fit_kit_01_V40_display_fit_kit",
+  "printer": "P1S 3DP-01P-994",
+  "user_authorized": true,
+  "bed_clearance_context": "User reported clearing the bed and authorized more printing; previous rear-cover job directly verified Finished 231/231.",
+  "filament_mapping": {
+    "A2": "PolyTerra Cotton White PLA"
+  },
+  "auto_bed_leveling": false,
+  "timelapse": false,
+  "estimated_seconds": 4286,
+  "estimated_grams": 26.74,
+  "layers": 60,
+  "device_status": "Matching job active, 0/60 layers; heating nozzle and bed; pause/stop controls available.",
+  "first_layer_verified": false,
+  "completion_verified": true,
+  "physical_fit_verified": false,
+  "estimated_finish_local": "2026-09-23 22:50",
+  "completion_evidence": "24 September user supplied photo of printed frame on actual display and confirms perfect fit",
+  "glass_outline_fit_verified": true,
+  "physical_fit_note": "Glass contour passed; rear brackets and depth stack not yet confirmed",
+  "completion_device_verification": "24 September Bambu Device100%,60/60 layers Finished"
+}

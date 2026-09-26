@@ -1,0 +1,73 @@
+{
+  "status": "Fit-frame CAD checks passed; slice/support review and bed clearance required before dispatch",
+  "source": "V45 0.8 mm glass / 3 mm seat, exact interface cropped from final body",
+  "objects": 1,
+  "separate_brackets": 0,
+  "case_side_heat_set_inserts": 0,
+  "glass_opening_mm": [
+    193.4,
+    111.4
+  ],
+  "opening_radius_mm": 8.2,
+  "ledge_width_mm": 3.0,
+  "ledge_material_thickness_mm": 2.3,
+  "glass_recess_mm": 1.0,
+  "full_depth_seat_material_fraction": 1.0,
+  "lug_checks": {
+    "47.87,84.83": {
+      "missing_mount_material_mm3": 0.0,
+      "bore_obstruction_mm3": 0.0,
+      "counterbore_obstruction_mm3": 0.0,
+      "bearing_land_fraction": 1.0
+    },
+    "47.87,150.48": {
+      "missing_mount_material_mm3": 0.0,
+      "bore_obstruction_mm3": 0.0,
+      "counterbore_obstruction_mm3": 0.0,
+      "bearing_land_fraction": 1.0
+    },
+    "174.07,84.83": {
+      "missing_mount_material_mm3": 0.0,
+      "bore_obstruction_mm3": 0.0,
+      "counterbore_obstruction_mm3": 0.0,
+      "bearing_land_fraction": 1.0
+    },
+    "174.07,150.48": {
+      "missing_mount_material_mm3": 0.0,
+      "bore_obstruction_mm3": 0.0,
+      "counterbore_obstruction_mm3": 0.0,
+      "bearing_land_fraction": 1.0
+    }
+  },
+  "front_sweep_collisions_mm3": {
+    "glass": 0.0,
+    "chassis_nominal": 0.0,
+    "Pi_nominal": 0.0,
+    "band_conservative": 0.0
+  },
+  "valid": true,
+  "solid_count": 1,
+  "watertight": true,
+  "print_extents_mm": [
+    212.36000061035156,
+    134.0,
+    15.89999961852271
+  ],
+  "cad_volume_mm3": 39884.38717366173,
+  "print_orientation": "Front face on bed; integral arms point up; supports required",
+  "filament": "PolyTerra Cotton White PLA / AMS A2 only",
+  "fasteners": "4 x M3x6 into existing outer metal lugs; nominal engagement2.1mm, verify before tightening",
+  "physical_test": [
+    "Remove supports and inspect bearing/holes for residue",
+    "Insert display and attached Pi from front with screws absent; glass rests evenly on ledge",
+    "Check black band is clear and display is not rocking",
+    "Check four metal lugs meet pads without pulling display across a gap",
+    "Only then gently secure four M3x6 screws and check front withdrawal is prevented"
+  ],
+  "limits": [
+    "Nominal chassis-to-ledge gap0.35mm needs real test",
+    "This open frame does not verify final rear screwdriver or cable/power routing",
+    "Full case remains unreleased; fixture does not resolve inherited cable/divider overlap"
+  ],
+  "print_dispatched": false
+}

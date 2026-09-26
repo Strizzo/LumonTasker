@@ -1,0 +1,16 @@
+{
+  "deployed_at": "2026-09-26T21:42:05.481442+00:00",
+  "backup": "/home/srizzo/taskticket/backups/lumon-ui-20260926T214204Z",
+  "history_unchanged": true,
+  "subscriber_pid_unchanged": true,
+  "changed_files": [
+    "main.py",
+    "terminal_status.py",
+    "templates/terminal.html",
+    "static/terminal.css",
+    "static/terminal.js",
+    "static/lumon.svg",
+    "static/fonts/"
+  ],
+  "rollback": "Restore this backup main.py into TaskTicket/main.py, then sudo systemctl restart taskiosk.service."
+}

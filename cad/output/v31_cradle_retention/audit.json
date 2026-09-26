@@ -1,0 +1,51 @@
+{
+  "scope": "Only lower rear retaining bar changed; printed v28 shell and approved cradle unchanged.",
+  "status": "Prepared fit-test geometry; not sliced, physically tested, or dispatched.",
+  "bar_valid": true,
+  "bar_solids": 1,
+  "watertight": true,
+  "print_bounds_mm": [
+    175.0,
+    51.5,
+    42.5
+  ],
+  "added_volume_mm3": 4770.000000000011,
+  "rear_clearance_mm": 0.5,
+  "vertical_clearance_mm": 0.5,
+  "retaining_lip_overlap_mm": 4.0,
+  "screws": "Existing two M3x12 lower-bar screws; upper bar uses two more. Check insert depth/bottoming.",
+  "assembly_intersections_mm3": {
+    "tub_left": 0.0,
+    "top_plate_left": 0.0,
+    "display_retainer": 0.0,
+    "rear_panel_left": 0.0,
+    "foot_left": 0.0,
+    "display_bezel": 0.0,
+    "shell": 0.0,
+    "cradle_tray": 0.0,
+    "retaining_bar_137": 0.0,
+    "rear_cover": 0.0,
+    "logo": 0.0,
+    "led_diffuser": 0.0,
+    "foot_right_bonded": 0.0
+  },
+  "relief_intersections_mm3": {
+    "rocker_sweep": 0.0,
+    "rear_cables": 0.0
+  },
+  "tray_motion_intersections_mm3": {
+    "rear_clear": 0.0,
+    "up_clear": 0.0,
+    "rear_stopped": 12.499999999999996,
+    "up_stopped": 19.999999999999996
+  },
+  "bar_installation_path_checked": true,
+  "physical_checks_pending": [
+    "tray seating",
+    "retaining-lip clearance",
+    "real printer and plugs",
+    "paper feeding/cutting",
+    "switch clearance",
+    "rear service"
+  ]
+}

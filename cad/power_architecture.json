@@ -1,0 +1,139 @@
+{
+  "status": "User confirmed Pi 3 Model B and is considering 24 V / 3 A Prime adapter. V51 CAD removes obsolete internal AC supply features. Final adapter purchase, exact 5 V converter and inlet hardware not confirmed.",
+  "user_requirement": "Only one power line exiting the complete device; open to buying a shared adapter",
+  "printer_adapter": {
+    "source": "User adapter label photo,24 September2026",
+    "photo": "/tmp/codex-remote-attachments/01a0bf3e-2220-7252-adef-d07f9ff37b1f/4B1068A9-85E6-4CD7-A844-7FA3CD5221B9/1-Foto-1.jpg",
+    "rated_output_voltage_v_dc": 24.0,
+    "rated_output_current_a": 1.5,
+    "rated_output_power_w": 36.0,
+    "rated_input": "100\u2013240 V AC,50/60 Hz,0.9 A max",
+    "connector_observation": "Round keyed three-contact DC connector; exact family, dimensions and pin allocation NOT established",
+    "label_is_power_supply_rating_not_measured_printer_demand": true,
+    "model_label": "XY36SC-240150VQ-EW (provisional transcription; not used to infer pinout)"
+  },
+  "recommended_architecture": [
+    "External enclosed AC/DC24V adapter",
+    "One DC inlet and protected distribution inside enclosure",
+    "24V branch to printer through correctly pinned matching three-contact lead",
+    "24V to regulated5V step-down branch for Pi and display; feed Pi through micro-USB or a protected, strain-relieved GPIO harness once that choice is finalized"
+  ],
+  "gpio_power_input_option": {
+    "user_question_date": "2026-09-26",
+    "user_preference": "Asked whether feeding regulated 5 V through Pi header pins would simplify assembly",
+    "electrical_plan": "Regulated 5 V from 24 V buck to Pi physical pin 2 (5 V) and physical pin 9 (GND); display red 5 V jumper remains on Pi physical pin 4 and black GND on physical pin 6. All share one 5 V source.",
+    "condition": "GPIO input bypasses Pi 3 micro-USB input polyfuse. Add suitable external overcurrent protection, a correctly polarized secure/strain-relieved connector and verified 5 V under load before energizing. Do not use loose Dupont wires as final power feed; leave Pi micro-USB unpowered when using GPIO feed.",
+    "status": "Preferred design direction following user question; final converter, protection and harness not yet selected or wired"
+  },
+  "dc_inlet_panel": {
+    "date": "2026-09-26",
+    "photo": "/tmp/codex-remote-attachments/01a0bf3e-2220-7252-adef-d07f9ff37b1f/1FD4EBEF-A8DF-4417-8750-87450868C725/2-Foto-2.jpg",
+    "hardware": "Female DC barrel socket with screw-terminal rear, mounting thread/nut not visible",
+    "user_requested_mount_hole_mm": 10.0,
+    "draft_bore_with_fit_allowance_mm": 10.2,
+    "cad": "output/v51_dc_inlet_panel/dc_inlet_glue_panel.step",
+    "bambu_project": "output/v51_dc_inlet_panel/02_DC_inlet_glue_panel.3mf",
+    "existing_case_fit": "Preserves V51 56 x 37.1 mm recess cover and 46.9 x 28 mm locating shoulder; CAD overlap with printed body is zero",
+    "status": "Finished: Device confirms 100%, 40/40 layers. Physical socket/panel fit unconfirmed.",
+    "electrical_limits": "The photo does not establish terminal polarity, connector contact diameter or current rating. Confirm labels and polarity on the physical inlet before wiring 24 V.",
+    "sliced_file": "output/v51_dc_inlet_panel/02_DC_inlet_glue_panel.gcode.3mf",
+    "inward_sleeve_length_mm": 5.0,
+    "sleeve_radial_wall_mm": 2.0,
+    "sleeve_outer_diameter_mm": 14.2,
+    "socket_retention": "Glue round neck into inward sleeve; no separate clamp and no rectangular black-body measurements needed.",
+    "panel_retention": "Glue locating shoulder/cover face into existing case recess.",
+    "slice_estimated_seconds": 1227,
+    "slice_filament_g": 5.62
+  },
+  "sizing_assumption": {
+    "printer_budget_w": 36,
+    "pi_and_display_budget_w": 20,
+    "converter_efficiency_assumed": 0.85,
+    "total_input_budget_w": 59.53,
+    "note": "Conservative design budget, not measured consumption. User confirms Pi 3 Model B; budget includes display and headroom.",
+    "preferred_adapter_class_w": 90
+  },
+  "example_adapter": {
+    "model": "Mean Well GST90A24-P1M",
+    "rated_voltage_v": 24,
+    "rated_current_a": 3.75,
+    "rated_power_w": 90,
+    "dc_output_connector": "5.5x2.5mm centre-positive barrel,NOT the printer connector",
+    "source": "https://www.meanwell.com/Upload/PDF/GST90A/GST90A-SPEC.PDF",
+    "not_purchased": true,
+    "amazon_listing": {
+      "url": "https://www.amazon.de/dp/B0131V8XWQ",
+      "verified_date": "2026-09-24",
+      "exact_listing_title": "Mean Well GST90A24-P1M AC-DC Industrial Desktop Adaptor with PFC",
+      "recommended_offer": {
+        "seller": "IT-Tronics GmbH",
+        "item_eur": 32.91,
+        "shipping_eur": 8.0,
+        "total_eur": 40.91,
+        "estimated_delivery": "2026-09-30 to 2026-10-05"
+      },
+      "lowest_total_offer": {
+        "seller": "feldmannlampen",
+        "item_eur": 29.75,
+        "shipping_eur": 8.03,
+        "total_eur": 37.78,
+        "estimated_delivery": "2026-10-08 to 2026-10-12"
+      },
+      "source": "Live Amazon buying-options panel for current delivery location",
+      "purchase_status": "Not added to basket or purchased"
+    },
+    "mains_input": "IEC C14; requires grounded EU-to-C13 power lead. Listing contents state 1 x adapter; mains lead not confirmed included."
+  },
+  "converter_candidate_reference": {
+    "model": "Pololu D36V50F5",
+    "output_v": 5,
+    "typical_current_a_at_36v_in": 5.5,
+    "input_range_v": [
+      5.5,
+      50
+    ],
+    "size_mm": [
+      25.4,
+      25.4,
+      9.5
+    ],
+    "source": "https://www.pololu.com/product/4091",
+    "qualification": "Candidate only; Pi 3 Model B now confirmed. Verify output under load, thermal clearance and short micro-USB lead. Output current is thermally limited."
+  },
+  "cad_direction": "Remove speculative internal AC supply mounts/divider and replace old IEC cutout with DC connection on a replaceable plate when interface selected. Keep only low-voltage distribution/converter inside. Preserve active roof/hatch print and accepted printer geometry.",
+  "remaining_facts": [
+    "Printer DC connector family and pinout,verified electrically or by trusted documentation",
+    "Selected DC inlet/converter and power-lead specifications"
+  ],
+  "active_print": "Active preparation confirmed: Device reports 0/17 layers, waiting for heatbed; 255 C nozzle and 70 C bed targets. Translucent PETG A3, bed levelling and timelapse OFF; estimated finish 22:25 local.",
+  "sources": [
+    "https://www.raspberrypi.com/documentation/computers/getting-started.html",
+    "https://www.raspberrypi.com/documentation/accessories/display.html",
+    "https://www.meanwell.com/Upload/PDF/GST90A/GST90A-SPEC.PDF",
+    "https://www.pololu.com/product/4091"
+  ],
+  "pi_model": {
+    "model": "Raspberry Pi 3 Model B",
+    "source": "User confirmation, 2026-09-24",
+    "official_recommended_supply": "5 V / 2.5 A",
+    "power_input": "Micro-USB is the protected default; GPIO header feed is a feasible alternative with external fuse/protection and secure harness"
+  },
+  "printer_lead_reuse": {
+    "user_proposal": "Reuse original printer DC lead/three-contact connector by cutting and soldering",
+    "status": "Proposed, not performed",
+    "requirements": [
+      "Disconnect original adapter from mains before cutting the low-voltage lead; do not open the mains adapter",
+      "Establish and record connector pinout/polarity before reuse; do not infer from wire colours",
+      "Insulate each splice and provide cable strain relief",
+      "Verify 24 V printer branch and regulated 5 V Pi branch before connecting electronics"
+    ]
+  },
+  "user_prime_adapter_candidate": {
+    "model": "GPJYD CJ-2430 (as photographed on listing)",
+    "url": "https://www.amazon.de/dp/B0DNJTCGYG",
+    "advertised_output": "24 V DC / 3 A / 72 W",
+    "barrel_connector": "5.5 x 2.5 mm, listing claim; polarity to confirm on physical unit",
+    "amazon_observation": "Prime offer at \u20ac13.36 on 24 September 2026; user asked if sufficient, purchase not confirmed",
+    "assessment": "Sufficient by provisional 52\u201356 W combined budget; actual loaded regulation and printer-current peaks not measured"
+  }
+}

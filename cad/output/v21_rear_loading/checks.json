@@ -1,0 +1,72 @@
+{
+  "status": "mechanical prototype; slicer and lid sweep checks pending",
+  "printer_mm": [
+    131,
+    120,
+    175
+  ],
+  "parts": {
+    "shell": {
+      "single_solid": true,
+      "watertight": true,
+      "print_bounds_mm": [
+        158.0,
+        188.0,
+        161.0
+      ],
+      "volume_mm3": 503604.6093089107
+    },
+    "cradle_tray": {
+      "single_solid": true,
+      "watertight": true,
+      "print_bounds_mm": [
+        141.0,
+        157.0,
+        20.0
+      ],
+      "volume_mm3": 73756.99999999999
+    },
+    "retaining_bar_58": {
+      "single_solid": true,
+      "watertight": true,
+      "print_bounds_mm": [
+        158.0,
+        13.999999999999993,
+        42.5
+      ],
+      "volume_mm3": 24405.049566773498
+    },
+    "retaining_bar_137": {
+      "single_solid": true,
+      "watertight": true,
+      "print_bounds_mm": [
+        158.0,
+        14.0,
+        42.5
+      ],
+      "volume_mm3": 24405.049566773498
+    },
+    "top_cover": {
+      "single_solid": true,
+      "watertight": true,
+      "print_bounds_mm": [
+        158.0,
+        161.0,
+        4.0
+      ],
+      "volume_mm3": 101679.36637784902
+    },
+    "rear_cover": {
+      "single_solid": true,
+      "watertight": true,
+      "print_bounds_mm": [
+        158.0,
+        188.0,
+        9.500000000000028
+      ],
+      "volume_mm3": 73582.9902947827
+    }
+  },
+  "interferences": [],
+  "rear_removal_envelope_clear": true
+}

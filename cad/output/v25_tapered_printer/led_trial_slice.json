@@ -1,0 +1,11 @@
+{
+  "source": "Bambu Studio GUI",
+  "total_seconds": 608,
+  "prepare_seconds": 433,
+  "model_seconds": 175,
+  "material_g": 0.61,
+  "layers": 17,
+  "filament": 2,
+  "dispatch": "Sent 2026-09-21 12:51 Europe/Luxembourg. Device confirmed active at 12:55, auto bed leveling, estimated finish 12:58.",
+  "result": "Finished; user reports trial is fine and build plate cleared on 2026-09-21."
+}

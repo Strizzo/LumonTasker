@@ -1,0 +1,49 @@
+{
+  "status": "P1S accepted matching V50 job; active startup/heating at0/114",
+  "filament": "A2 PolyTerra Cotton White PLA",
+  "parts": [
+    {
+      "name": "top_plate_left",
+      "bounds_mm": [
+        218.9600066138672,
+        99.8712387084961,
+        20.999999899999978
+      ],
+      "bed_origin_xy": [
+        18,
+        22
+      ]
+    },
+    {
+      "name": "rear_panel_left",
+      "bounds_mm": [
+        132.0,
+        94.0,
+        3.0
+      ],
+      "bed_origin_xy": [
+        62,
+        144
+      ]
+    }
+  ],
+  "changes": {
+    "wall_loops": "3",
+    "top_shell_layers": "4",
+    "bottom_shell_layers": "4",
+    "sparse_infill_density": "10%",
+    "sparse_infill_pattern": "gyroid",
+    "support_top_z_distance": "0.12",
+    "enable_support": "1",
+    "support_type": "normal(auto)",
+    "support_style": "snug",
+    "enable_prime_tower": "0",
+    "brim_type": "no_brim"
+  },
+  "inter_colour_swaps": 0,
+  "source": "Exact existing V49/V39 aligned roof and hatch geometry",
+  "bed_clear_after_v49": true,
+  "slice_review": "roof_hatch_slice_review.json",
+  "bed_clear_evidence": "Latest user: plate is clear",
+  "dispatch_record": "roof_hatch_print_dispatch.json"
+}

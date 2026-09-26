@@ -1,0 +1,50 @@
+{
+  "status": "Printer accepted job; preparation at 0/100 layers, estimated finish 11:18 local",
+  "offset_datum": "CONFIRMED 56mm to outlet vertical centre",
+  "parts": {
+    "front_template_upper_edge_56": {
+      "watertight": true,
+      "solids": 1,
+      "bounds_mm": [
+        131.0,
+        76.0,
+        3.0
+      ],
+      "solid_volume_cm3": 9.65
+    },
+    "front_template_centre_56_ALTERNATIVE": {
+      "watertight": true,
+      "solids": 1,
+      "bounds_mm": [
+        131.0,
+        69.0,
+        3.0
+      ],
+      "solid_volume_cm3": 9.4
+    },
+    "cradle_width_sample": {
+      "watertight": true,
+      "solids": 1,
+      "bounds_mm": [
+        141.0,
+        16.0,
+        20.0
+      ],
+      "solid_volume_cm3": 7.86
+    }
+  },
+  "cradle_guide_gap_mm": 133,
+  "printer_width_mm": 131,
+  "template_aperture_mm": [
+    90,
+    14
+  ],
+  "template_thickness_mm": 3,
+  "selected_template": "front_template_centre_56_ALTERNATIVE",
+  "slicer": {
+    "total_seconds": 2742,
+    "filament_g": 15.37,
+    "filament_slot": "A2",
+    "layers": 100
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "status": "Dispatched; matching job active/heating at0/114; estimated finish12:41 local",
+  "reviewed_local": "2026-09-24T10:37:26.651187+02:00",
+  "slicer": "Bambu Studio 02.05.00.66 GUI",
+  "printer": "Bambu Lab P1S 0.4 mm",
+  "plate": "Textured PEI",
+  "project": "01_V46_display_seat_fit.3mf",
+  "toolpath": "01_V46_display_seat_fit.gcode.3mf",
+  "sha256": "0261f22c93c09a7799b821564a7da2ed0249faee961e7194d5450e0ef37222ae",
+  "total_estimated_seconds": 7324,
+  "model_and_support_printing_seconds": 6885,
+  "layers_including_support_heights": 114,
+  "maximum_preview_height_mm": 15.8,
+  "filament_g": 47.29,
+  "model_g_gui": 39.11,
+  "support_g_gui": 8.17,
+  "filament_m": 15.01,
+  "filament": "PolyTerra Cotton White PLA; project filament2, intended AMS A2",
+  "filament_ids_used": [
+    2
+  ],
+  "inter_colour_swaps": 0,
+  "slicer_filament_change_count": 1,
+  "filament_change_note": "One initial filament selection/load; only filament2 appears in all layer filament lists.",
+  "supports": "Normal auto, same white PLA; beneath ledge and four integral mounting arms",
+  "prime_tower": false,
+  "layer_mm": 0.2,
+  "walls": 3,
+  "top_layers": 4,
+  "bottom_layers": 4,
+  "infill": "10% gyroid",
+  "support_contact_gap_mm": 0.2,
+  "support_xy_gap_mm": 0.35,
+  "visual_review": "One connected frame inside bed. Line-type view inspected at full height and layer49/Z6.2: supports beneath all four arms and inner ledge; central access stays open. Restored filament view.",
+  "slice_advisory": "Stock PolyTerra 55 C textured-PEI profile reports bed_temperature_too_high_than_filament 1000C001; no blocking dialog.",
+  "dispatch": {
+    "sent": true,
+    "bed_clear": true,
+    "reason": "User now confirms plate clear; matching job received",
+    "planned_options": {
+      "auto_bed_leveling": false,
+      "timelapse": false
+    },
+    "options_verified_in_send_dialog": true,
+    "print_dispatch": "print_dispatch.json"
+  },
+  "scope": "Fit frame only; full display case remains unreleased."
+}

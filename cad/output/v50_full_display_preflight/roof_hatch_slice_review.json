@@ -1,0 +1,37 @@
+{
+  "status": "P1S accepted matching V50 job; active startup/heating at0/114",
+  "printer": "Bambu P1S 0.4 mm",
+  "parts": [
+    "top_plate_left",
+    "rear_panel_left"
+  ],
+  "filament": "PolyTerra Cotton White PLA A2",
+  "time_seconds": 14020,
+  "model_time_seconds": 13580,
+  "filament_g": 118.64,
+  "model_g": 117.86,
+  "non_model_g": 0.78,
+  "layer_heights": 114,
+  "max_z_mm": 21,
+  "wall_loops": 3,
+  "top_bottom_layers": 4,
+  "infill": "10% gyroid",
+  "support_top_gap_mm": 0.12,
+  "support_interface_layers": 3,
+  "support_interface_spacing_mm": 0.15,
+  "inter_colour_swaps": 0,
+  "prime_tower": false,
+  "checks": [
+    "Both parts inside bed, clear of exclusion zone",
+    "Broad first-layer contact",
+    "Gyroid and solid skins reviewed",
+    "Small supports at roof perimeter and screw details; no extensive support volume",
+    "One white filament in toolpath",
+    "No blocking slicer errors"
+  ],
+  "sha256": "04c978d3782f0f1fed1da5f9ecf894b9aec9ad2fa09909e801ac5ce18d4976f4",
+  "full_body_release": false,
+  "remaining_dependency": "Confirm actual power architecture before modifying old internal PSU divider/mounts and rear cable entry",
+  "fusion_note": "Roof and hatch match saved V39. New display mounts not yet synchronized.",
+  "dispatch_record": "roof_hatch_print_dispatch.json"
+}

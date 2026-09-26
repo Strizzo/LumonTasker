@@ -1,0 +1,18 @@
+{
+  "source_pdf": "references/original_touch_display_mechanical.pdf",
+  "page": 1,
+  "method": "Scale vector outline by dimensioned 192.96 x 110.76 mm glass extents; measure top-left/top-right straight-to-curve tangent offsets.",
+  "radius_callout_present": false,
+  "extracted_tangent_radius_mm": {
+    "horizontal": 7.872,
+    "vertical": 7.87
+  },
+  "provisional_cad_radius_mm": 8.0,
+  "status": "Inferred from drawing geometry, not a dimensioned manufacturer specification or physical measurement.",
+  "outline_pdf_bounds": [
+    44.192189600000006,
+    88.14066060000005,
+    320.66089999999997,
+    246.89417790000005
+  ]
+}

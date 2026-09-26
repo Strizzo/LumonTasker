@@ -1,0 +1,109 @@
+{
+  "status": "mechanical prototype; slicer, outlet and cable checks pending",
+  "printer_mm": [
+    143,
+    120,
+    175
+  ],
+  "front_width_mm": 132,
+  "rear_width_mm": 143,
+  "lateral_taper_assumption": "centred; 5.5mm per side",
+  "bay_width_mm": 175.0,
+  "orientation": "original front/buttons above; original rear/cable edge below",
+  "front_aperture_z_mm": [
+    123.1,
+    137.1
+  ],
+  "taper_split_lower_upper_mm": [
+    8.1,
+    0.9000000000000057
+  ],
+  "side_clearance_mm": 0.7,
+  "guide_gaps_mm": [
+    133.4,
+    144.4
+  ],
+  "support_front_raise_mm": 2.7,
+  "physical_status": "V26 mostly fits; refinements user-approved without repeat cradle trial",
+  "front_body_height_mm": 166,
+  "rear_body_height_mm": 175,
+  "led_front_top_offset_mm": 2,
+  "switch_mapping": "left in above-view with front edge at top; physical confirmation required",
+  "logo_center_z_mm": 57,
+  "cable_route": "lower rear; connector geometry unmeasured",
+  "parts": {
+    "shell": {
+      "solids": 1,
+      "watertight": true,
+      "print_bounds_mm": [
+        175.0,
+        192.0,
+        161.0
+      ],
+      "volume_mm3": 670331.500818821
+    },
+    "cradle_tray": {
+      "solids": 1,
+      "watertight": true,
+      "print_bounds_mm": [
+        156.0,
+        157.0,
+        20.0
+      ],
+      "volume_mm3": 70498.5
+    },
+    "retaining_bar_58": {
+      "solids": 1,
+      "watertight": true,
+      "print_bounds_mm": [
+        175.0,
+        13.999999999999993,
+        42.5
+      ],
+      "volume_mm3": 25833.04956677349
+    },
+    "retaining_bar_137": {
+      "solids": 1,
+      "watertight": true,
+      "print_bounds_mm": [
+        175.0,
+        14.0,
+        42.5
+      ],
+      "volume_mm3": 25833.04956677349
+    },
+    "rear_cover": {
+      "solids": 1,
+      "watertight": true,
+      "print_bounds_mm": [
+        175.0,
+        188.0,
+        9.500000000000028
+      ],
+      "volume_mm3": 91126.99029478266
+    },
+    "logo": {
+      "solids": 6,
+      "watertight": true,
+      "print_bounds_mm": [
+        57.99999999999551,
+        29.772842407225042,
+        0.800000011920929
+      ],
+      "volume_mm3": 389.4663328738251
+    },
+    "led_diffuser": {
+      "solids": 1,
+      "watertight": true,
+      "print_bounds_mm": [
+        44.0,
+        8.5,
+        3.4000000953674316
+      ],
+      "volume_mm3": 429.1639999999998
+    }
+  },
+  "interferences": [],
+  "rear_removal_envelope_clear": true,
+  "rocker_clearance_path_clear": true
+}

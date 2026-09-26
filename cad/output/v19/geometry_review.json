@@ -1,0 +1,214 @@
+{
+  "status": "ENGINEERING REVIEW \u2014 hardware and printer measurements pending",
+  "parts": {
+    "tub_left": {
+      "solids": 1,
+      "valid": true,
+      "watertight": true,
+      "volume_mm3": 427065.61,
+      "print_bounds_mm": [
+        218.96,
+        161.0,
+        156.0
+      ],
+      "color": "#DEE9EE"
+    },
+    "tub_right": {
+      "solids": 1,
+      "valid": true,
+      "watertight": true,
+      "volume_mm3": 682391.79,
+      "print_bounds_mm": [
+        158.0,
+        161.0,
+        156.0
+      ],
+      "color": "#DEE9EE"
+    },
+    "top_plate_left": {
+      "solids": 1,
+      "valid": true,
+      "watertight": true,
+      "volume_mm3": 131359.49,
+      "print_bounds_mm": [
+        218.96,
+        128.09,
+        21.0
+      ],
+      "color": "#DEE9EE"
+    },
+    "printer_trim": {
+      "solids": 1,
+      "valid": true,
+      "watertight": true,
+      "volume_mm3": 43039.36,
+      "print_bounds_mm": [
+        158.0,
+        161.0,
+        21.0
+      ],
+      "color": "#10161E"
+    },
+    "display_retainer": {
+      "solids": 1,
+      "valid": true,
+      "watertight": true,
+      "volume_mm3": 42545.83,
+      "print_bounds_mm": [
+        194.36,
+        136.26,
+        4.0
+      ],
+      "color": "#DEE9EE"
+    },
+    "rear_panel_left": {
+      "solids": 1,
+      "valid": true,
+      "watertight": true,
+      "volume_mm3": 39506.74,
+      "print_bounds_mm": [
+        132.0,
+        114.0,
+        3.0
+      ],
+      "color": "#DEE9EE"
+    },
+    "rear_panel_right": {
+      "solids": 1,
+      "valid": true,
+      "watertight": true,
+      "volume_mm3": 25199.86,
+      "print_bounds_mm": [
+        110.0,
+        90.0,
+        3.0
+      ],
+      "color": "#DEE9EE"
+    },
+    "foot_left": {
+      "solids": 1,
+      "valid": true,
+      "watertight": true,
+      "volume_mm3": 278871.42,
+      "print_bounds_mm": [
+        216.46,
+        156.0,
+        9.0
+      ],
+      "color": "#10161E"
+    },
+    "foot_right": {
+      "solids": 1,
+      "valid": true,
+      "watertight": true,
+      "volume_mm3": 211590.4,
+      "print_bounds_mm": [
+        155.5,
+        156.0,
+        9.0
+      ],
+      "color": "#10161E"
+    },
+    "display_bezel": {
+      "solids": 1,
+      "valid": true,
+      "watertight": true,
+      "volume_mm3": 27550.0,
+      "print_bounds_mm": [
+        212.36,
+        128.16,
+        3.0
+      ],
+      "color": "#10161E"
+    }
+  },
+  "interferences": [],
+  "checks": {
+    "left_foot_0_insert_roof": true,
+    "left_foot_0_insert_bore": true,
+    "left_foot_1_insert_roof": true,
+    "left_foot_1_insert_bore": true,
+    "left_foot_2_insert_roof": true,
+    "left_foot_2_insert_bore": true,
+    "left_foot_3_insert_roof": true,
+    "left_foot_3_insert_bore": true,
+    "left_lid_0_bore_open": true,
+    "left_lid_0_insert_floor": true,
+    "left_lid_0_compression_sleeve": true,
+    "left_lid_0_screw_passage": true,
+    "left_lid_1_bore_open": true,
+    "left_lid_1_insert_floor": true,
+    "left_lid_1_compression_sleeve": true,
+    "left_lid_1_screw_passage": true,
+    "left_lid_2_bore_open": true,
+    "left_lid_2_insert_floor": true,
+    "left_lid_2_compression_sleeve": true,
+    "left_lid_2_screw_passage": true,
+    "left_lid_3_bore_open": true,
+    "left_lid_3_insert_floor": true,
+    "left_lid_3_compression_sleeve": true,
+    "left_lid_3_screw_passage": true,
+    "right_foot_0_insert_roof": true,
+    "right_foot_0_insert_bore": true,
+    "right_foot_1_insert_roof": true,
+    "right_foot_1_insert_bore": true,
+    "right_foot_2_insert_roof": true,
+    "right_foot_2_insert_bore": true,
+    "right_foot_3_insert_roof": true,
+    "right_foot_3_insert_bore": true,
+    "right_lid_0_bore_open": true,
+    "right_lid_0_insert_floor": true,
+    "right_lid_0_compression_sleeve": true,
+    "right_lid_0_screw_passage": true,
+    "right_lid_1_bore_open": true,
+    "right_lid_1_insert_floor": true,
+    "right_lid_1_compression_sleeve": true,
+    "right_lid_1_screw_passage": true,
+    "rear_panel_left_0_head_bearing": true,
+    "rear_panel_left_1_head_bearing": true,
+    "rear_panel_left_2_head_bearing": true,
+    "rear_panel_left_3_head_bearing": true,
+    "left_dowel_0_bore": true,
+    "left_dowel_0_surround": true,
+    "left_dowel_1_bore": true,
+    "left_dowel_1_surround": true,
+    "left_spine_screw_0_bore": true,
+    "left_spine_screw_0_surround": true,
+    "left_spine_screw_1_bore": true,
+    "left_spine_screw_1_surround": true,
+    "left_spine_screw_2_bore": true,
+    "left_spine_screw_2_surround": true,
+    "left_spine_screw_3_bore": true,
+    "left_spine_screw_3_surround": true,
+    "left_spine_screw_4_bore": true,
+    "left_spine_screw_4_surround": true,
+    "right_dowel_0_bore": true,
+    "right_dowel_0_surround": true,
+    "right_dowel_1_bore": true,
+    "right_dowel_1_surround": true,
+    "right_spine_screw_0_bore": true,
+    "right_spine_screw_0_surround": true,
+    "right_spine_screw_1_bore": true,
+    "right_spine_screw_1_surround": true,
+    "right_spine_screw_2_bore": true,
+    "right_spine_screw_2_surround": true,
+    "right_spine_screw_3_bore": true,
+    "right_spine_screw_3_surround": true,
+    "right_spine_screw_4_bore": true,
+    "right_spine_screw_4_surround": true
+  },
+  "coupons": {
+    "seam_left": {
+      "solids": 1,
+      "valid": true
+    },
+    "seam_right": {
+      "solids": 1,
+      "valid": true
+    },
+    "screen_corner": {
+      "solids": 1,
+      "valid": true
+    }
+  }
+}

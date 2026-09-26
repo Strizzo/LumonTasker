@@ -1,0 +1,264 @@
+{
+  "plates": [
+    {
+      "file": "01_V39_printer_shell.gcode.3mf",
+      "seconds": 66654,
+      "grams": 634.49,
+      "layers": 805,
+      "filaments": [
+        {
+          "id": "1",
+          "tray_info_idx": "GFA01",
+          "type": "PLA",
+          "color": "#042F56",
+          "used_m": "0.87",
+          "used_g": "2.77",
+          "used_for_object": "true",
+          "used_for_support": "true",
+          "group_id": "0",
+          "nozzle_diameter": "0.40",
+          "volume_type": "Standard"
+        },
+        {
+          "id": "2",
+          "tray_info_idx": "GFL01",
+          "type": "PLA",
+          "color": "#FFFFFF",
+          "used_m": "200.49",
+          "used_g": "631.72",
+          "used_for_object": "true",
+          "used_for_support": "true",
+          "group_id": "0",
+          "nozzle_diameter": "0.40",
+          "volume_type": "Standard"
+        }
+      ],
+      "outside": false,
+      "gcode_md5_verified": true,
+      "settings": {
+        "filament_flow_ratio": "0.98,0.98",
+        "filament_max_volumetric_speed": "22,22",
+        "nozzle_temperature": "220,220",
+        "textured_plate_temp": "55,55",
+        "wall_loops": "4",
+        "enable_prime_tower": "1",
+        "enable_support": "1",
+        "support_type": "tree(auto)"
+      },
+      "dispatched": true,
+      "dispatch_record": "print_dispatch.json"
+    },
+    {
+      "file": "02_V39_printer_rear_cover.gcode.3mf",
+      "seconds": 14691,
+      "grams": 140.9,
+      "layers": 231,
+      "filaments": [
+        {
+          "id": "2",
+          "tray_info_idx": "GFL01",
+          "type": "PLA",
+          "color": "#FFFFFF",
+          "used_m": "44.72",
+          "used_g": "140.90",
+          "used_for_object": "true",
+          "used_for_support": "true",
+          "group_id": "0",
+          "nozzle_diameter": "0.40",
+          "volume_type": "Standard"
+        }
+      ],
+      "outside": false,
+      "gcode_md5_verified": true,
+      "settings": {
+        "filament_flow_ratio": "0.98,0.98",
+        "filament_max_volumetric_speed": "22,22",
+        "nozzle_temperature": "220,220",
+        "textured_plate_temp": "55,55",
+        "wall_loops": "4",
+        "enable_prime_tower": "0",
+        "enable_support": "1",
+        "support_type": "normal(auto)"
+      },
+      "dispatched": true,
+      "dispatch_record": "rear_cover_print_dispatch.json"
+    },
+    {
+      "file": "03_V39_printer_base.gcode.3mf",
+      "seconds": 10081,
+      "grams": 97.5,
+      "layers": 45,
+      "filaments": [
+        {
+          "id": "1",
+          "tray_info_idx": "GFA01",
+          "type": "PLA",
+          "color": "#042F56",
+          "used_m": "30.71",
+          "used_g": "97.50",
+          "used_for_object": "true",
+          "used_for_support": "false",
+          "group_id": "0",
+          "nozzle_diameter": "0.40",
+          "volume_type": "Standard"
+        }
+      ],
+      "outside": false,
+      "gcode_md5_verified": true,
+      "settings": {
+        "filament_flow_ratio": "0.98,0.98",
+        "filament_max_volumetric_speed": "22,22",
+        "nozzle_temperature": "220,220",
+        "textured_plate_temp": "55,55",
+        "wall_loops": "4",
+        "enable_prime_tower": "0",
+        "enable_support": "0",
+        "support_type": "normal(auto)"
+      },
+      "dispatched": false
+    },
+    {
+      "file": "04_V39_display_body.gcode.3mf",
+      "seconds": 68854,
+      "grams": 612.7,
+      "layers": 880,
+      "filaments": [
+        {
+          "id": "2",
+          "tray_info_idx": "GFL01",
+          "type": "PLA",
+          "color": "#FFFFFF",
+          "used_m": "194.45",
+          "used_g": "612.70",
+          "used_for_object": "true",
+          "used_for_support": "true",
+          "group_id": "0",
+          "nozzle_diameter": "0.40",
+          "volume_type": "Standard"
+        }
+      ],
+      "outside": false,
+      "gcode_md5_verified": true,
+      "settings": {
+        "filament_flow_ratio": "0.98,0.98",
+        "filament_max_volumetric_speed": "22,22",
+        "nozzle_temperature": "220,220",
+        "textured_plate_temp": "55,55",
+        "wall_loops": "4",
+        "enable_prime_tower": "0",
+        "enable_support": "1",
+        "support_type": "tree(auto)"
+      },
+      "dispatched": false,
+      "release_status": "Review only: revise attached display/Pi mounting and weight before print"
+    },
+    {
+      "file": "05_V39_display_roof.gcode.3mf",
+      "seconds": 10920,
+      "grams": 108.8,
+      "layers": 105,
+      "filaments": [
+        {
+          "id": "2",
+          "tray_info_idx": "GFL01",
+          "type": "PLA",
+          "color": "#FFFFFF",
+          "used_m": "34.53",
+          "used_g": "108.80",
+          "used_for_object": "true",
+          "used_for_support": "true",
+          "group_id": "0",
+          "nozzle_diameter": "0.40",
+          "volume_type": "Standard"
+        }
+      ],
+      "outside": false,
+      "gcode_md5_verified": true,
+      "settings": {
+        "filament_flow_ratio": "0.98,0.98",
+        "filament_max_volumetric_speed": "22,22",
+        "nozzle_temperature": "220,220",
+        "textured_plate_temp": "55,55",
+        "wall_loops": "4",
+        "enable_prime_tower": "0",
+        "enable_support": "1",
+        "support_type": "tree(auto)"
+      },
+      "dispatched": false,
+      "release_status": "Review only: revise attached display/Pi mounting and weight before print"
+    },
+    {
+      "file": "06_V39_display_rear_hatch.gcode.3mf",
+      "seconds": 3270,
+      "grams": 34.64,
+      "layers": 15,
+      "filaments": [
+        {
+          "id": "2",
+          "tray_info_idx": "GFL01",
+          "type": "PLA",
+          "color": "#FFFFFF",
+          "used_m": "11.00",
+          "used_g": "34.64",
+          "used_for_object": "true",
+          "used_for_support": "false",
+          "group_id": "0",
+          "nozzle_diameter": "0.40",
+          "volume_type": "Standard"
+        }
+      ],
+      "outside": false,
+      "gcode_md5_verified": true,
+      "settings": {
+        "filament_flow_ratio": "0.98,0.98",
+        "filament_max_volumetric_speed": "22,22",
+        "nozzle_temperature": "220,220",
+        "textured_plate_temp": "55,55",
+        "wall_loops": "4",
+        "enable_prime_tower": "0",
+        "enable_support": "0",
+        "support_type": "tree(auto)"
+      },
+      "dispatched": false,
+      "release_status": "Review only: revise attached display/Pi mounting and weight before print"
+    },
+    {
+      "file": "07_V39_display_base.gcode.3mf",
+      "seconds": 16698,
+      "grams": 159.59,
+      "layers": 45,
+      "filaments": [
+        {
+          "id": "1",
+          "tray_info_idx": "GFA01",
+          "type": "PLA",
+          "color": "#042F56",
+          "used_m": "50.27",
+          "used_g": "159.59",
+          "used_for_object": "true",
+          "used_for_support": "false",
+          "group_id": "0",
+          "nozzle_diameter": "0.40",
+          "volume_type": "Standard"
+        }
+      ],
+      "outside": false,
+      "gcode_md5_verified": true,
+      "settings": {
+        "filament_flow_ratio": "0.98,0.98",
+        "filament_max_volumetric_speed": "22,22",
+        "nozzle_temperature": "220,220",
+        "textured_plate_temp": "55,55",
+        "wall_loops": "4",
+        "enable_prime_tower": "0",
+        "enable_support": "0",
+        "support_type": "tree(auto)"
+      },
+      "dispatched": false,
+      "release_status": "Review only: revise attached display/Pi mounting and weight before print"
+    }
+  ],
+  "total_white_g": 1528.76,
+  "total_navy_g": 259.86,
+  "note": "Seven prepared bay plates; bezel, display retainer and diffuser are separate unchanged components. Actual electronics fit must be checked before left final production. No dispatch."
+}

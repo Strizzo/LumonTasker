@@ -1,0 +1,10 @@
+{
+  "deployed_at": "2026-09-26T22:51:49.143055+00:00",
+  "backup": "/home/srizzo/taskticket/backups/kiosk-cursor-20260926T225148Z",
+  "launcher": "/home/srizzo/Desktop/taskiosk.sh",
+  "installed_package": "unclutter-xfixes 1.5-3",
+  "idle_timeout_seconds": 1,
+  "history_unchanged": true,
+  "subscriber_pid_unchanged": true,
+  "rollback": "Restore taskiosk.sh from this backup to the launcher path, then restart taskiosk.service."
+}

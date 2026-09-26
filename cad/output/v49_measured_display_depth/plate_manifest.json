@@ -1,0 +1,50 @@
+{
+  "project": "01_V49_depth_and_screw_coupons.3mf",
+  "filament": "PolyTerra Cotton White PLA, A2 only",
+  "colour_swaps": 0,
+  "objects": 2,
+  "print_orientation": "Front face down, restored V46 orientation",
+  "geometry": "Two identical cropped production upper-right corners, one integral arm each",
+  "left_support_top_gap_mm": 0.2,
+  "right_support_top_gap_mm": 0.12,
+  "comparison": "All other support/material/process settings identical; compare finish and removability",
+  "changes": {
+    "support_style": "snug",
+    "support_top_z_distance": "0.2",
+    "support_interface_top_layers": "3",
+    "support_interface_spacing": "0.15",
+    "support_interface_pattern": "rectilinear",
+    "support_interface_speed": [
+      "40",
+      "40"
+    ],
+    "support_speed": [
+      "100",
+      "100"
+    ],
+    "support_object_xy_distance": "0.3",
+    "support_base_pattern_spacing": "2.5",
+    "support_interface_loop_pattern": "1",
+    "top_surface_speed": [
+      "50",
+      "50"
+    ],
+    "bridge_speed": [
+      "30",
+      "30"
+    ],
+    "brim_type": "no_brim",
+    "support_filament": "0",
+    "support_interface_filament": "0",
+    "enable_prime_tower": "0"
+  },
+  "bed_leveling": false,
+  "timelapse": false,
+  "status": "Dispatched and verified on P1S;0/152 startup,ETA18:14 local",
+  "bed_clear": true,
+  "bed_clear_evidence": "User: plate is clear",
+  "dispatched": true,
+  "estimated_seconds": 3014,
+  "estimated_grams": 14.3,
+  "per_object_support_gaps_verified": true
+}

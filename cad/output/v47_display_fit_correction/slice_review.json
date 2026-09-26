@@ -1,0 +1,62 @@
+{
+  "status": "SUPERSEDED \u2014 DO NOT PRINT: user confirms original holes align after correcting assembly orientation. Use V48 original mounts.",
+  "reviewed_local": "2026-09-24T13:04:20.632189+02:00",
+  "slicer": "Bambu Studio02.05.00.66 GUI",
+  "printer": "Bambu Lab P1S0.4mm",
+  "plate": "Textured PEI",
+  "project": "01_V47_display_corrected_seat_up.3mf",
+  "toolpath": "01_V47_display_corrected_seat_up.gcode.3mf",
+  "sha256": "505a5569a690a6e7e17e0849b6f316ee4d4c812f9eaaa26e5244dc64b9a8f440",
+  "estimated_seconds": 11041,
+  "estimated_time": "3h04m01s",
+  "filament_grams": 63.31,
+  "model_grams_gui": 38.59,
+  "support_grams_gui": 24.72,
+  "layers_including_support_heights": 121,
+  "maximum_preview_height_mm": 15.8,
+  "project_filament_ids": [
+    2
+  ],
+  "intended_ams_slot": "A2 PolyTerra Cotton White PLA",
+  "inter_colour_swaps": 0,
+  "initial_filament_selection_count": 1,
+  "print_orientation": "Rear-down; glass seat and metal lug bearing lands face upward",
+  "support_settings": {
+    "support_style": "snug",
+    "support_base_pattern_spacing": "4",
+    "support_interface_spacing": "0.15",
+    "support_interface_top_layers": "3",
+    "support_interface_pattern": "rectilinear",
+    "support_top_z_distance": "0.2",
+    "support_object_xy_distance": "0.3"
+  },
+  "visual_review": [
+    "Full object within bed; no prime tower",
+    "Z6.47 layer53: continuous perimeter scaffold and four grounded arms",
+    "Z14.2 layer113: continuous glass-seat top paths around all four sides and corners",
+    "Full heightZ15.8 layer121: continuous front ring top surface and four lands"
+  ],
+  "comparison": {
+    "initial_scaffold_spacing_mm": 2,
+    "initial_total_grams_gui": 71.33,
+    "initial_support_grams_gui": 32.73,
+    "initial_time_gui": "about3h18m",
+    "selected_scaffold_spacing_mm": 4,
+    "saved_grams": 8.02,
+    "contact_interface_changed_in_comparison": false
+  },
+  "advisory": "Stock55C PolyTerra textured-PEI profile reports1000C001 bed-temperature advisory; no blocking warning",
+  "dispatch": {
+    "sent": false,
+    "bed_clear": false,
+    "bed_clear_evidence": "Fresh question pending; do not infer complete clearance from removed frame alone",
+    "authorization": "Standing test-print authorization; only plate clearance pending",
+    "planned_options": {
+      "auto_bed_leveling": false,
+      "timelapse": false
+    }
+  },
+  "scope": "Test frame only; full display enclosure not released",
+  "superseded_by": "../v48_display_original_mounts",
+  "print_dispatched": false
+}

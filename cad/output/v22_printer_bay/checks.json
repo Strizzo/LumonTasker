@@ -1,0 +1,82 @@
+{
+  "status": "mechanical prototype; slicer, outlet and cable checks pending",
+  "printer_mm": [
+    131,
+    120,
+    175
+  ],
+  "parts": {
+    "shell": {
+      "solids": 1,
+      "watertight": true,
+      "print_bounds_mm": [
+        158.0,
+        188.0,
+        161.0
+      ],
+      "volume_mm3": 533385.7177459011
+    },
+    "cradle_tray": {
+      "solids": 1,
+      "watertight": true,
+      "print_bounds_mm": [
+        141.0,
+        157.0,
+        20.0
+      ],
+      "volume_mm3": 73756.99999999999
+    },
+    "retaining_bar_58": {
+      "solids": 1,
+      "watertight": true,
+      "print_bounds_mm": [
+        158.0,
+        13.999999999999993,
+        42.5
+      ],
+      "volume_mm3": 24405.049566773498
+    },
+    "retaining_bar_137": {
+      "solids": 1,
+      "watertight": true,
+      "print_bounds_mm": [
+        158.0,
+        14.0,
+        42.5
+      ],
+      "volume_mm3": 24405.049566773498
+    },
+    "top_cover": {
+      "solids": 1,
+      "watertight": true,
+      "print_bounds_mm": [
+        158.0,
+        161.0,
+        4.0
+      ],
+      "volume_mm3": 101648.46371337824
+    },
+    "rear_cover": {
+      "solids": 1,
+      "watertight": true,
+      "print_bounds_mm": [
+        158.0,
+        188.0,
+        9.500000000000028
+      ],
+      "volume_mm3": 73582.9902947827
+    },
+    "logo": {
+      "solids": 6,
+      "watertight": true,
+      "print_bounds_mm": [
+        57.99999999999551,
+        29.772842407225028,
+        0.800000011920929
+      ],
+      "volume_mm3": 389.466332873826
+    }
+  },
+  "interferences": [],
+  "rear_removal_envelope_clear": true
+}

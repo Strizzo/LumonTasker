@@ -1,0 +1,8 @@
+{
+  "old_on_gap_mm": 0.29441624364460495,
+  "new_on_gap_mm": 0.594416243644605,
+  "n_shift_right_mm": 0.3,
+  "shell_valid": true,
+  "watertight": true,
+  "outlet_correction_preserved": true
+}

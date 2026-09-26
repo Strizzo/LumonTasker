@@ -1,0 +1,32 @@
+{
+  "checked_at": "2026-09-26T21:55:57.469747+00:00",
+  "host": "raspberrypi",
+  "address": "192.168.178.87",
+  "trello": {
+    "ok": true,
+    "counts": {"todo": 11, "doing": 0, "btn": 19}
+  },
+  "production_selection_dry_run": {
+    "method": "local",
+    "ai_enabled": false,
+    "ai_client_created": false,
+    "history_unchanged": true,
+    "printer_invoked": false
+  },
+  "synthetic_ai_test": {
+    "model": "qwen/qwen3.7-flash",
+    "selection_succeeded": true,
+    "real_cards_sent": false,
+    "printer_invoked": false
+  },
+  "services": {
+    "taskiosk": "active",
+    "thermal_printer_subscriber": "active",
+    "subscriber_pid_unchanged_during_deployment": true
+  },
+  "python_checks_passed": 15,
+  "browser_checks": "../preview/ui-check.json",
+  "physical_display_screenshot": "../preview/pi-final.png",
+  "physical_print_test_performed": false,
+  "trello_cards_mutated": false
+}

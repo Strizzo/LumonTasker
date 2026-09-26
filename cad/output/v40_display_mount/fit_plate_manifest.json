@@ -1,0 +1,61 @@
+{
+  "filament": "A2 PolyTerra Cotton White PLA only",
+  "supports": false,
+  "colour_changes": 0,
+  "settings": {
+    "wall_loops": "3",
+    "top_shell_layers": "4",
+    "bottom_shell_layers": "4",
+    "sparse_infill_density": "10%",
+    "enable_support": "0",
+    "enable_prime_tower": "0",
+    "brim_type": "no_brim",
+    "layer_height": "0.2",
+    "initial_layer_print_height": "0.2",
+    "elefant_foot_compensation": "0.15",
+    "top_shell_thickness": "0.8"
+  },
+  "objects": [
+    {
+      "file": "display_fit_frame_print.stl",
+      "xy": [
+        21.82,
+        60
+      ]
+    },
+    {
+      "file": "display_mount_left_lower_local_print.stl",
+      "xy": [
+        62,
+        100
+      ]
+    },
+    {
+      "file": "display_mount_right_lower_local_print.stl",
+      "xy": [
+        102,
+        100
+      ]
+    },
+    {
+      "file": "display_mount_left_upper_local_print.stl",
+      "xy": [
+        142,
+        100
+      ]
+    },
+    {
+      "file": "display_mount_right_upper_local_print.stl",
+      "xy": [
+        182,
+        100
+      ]
+    }
+  ],
+  "release": "Small mechanical fit test; no final left-body print yet",
+  "dispatched": true,
+  "status": "Print completed; physical frame/glass contour accepted 24 September. Rear mount fit pending. User correction: final white recessed seat, no navy bezel or front lip.",
+  "cli_status": "CLI attempts failed before slicing; never use those as print files.",
+  "slice_review": "slice_review.json",
+  "print_dispatch": "print_dispatch.json"
+}

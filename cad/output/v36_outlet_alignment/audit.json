@@ -1,0 +1,14 @@
+{
+  "valid": true,
+  "solids": 1,
+  "watertight": true,
+  "old_outlet_center_z_mm": 130.1,
+  "new_outlet_center_z_mm": 133.1,
+  "opening_mm": [
+    90,
+    14
+  ],
+  "led_changed": false,
+  "cradle_changed": false,
+  "print_released": false
+}

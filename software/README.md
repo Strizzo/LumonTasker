@@ -1,0 +1,170 @@
+# Lumon terminal software
+
+First deployed on 26 September 2026; MDR-inspired UI deployed on 27 September
+local time. The Raspberry Pi is `srizzo@192.168.178.87`
+(`raspberrypi`); the address was discovered on the local network and may change
+if its DHCP lease changes. The active application is
+`/home/srizzo/taskticket/TaskTicket`, managed by `taskiosk.service`.
+
+The physical display is 800 × 480. Its default interface is the simple blue
+monospace layout the user preferred, available at
+`http://192.168.178.87:5000/display`. The newer MDR-inspired layout remains
+optional at `http://192.168.178.87:5000/display?theme=mdr`. Tap the Lumon logo
+to switch between them. The screenshot from the Pi is
+[preview/pi-themes.png](preview/pi-themes.png).
+
+Both layouts hide the mouse pointer, including over controls. The kiosk also
+runs `unclutter-xfixes` with a one-second idle timeout to hide the native X11
+pointer before Chromium receives its first mouse-motion event. Its process is
+supervised by the existing kiosk launcher. During an active
+task, a percentage and progress bar show elapsed focus-session time, alongside
+the countdown. This does not claim to measure task completion and reaching 100%
+does not complete the task. A small field of drifting numbers evokes *Severance*
+without covering task text or controls. It renders at roughly seven frames per
+second and pauses at timer expiry, in a hidden tab, or with reduced motion.
+The decorative numbers are not task data.
+
+Switching layouts or reloading restores the latest open assignment and original
+start time without selecting or printing another ticket. Newly issued tasks
+store their display payload in the existing history; older active entries can
+be recovered from Trello. Completed, skipped and more-than-12-hour-old entries
+are not restored. Repeated-task completion now marks the newest issue, preventing
+an old duplicate from causing the just-completed task to reappear.
+
+The default uses one self-hosted DejaVu Sans Mono font. The optional layout is
+informed by actual scene excerpts documented in
+[references/README.md](references/README.md), using a self-hosted Liberation Sans
+approximation; the production's exact typeface is not claimed. Real queue counts
+remain available in the status endpoint and footer tooltip. Keyboard shortcuts
+are N/C/S; Y/X still work too. The page uses `Cache-Control: no-store` and versioned
+assets to avoid stale pages after an update.
+
+## What changed
+
+- The preferred blue terminal interface with the enclosure's Lumon globe,
+  large touch buttons, a focus timer and the newer layout available as an option.
+- Real Trello connection status and queue data, refreshed every minute.
+  API failures appear as unavailable rather than an empty queue.
+- Task selection runs locally by default. It excludes tasks skipped within
+  seven days, prefers the least-issued eligible tasks from the last 24 hours,
+  then prioritizes DOING and urgent TODO deadlines. Remaining choices mix TODO
+  and “Better than nothing,” with more BTN choices on evenings and weekends.
+  Ties are randomized. If all eligible cards were issued recently, selection
+  continues from the least repeated cards rather than returning false emptiness.
+- A selected task gets a 15-minute focus session, not an invented estimate of
+  its completion time. Completing a BTN task updates local history while
+  leaving the reusable card on Trello; TODO/DOING completion still moves it
+  to DONE.
+- An optional OpenRouter helper uses Qwen3.7 Flash. Failure, timeout or an
+  invalid card ID falls back to local selection, with a ten-minute cooldown
+  before trying AI again. Ordinary use currently makes no OpenRouter calls.
+
+## Optional settings
+
+Defaults work without changes to the existing Pi configuration:
+
+| Environment variable | Default | Purpose |
+| --- | --- | --- |
+| `TASKTICKET_USE_AI` | `0` | Set to `1` to try AI before local fallback. |
+| `TASKTICKET_AI_MODEL` | `qwen/qwen3.7-flash` | Optional OpenRouter model. |
+| `TASKTICKET_FOCUS_MINUTES` | `15` | Focus timer duration, bounded to 1–120. |
+| `TASKTICKET_TIMEZONE` | `Europe/Luxembourg` | Selection schedule and UI clock. |
+
+Optional AI uses the existing `OPENROUTER_API_KEY` on the Pi. The prompt is
+bounded to at most 12 eligible cards and 150 output tokens, without goals,
+biography, descriptions or history. Thinking is disabled. An isolated live
+test using one invented card succeeded; real Trello cards were not sent during
+verification. Model availability and pricing were checked on
+[OpenRouter's official model page](https://openrouter.ai/qwen/qwen3.7-flash).
+
+The local source copy intentionally excludes `.env`, `config/settings.py` and
+task history. Deployment preserved the Pi's credentials and history.
+
+## Verification
+
+Read-only live checks authenticated to Trello, confirmed the board was open,
+and found **11 TODO, 0 DOING and 19 BTN** cards. A dry run using the deployed
+selector returned a real eligible task with `selection_method=local`, without
+creating an AI client, modifying history or invoking the printer.
+
+Twenty-one Python checks passed: three status checks, nine selection checks and
+nine route/history checks. Browser checks passed at 800 × 480, including
+55-pixel default touch targets, timers and assignment text without overflow,
+pointer hiding in both layouts, preserved sessions when switching, double-tap
+protection, animation and reduced-motion behavior, failed-action retry,
+completion state and offline status. These tests use
+fake tasks and printer dependencies; they do not issue physical tickets. On the
+Pi, a one-pixel pointer movement confirmed that Chromium's cursor resource is
+fully transparent, and both kiosk and message-printer services remained active.
+`scrot -p` manually composites cursor pixels, so it can show an old resource
+even while native XFixes cursor hiding is active; the final screenshot was taken
+with pointer capture enabled after verifying the transparent resource.
+
+From the project root, with Python 3.9+ and `aiohttp` installed:
+
+```sh
+python3 software/preview/check_backend.py
+python3 software/preview/check_selection.py
+python3 software/preview/check_routes.py
+```
+
+`preview/server.py` provides an isolated UI preview at `127.0.0.1:8655`.
+`preview/check_ui.mjs` exercises that preview through an isolated Chrome
+debugging port at `127.0.0.1:9226`; it requires Node with built-in WebSocket
+support. The current result is saved in `preview/themes-ui-check.json`, including
+elapsed-progress/timer and animation checks. `preview/mdr-ui-check.json` records
+the earlier optional layout release. `preview/simple-ui-check.json` and
+`preview/ui-check.json` record the previous designs' checks.
+
+Both `taskiosk.service` and `thermal-printer-subscriber.service` were active
+after deployment. The MQTT subscriber's PID stayed unchanged. The teleprint
+container and broker on mothra were inspected without changes or test messages.
+Physical ticket printing, card completion and Telegram delivery were not
+triggered during these checks. Tap **New Task** on the terminal to exercise the
+physical task workflow when wanted.
+
+## Deployment and recovery
+
+Deployment records are saved in `release/ui-deployment.json` and
+`release/selection-deployment.json`; the latest design update is recorded in
+`release/themes-deployment.json` (previously `release/mdr-deployment.json`).
+Backups on the Pi:
+
+- Initial UI backup:
+  `/home/srizzo/taskticket/backups/lumon-ui-20260926T214204Z`
+- Selection release backup:
+  `/home/srizzo/taskticket/backups/local-selection-20260926T215539Z`
+- Simplified UI backup:
+  `/home/srizzo/taskticket/backups/vintage-ui-20260926T221632Z`
+- MDR-style UI backup:
+  `/home/srizzo/taskticket/backups/mdr-ui-20260926T222627Z`
+- Two-layout, pointer and animation update backup:
+  `/home/srizzo/taskticket/backups/themes-ui-20260926T224648Z`
+
+To undo the latest layout/timer update, restore the files listed in
+`themes-deployment.json` from its backup, then restart `taskiosk.service`.
+The new optional-layout files can remain unused; the restored template and
+script will not reference them.
+
+To undo the MDR visual update, restore its three backed-up files
+(`templates/terminal.html`, `static/terminal.css`, `static/terminal.js`), then
+restart `taskiosk.service`. The task selector and Trello backend are unchanged
+by this visual release.
+
+To undo only the visual simplification, restore its backed-up `main.py`,
+`templates/terminal.html`, `static/terminal.css` and `static/terminal.js`, then
+restart `taskiosk.service`. This keeps the working local task selector.
+
+To undo the selection release, stop `taskiosk.service`, restore the files
+listed in `selection-deployment.json` from its backup to the same relative
+paths in the application, then start the service. That restores the initial
+Lumon UI with the previous selector. To return fully to the original UI too,
+also restore `main.py` from the initial UI backup before starting the service.
+Do not restore history or credentials, and do not restart the separate MQTT
+subscriber for a UI rollback. The native cursor startup change is backed up
+separately; see `release/kiosk-cursor-deployment.json` for the launcher path
+and backup. Restore that launcher and restart `taskiosk.service` to undo it.
+The small `unclutter-xfixes` package can remain installed and unused.
+
+The deployment scripts guard the specific inspected source hashes; they are
+records of this release rather than scripts to rerun unchanged over later edits.

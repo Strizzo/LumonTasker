@@ -1,0 +1,87 @@
+{
+  "scope": "Full-outline display fit fixture and four brackets only; not a left enclosure release",
+  "parts": {
+    "display_fit_frame": {
+      "valid": true,
+      "watertight": true,
+      "volume_mm3": 21501.27137350384,
+      "print_extent_mm": [
+        212.36000061035156,
+        132.0,
+        12.0
+      ]
+    },
+    "display_mount_left_lower_local": {
+      "valid": true,
+      "watertight": true,
+      "volume_mm3": 1677.6102078412473,
+      "print_extent_mm": [
+        10.0,
+        38.970001220703125,
+        8.939999580383299
+      ]
+    },
+    "display_mount_left_upper_local": {
+      "valid": true,
+      "watertight": true,
+      "volume_mm3": 1615.6002078412473,
+      "print_extent_mm": [
+        10.0,
+        37.380001068115234,
+        8.9399995803833
+      ]
+    },
+    "display_mount_right_lower_local": {
+      "valid": true,
+      "watertight": true,
+      "volume_mm3": 1677.6102078412478,
+      "print_extent_mm": [
+        10.0,
+        38.970001220703125,
+        8.939999580383299
+      ]
+    },
+    "display_mount_right_upper_local": {
+      "valid": true,
+      "watertight": true,
+      "volume_mm3": 1615.600207841248,
+      "print_extent_mm": [
+        10.0,
+        37.380001068115234,
+        8.9399995803833
+      ]
+    }
+  },
+  "pair_intersections_mm3": {
+    "display_fit_frame / display_mount_left_lower_local": 0.0,
+    "display_fit_frame / display_mount_left_upper_local": 0.0,
+    "display_fit_frame / display_mount_right_lower_local": 0.0,
+    "display_fit_frame / display_mount_right_upper_local": 0.0,
+    "display_mount_left_lower_local / display_mount_left_upper_local": 0.0,
+    "display_mount_left_lower_local / display_mount_right_lower_local": 0.0,
+    "display_mount_left_lower_local / display_mount_right_upper_local": 0.0,
+    "display_mount_left_upper_local / display_mount_right_lower_local": 0.0,
+    "display_mount_left_upper_local / display_mount_right_upper_local": 0.0,
+    "display_mount_right_lower_local / display_mount_right_upper_local": 0.0
+  },
+  "nominal_glass_intersections_mm3": {
+    "display_fit_frame": 0.0,
+    "display_mount_left_lower_local": 0.0,
+    "display_mount_left_upper_local": 0.0,
+    "display_mount_right_lower_local": 0.0,
+    "display_mount_right_upper_local": 0.0
+  },
+  "measured_glass_mm": [
+    193,
+    111
+  ],
+  "clearance_per_side_mm": 0.2,
+  "radius_reference_mm": 8.0,
+  "radius_physically_confirmed": false,
+  "dispatched": true,
+  "status": "Fit-kit CAD checks passed; user confirms physical glass outline/corner fit on 24 September; rear bracket fit still unverified",
+  "full_enclosure_hold": "Provisional rear cable allowance overlaps the inherited divider by 188.72 mm3. Resolve cable routing/real power hardware before large display enclosure release.",
+  "physical_glass_outline_fit_verified": true,
+  "physical_opening_corner_fit_verified": true,
+  "physical_fit_evidence": "physical_fit_feedback.json"
+}

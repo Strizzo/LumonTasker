@@ -1,0 +1,40 @@
+{
+  "status": "Printing on P1S; preparing/cleaning nozzle at last check, layer 0/880",
+  "project": "02_V51_display_body_upright.3mf",
+  "rejected_front_down_project": "01_V51_display_body_external_power.3mf",
+  "filament": "A2 PolyTerra Cotton White PLA only",
+  "body_print_bounds_mm": [218.9600066138672, 170.75, 176.0],
+  "bed_origin_xy_mm": [
+    18.52,
+    42.625
+  ],
+  "profile_changes": {
+    "wall_loops": "3",
+    "top_shell_layers": "4",
+    "bottom_shell_layers": "4",
+    "sparse_infill_density": "8%",
+    "sparse_infill_pattern": "gyroid",
+    "support_top_z_distance": "0.12",
+    "enable_support": "1",
+    "support_type": "tree(auto)",
+    "support_style": "default",
+    "enable_prime_tower": "0",
+    "brim_type": "no_brim"
+  },
+  "bed_clear_since_V50": true,
+  "dispatched": true,
+  "selected_orientation": "upright, base down",
+  "native_slice_estimate": {
+    "total_time": "20h2m",
+    "total_filament_g": 562.20,
+    "model_filament_g": 457.69,
+    "support_filament_g_approx": 104.51
+  },
+  "send_job_options": {
+    "printer": "3DP-01P-994 P1S 0.4 mm",
+    "ams_slot": "A2 PolyTerra Cotton White PLA",
+    "timelapse": false,
+    "auto_bed_leveling": false
+  },
+  "physical_fit_dependency": "Print body, then seat measured display and trial V50 roof and hatch"
+}

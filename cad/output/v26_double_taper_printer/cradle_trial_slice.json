@@ -1,0 +1,16 @@
+{
+  "source": "Bambu Studio GUI 2026-09-21 14:42 local",
+  "total_minutes_displayed": 93,
+  "preparation_seconds": 433,
+  "model_minutes_displayed": 86,
+  "material_g": 55.54,
+  "material_m": 18.62,
+  "layers": 100,
+  "filament": 2,
+  "status": "Started 2026-09-21 14:54 Europe/Luxembourg; device confirms active job preparing, 0/100 layers, Pause/Stop available.",
+  "bed_leveling_preference": false,
+  "authorization": "User explicitly requested starting now despite earlier meeting constraint.",
+  "auto_bed_leveling": false,
+  "ams_slot": "A2 light-grey Generic PLA",
+  "device_estimated_finish": "2026-09-21 16:26 Europe/Luxembourg"
+}

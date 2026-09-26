@@ -1,0 +1,15 @@
+{
+  "viewport": "800x480",
+  "queue_counts": [
+    11,
+    0,
+    19
+  ],
+  "touch_target_height": 55,
+  "double_tap_print_calls": 1,
+  "failed_complete_and_skip_keep_assignment": true,
+  "success_completion": true,
+  "no_suitable_task_distinct_from_offline": true,
+  "offline_clears_counts": true,
+  "browser_exceptions": []
+}

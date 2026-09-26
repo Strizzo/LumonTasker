@@ -1,0 +1,12 @@
+{
+  "date": "2026-09-24",
+  "completed": true,
+  "source": "User: yes to both and in both cases; 0.12 mm is better, measured to identify samples",
+  "samples": "Two identical upper-right production corner / integral mount samples",
+  "glass_and_lug_seat_without_arm_bending": true,
+  "actual_4mm_screws_reach_and_tighten_gently": true,
+  "both_samples_pass": true,
+  "selected_support_top_gap_mm": 0.12,
+  "support_gap_identification": "User measured after mixing the samples",
+  "limits": "One corner geometry tested twice; original four-hole XY pattern separately confirmed on the earlier full-frame test. Full enclosure not yet printed."
+}

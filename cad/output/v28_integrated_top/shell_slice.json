@@ -1,0 +1,17 @@
+{
+  "source": "Bambu Studio GUI",
+  "total_minutes_displayed": 620,
+  "total_g": 400.45,
+  "support_g": 15.88,
+  "purged_g": 1.96,
+  "tower_g": 0.8,
+  "layers": 805,
+  "filament_changes": 6,
+  "status": "Started2026-09-21 approximately17:04 Europe/Luxembourg; device confirms active preparation,0/805 layers.",
+  "auto_bed_leveling": false,
+  "ams_mapping": {
+    "body": "A2 light-grey PLA",
+    "logo": "A1 navy PLA"
+  },
+  "device_estimated_finish": "2026-09-22 03:24 Europe/Luxembourg"
+}

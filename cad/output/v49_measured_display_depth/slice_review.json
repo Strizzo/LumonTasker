@@ -1,0 +1,50 @@
+{
+  "project": "01_V49_depth_and_screw_coupons.3mf",
+  "toolpath": "01_V49_depth_and_screw_coupons.gcode.3mf",
+  "sha256": "a00767bea5726384ac340d2f1580bef3b26be7b617b747650765d78eae9eb52e",
+  "gui_reviewed": true,
+  "estimated_seconds": 3014,
+  "estimated_grams": 14.3,
+  "model_grams": 11.63,
+  "support_grams": 2.67,
+  "preview_layer_heights": 152,
+  "max_height_mm": 15.8,
+  "filament": "PolyTerra Cotton White PLA A2 only",
+  "inter_colour_swaps": 0,
+  "object_settings_verified_in_saved_project": [
+    {
+      "name": "LEFT - reference support gap 0.20",
+      "extruder": "2",
+      "support_top_z_distance": "0.2"
+    },
+    {
+      "name": "RIGHT - closer support gap 0.12",
+      "extruder": "2",
+      "support_top_z_distance": "0.12"
+    }
+  ],
+  "toolpath_contact_height_evidence_mm": {
+    "left_pad_support_top": 9.2,
+    "right_pad_support_top": 9.28,
+    "both_first_pad_bridge_top": 9.6
+  },
+  "orientation": "front face down as V46",
+  "bed_temperature_c": 55,
+  "nozzle_temperature_c": 220,
+  "flow_ratio": "0.985",
+  "max_volumetric_speed": "29",
+  "preset": "PolyTerra PLA @BBL X1C on P1S",
+  "warning_review": "Bed55 exceeds generic profile vitrification45 warning; existing standard PLA-on-textured-PEI bed setting retained. No outside-bed/unsupported-part error.",
+  "support_top_gaps_mm": [
+    0.2,
+    0.12
+  ],
+  "support_interface_layers": 3,
+  "support_interface_spacing_mm": 0.15,
+  "both_support_gaps_are_test_candidates": true,
+  "full_frame_queued": false,
+  "bed_clear": true,
+  "print_dispatched": true,
+  "physical_fit_verified": false,
+  "dispatch_verification": "Device shows matching V49 job active0/152; see print_dispatch.json"
+}

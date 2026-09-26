@@ -1,0 +1,63 @@
+{
+  "01_V39_printer_shell.gcode.3mf": {
+    "method": "Sum positive commanded extrusion on XY moves, grouped by FEATURE; uses G-code density and filament diameter. Excludes stationary purge/retraction; estimates are not weighed masses.",
+    "grams_by_feature": {
+      "Inner wall": 310.48,
+      "Outer wall": 104.91,
+      "Sparse infill": 72.52,
+      "Internal solid infill": 54.42,
+      "Support": 37.81,
+      "Gap infill": 17.51,
+      "Bridge": 13.32,
+      "Top surface": 9.05,
+      "Bottom surface": 5.38,
+      "Floating vertical shell": 4.79,
+      "Support interface": 1.73,
+      "Prime tower": 0.82,
+      "Overhang wall": 0.49,
+      "Brim": 0.17,
+      "Custom": 0.1
+    },
+    "xy_extrusion_total_g": 633.52,
+    "sparse_infill_fraction_of_xy_extrusion_percent": 11.45
+  },
+  "03_V39_printer_base.gcode.3mf": {
+    "method": "Sum positive commanded extrusion on XY moves, grouped by FEATURE; uses G-code density and filament diameter. Excludes stationary purge/retraction; estimates are not weighed masses.",
+    "grams_by_feature": {
+      "Internal solid infill": 36.5,
+      "Sparse infill": 25.69,
+      "Inner wall": 12.41,
+      "Bridge": 7.59,
+      "Top surface": 5.58,
+      "Bottom surface": 4.58,
+      "Outer wall": 3.94,
+      "Brim": 1.03,
+      "Custom": 0.1,
+      "Floating vertical shell": 0.08,
+      "Gap infill": 0.0
+    },
+    "xy_extrusion_total_g": 97.5,
+    "sparse_infill_fraction_of_xy_extrusion_percent": 26.35
+  },
+  "04_V39_display_body.gcode.3mf": {
+    "method": "Sum positive commanded extrusion on XY moves, grouped by FEATURE; uses G-code density and filament diameter. Excludes stationary purge/retraction; estimates are not weighed masses.",
+    "grams_by_feature": {
+      "Inner wall": 247.06,
+      "Outer wall": 108.11,
+      "Support": 69.73,
+      "Internal solid infill": 64.19,
+      "Gap infill": 61.27,
+      "Sparse infill": 23.26,
+      "Bridge": 12.76,
+      "Top surface": 10.42,
+      "Bottom surface": 8.08,
+      "Floating vertical shell": 4.52,
+      "Overhang wall": 1.17,
+      "Support interface": 1.17,
+      "Brim": 0.89,
+      "Custom": 0.1
+    },
+    "xy_extrusion_total_g": 612.7,
+    "sparse_infill_fraction_of_xy_extrusion_percent": 3.8
+  }
+}

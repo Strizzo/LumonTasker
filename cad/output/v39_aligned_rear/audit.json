@@ -1,0 +1,340 @@
+{
+  "status": "CAD checks passed; Fusion V39 saved; seven Bambu plates prepared and G-code checked. Nothing dispatched; left physical fit unverified.",
+  "common_rear_y_mm": 170.75,
+  "extension_mm": 9.75,
+  "common_base_rear_y_mm": 168.25,
+  "rear_corner_radius_mm": 9.5,
+  "base_rear_corner_radius_mm": 7.0,
+  "display_angle_deg": 25,
+  "changed_parts": [
+    "tub_left",
+    "top_plate_left",
+    "rear_panel_left",
+    "foot_left"
+  ],
+  "pi_psu_positions": "unchanged; depth-derived placement frozen",
+  "rear_hatch_iec_roof_mounts": "moved back9.75mm together",
+  "interferences": [],
+  "parts": {
+    "tub_left": {
+      "valid": true,
+      "solids": 1,
+      "bounds_mm": [
+        [
+          -1.7763568394002505e-15,
+          -3.0355835827898484e-14,
+          9.0
+        ],
+        [
+          218.96,
+          170.75,
+          185.0
+        ]
+      ]
+    },
+    "top_plate_left": {
+      "valid": true,
+      "solids": 1,
+      "bounds_mm": [
+        [
+          -1.0000000266453525e-07,
+          70.87876393955803,
+          180.0
+        ],
+        [
+          218.9600001,
+          170.75,
+          201.00000010000005
+        ]
+      ]
+    },
+    "display_retainer": {
+      "valid": true,
+      "solids": 1,
+      "bounds_mm": [
+        [
+          12.3,
+          27.86951390909,
+          34.28705440665712
+        ],
+        [
+          206.66,
+          89.0807094020384,
+          159.47102651523
+        ]
+      ]
+    },
+    "rear_panel_left": {
+      "valid": true,
+      "solids": 1,
+      "bounds_mm": [
+        [
+          16.0,
+          167.75,
+          20.0
+        ],
+        [
+          148.0,
+          170.75,
+          114.0
+        ]
+      ]
+    },
+    "foot_left": {
+      "valid": true,
+      "solids": 1,
+      "bounds_mm": [
+        [
+          2.5,
+          2.4999999999999996,
+          -3.175237850427948e-14
+        ],
+        [
+          218.96,
+          168.25,
+          9.0
+        ]
+      ]
+    },
+    "display_bezel": {
+      "valid": true,
+      "solids": 1,
+      "bounds_mm": [
+        [
+          3.3,
+          6.545388233371552,
+          50.501178744947985
+        ],
+        [
+          215.66,
+          63.42706801918004,
+          167.92143951677258
+        ]
+      ]
+    },
+    "shell": {
+      "valid": true,
+      "solids": 1,
+      "bounds_mm": [
+        [
+          218.9599999,
+          -1.0000056988359083e-07,
+          9.0
+        ],
+        [
+          393.96000010000006,
+          161.0,
+          201.0000001
+        ]
+      ]
+    },
+    "cradle_tray": {
+      "valid": true,
+      "solids": 1,
+      "bounds_mm": [
+        [
+          228.46,
+          3.5,
+          13.0
+        ],
+        [
+          384.46000000000004,
+          160.5,
+          33.0
+        ]
+      ]
+    },
+    "logo": {
+      "valid": true,
+      "solids": 6,
+      "bounds_mm": [
+        [
+          277.4599999999955,
+          0.0,
+          42.11357868019952
+        ],
+        [
+          335.46,
+          0.8000000000000013,
+          71.88642131979852
+        ]
+      ]
+    },
+    "led_diffuser": {
+      "valid": true,
+      "solids": 1,
+      "bounds_mm": [
+        [
+          287.46000000000004,
+          0.2,
+          181.6
+        ],
+        [
+          331.46000000000004,
+          3.6,
+          190.1
+        ]
+      ]
+    },
+    "foot_right_bonded": {
+      "valid": true,
+      "solids": 1,
+      "bounds_mm": [
+        [
+          218.96,
+          2.4999999999999996,
+          -5.773043016856624e-16
+        ],
+        [
+          391.46000000000004,
+          168.25,
+          9.0
+        ]
+      ]
+    },
+    "rear_cover_integrated": {
+      "valid": true,
+      "solids": 1,
+      "bounds_mm": [
+        [
+          218.96,
+          124.5,
+          9.0
+        ],
+        [
+          393.96000000000004,
+          170.75,
+          201.0
+        ]
+      ]
+    }
+  },
+  "prefix_difference_mm3": {
+    "tub_left": 0.0,
+    "top_plate_left": 0.0,
+    "foot_left": 0.0
+  },
+  "hardware_clashes_mm3": {
+    "display": {
+      "tub_left": 0.0,
+      "top_plate_left": 0.0,
+      "display_retainer": 0.0,
+      "rear_panel_left": 0.0,
+      "foot_left": 0.0,
+      "display_bezel": 0.0,
+      "shell": 0.0,
+      "cradle_tray": 0.0,
+      "logo": 0.0,
+      "led_diffuser": 0.0,
+      "foot_right_bonded": 0.0,
+      "rear_cover_integrated": 0.0
+    },
+    "printer": {
+      "tub_left": 0.0,
+      "top_plate_left": 0.0,
+      "display_retainer": 0.0,
+      "rear_panel_left": 0.0,
+      "foot_left": 0.0,
+      "display_bezel": 0.0,
+      "shell": 0.0,
+      "cradle_tray": 0.0,
+      "logo": 0.0,
+      "led_diffuser": 0.0,
+      "foot_right_bonded": 0.0,
+      "rear_cover_integrated": 0.0
+    },
+    "Pi": {
+      "tub_left": 0.0,
+      "top_plate_left": 0.0,
+      "display_retainer": 0.0,
+      "rear_panel_left": 0.0,
+      "foot_left": 0.0,
+      "display_bezel": 0.0,
+      "shell": 0.0,
+      "cradle_tray": 0.0,
+      "logo": 0.0,
+      "led_diffuser": 0.0,
+      "foot_right_bonded": 0.0,
+      "rear_cover_integrated": 0.0
+    },
+    "PSU": {
+      "tub_left": 0.0,
+      "top_plate_left": 0.0,
+      "display_retainer": 0.0,
+      "rear_panel_left": 0.0,
+      "foot_left": 0.0,
+      "display_bezel": 0.0,
+      "shell": 0.0,
+      "cradle_tray": 0.0,
+      "logo": 0.0,
+      "led_diffuser": 0.0,
+      "foot_right_bonded": 0.0,
+      "rear_cover_integrated": 0.0
+    },
+    "buck": {
+      "tub_left": 0.0,
+      "top_plate_left": 0.0,
+      "display_retainer": 0.0,
+      "rear_panel_left": 0.0,
+      "foot_left": 0.0,
+      "display_bezel": 0.0,
+      "shell": 0.0,
+      "cradle_tray": 0.0,
+      "logo": 0.0,
+      "led_diffuser": 0.0,
+      "foot_right_bonded": 0.0,
+      "rear_cover_integrated": 0.0
+    },
+    "IEC": {
+      "tub_left": 0.0,
+      "top_plate_left": 0.0,
+      "display_retainer": 0.0,
+      "rear_panel_left": 0.0,
+      "foot_left": 0.0,
+      "display_bezel": 0.0,
+      "shell": 0.0,
+      "cradle_tray": 0.0,
+      "logo": 0.0,
+      "led_diffuser": 0.0,
+      "foot_right_bonded": 0.0,
+      "rear_cover_integrated": 0.0
+    }
+  },
+  "vent_obstructions_mm3": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "joint_land_fractions": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "printer_components_unchanged": true,
+  "rear_roof_axes_xy_mm": [
+    [
+      7,
+      152.75
+    ],
+    [
+      211.96,
+      152.75
+    ]
+  ],
+  "fusion": {
+    "document": "LUMON_v39_ALIGNED_REAR",
+    "saved": true,
+    "verified_time_local": "2026-09-22 19:38",
+    "editable_documents": "10 of 10"
+  },
+  "bambu": {
+    "plates_prepared": 7,
+    "slice_audit": "slice_review.json",
+    "next_job": "01_V39_printer_shell.gcode.3mf",
+    "dispatched": false
+  }
+}

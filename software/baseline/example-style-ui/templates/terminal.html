@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lumon · Macrodata Refinement</title>
+  <link rel="stylesheet" href="/static/terminal.css?v=2">
+  <script defer src="/static/terminal.js?v=2"></script>
+</head>
+<body>
+  <main class="terminal">
+    <header class="masthead">
+      <img class="logo" src="/static/lumon.svg" alt="Lumon Industries" width="108" height="60">
+      <div class="station">
+        <h1>Macrodata Refinement</h1>
+        <p>STATION 775</p>
+      </div>
+    </header>
+    <section class="workspace" aria-label="Current assignment">
+      <div class="assignment" id="taskDisplay" aria-live="polite">
+        <h2 id="taskTitle">Welcome, Refiner</h2>
+        <p id="taskDescription">The work is mysterious and important.<br>Please select New Task to begin your work session.</p>
+      </div>
+      <div class="workspace-bottom">
+        <div class="terminal-prompt">mdr&gt;<span class="cursor" aria-hidden="true"></span></div>
+        <aside class="timer" id="taskTimer" hidden aria-label="Assignment timer">
+          <span>FOCUS <span class="timer-value" id="estimatedTimeDisplay">--:--</span></span>
+          <span class="challenge" id="challengeRow" hidden>CHALLENGE <span id="challengeTimeDisplay">--:--</span></span>
+        </aside>
+      </div>
+    </section>
+    <nav class="actions" aria-label="Task actions">
+      <button id="newTaskBtn">[N] NEW TASK</button>
+      <button id="yesBtn" disabled>[C] COMPLETE</button>
+      <button id="noBtn" disabled>[S] SKIP</button>
+    </nav>
+    <footer class="status-bar">
+      <span>TERMINAL: MDR-775</span>
+      <time id="dateTime"></time>
+      <span class="connection" id="connectionState" role="status">STATUS: CHECKING</span>
+    </footer>
+  </main>
+</body>
+</html>

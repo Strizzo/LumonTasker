@@ -1,0 +1,52 @@
+{
+  "status": "Active preparation confirmed: Device reports 0/17 layers, waiting for heatbed; 255 C nozzle and 70 C bed targets; completion and optical fit pending",
+  "source": "cad/output/v51_dc_inlet_panel/LUMON_v51_GLUE_DC_INLET_ASSEMBLY.step",
+  "geometry_matches_fit_test": true,
+  "watertight": true,
+  "print_dimensions_mm": [
+    44.0,
+    8.5,
+    3.4000000953674316
+  ],
+  "volume_mm3": 429.16403826904275,
+  "assembly_clashes_mm3": {},
+  "material": "User-confirmed translucent PETG in AMS slot 3",
+  "preset": "Installed Generic PETG, brand unspecified",
+  "project_extruder": 1,
+  "physical_ams_mapping_required": "A3",
+  "nozzle_c": [
+    "255"
+  ],
+  "textured_bed_c": [
+    "70"
+  ],
+  "orientation": "Rear flange on bed; short cavity bridge; no supports",
+  "installation": "Insert from behind the light opening; test fit and blue-light transmission before small adhesive points on flange. Do not load native buttons or LED.",
+  "dispatch": true,
+  "stl_sha256": "34490bc39e649ff50fdf180213a5ea2bc495cc59d2d332b5d4cdf83247db80d0",
+  "ams_registration": "Bambu Device verified A3 PETG, K0.040; user identifies the physical spool as translucent PETG",
+  "native_slice": {
+    "bambu_version": "02.05.00.66",
+    "estimated_seconds": 690,
+    "model_seconds": 229,
+    "filament_g": 0.61,
+    "layers": 17,
+    "layer_height_mm": 0.2,
+    "nozzle_c": 255,
+    "textured_pei_bed_c": 70,
+    "support_used": false,
+    "prime_tower": false,
+    "preview_checked": "Layer 1 flange is continuous with no separate islands; layer 14 bridges across the short cavity; complete face has four 0.2 mm layers. Native exported toolpath confirms PETG, 255 C nozzle and 70 C bed.",
+    "profile_warning": "Native bed heat advisory inherited from installed Generic PETG profile; stock PETG temperature_vitrification value retained. No change solely to hide warning.",
+    "sliced_file": "01_LED_insert_PETG.gcode.3mf",
+    "sha256": "c0c8b930f62103b98927c1f0c91011ae68c4bc23d068826070be765b98c8e566"
+  },
+  "planned_launch_options": {
+    "ams_slot": "A3",
+    "auto_bed_leveling": false,
+    "timelapse": false
+  },
+  "completion_confirmed": false,
+  "print_dispatch": "print_dispatch.json",
+  "plate_clearance": "User confirms It\u2019s cleared after the white inlet panel on 26 September"
+}

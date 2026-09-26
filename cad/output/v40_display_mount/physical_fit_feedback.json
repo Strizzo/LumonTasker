@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-24",
+  "user_report": "It fits perfectly",
+  "scope": "Full-outline frame around the display glass, including corners; rear brackets not yet confirmed.",
+  "photos": [
+    "/tmp/codex-remote-attachments/01a0bf3e-2220-7252-adef-d07f9ff37b1f/39BBDB13-CC13-469A-9589-C771CC743279/1-Foto-1.jpg",
+    "/tmp/codex-remote-attachments/01a0bf3e-2220-7252-adef-d07f9ff37b1f/39BBDB13-CC13-469A-9589-C771CC743279/2-Foto-2.jpg"
+  ],
+  "opening_mm": [
+    193.4,
+    111.4
+  ],
+  "opening_radius_mm": 8.2,
+  "interpretation": "Printed opening contour fits actual glass. Does not establish exact measured glass radius or rear lug/bracket stack.",
+  "rear_bracket_fit_verified": false,
+  "requested_appearance": "User correction: no separate navy bezel or lip. Existing black glass border stays visible; glass fits a recessed seat integrated into the white front panel.",
+  "original_reference": "cad/lumon_v19.py bezel_overlap=6.0; cad/review/prepare_fit_plate.py cuts the original blue bezel coupon.",
+  "current_cad_difference": "V40 subtracts the complete glass outline through both body and bezel; no front overlap remains.",
+  "next_revision": "V41 generated: integral white seat, accepted pocket contour, glass face1 mm recessed, shoulder behind glass, no separate navy bezel or front overlap. Same bracket shapes with glass/anchors moved2 mm rearwards together.",
+  "not_yet_done": "Rear bracket physical fit, final cable/power layout and large-body slicing remain pending. Fusion remains V39; no new print dispatched.",
+  "superseded_interpretation": "Assistant interpreted the blue corner as a request for overlapping navy trim; user explicitly rejected this."
+}

@@ -1,0 +1,6 @@
+{
+  "main.py": "22362b73aa3458bb8af1411caa37bab17b6096ca9938aeae37d891362140e5f8",
+  "core/task_selector.py": "03f1f37e5c6cda89933ce95afa5acf9064e2786bba3f9b20eac0051bbba4037b",
+  "processors/llm_processor.py": "b7136939cfdf4456e4f8a4ce42596a6380876e21c0046c2ba2d20872d4bcef64",
+  "data_sources/trello.py": "2fb3c35d82c9bc68ae1d1066087fd5621c36608a82e6c9203d9b5ed03ec4cc7d"
+}

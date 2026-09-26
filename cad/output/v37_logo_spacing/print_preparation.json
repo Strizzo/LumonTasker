@@ -1,0 +1,35 @@
+{
+  "status": "Sliced, not dispatched: automatic approval review rejected Send coordinate mismatch",
+  "orientation": "front face down",
+  "shell_bounds_mm": [
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      174.99998474121094,
+      192.0,
+      161.0
+    ]
+  ],
+  "shell_material": "PolyTerra Cotton White PLA",
+  "shell_ams_slot": 2,
+  "logo_material": "Bambu Navy Blue PLA",
+  "logo_ams_slot": 1,
+  "bed_leveling": false,
+  "supports": "Must review rounded roof and internal features in slicer",
+  "colour_changes": "Logo embedded in front face; quantify after slicing",
+  "retention_passed": true,
+  "paper_feed_tear_passed": true,
+  "estimated_seconds": 60924,
+  "total_g": 592.31,
+  "white_g": 589.79,
+  "navy_g": 2.51,
+  "layers": 805,
+  "filament_changes": 6,
+  "multicolour_layers": "0\u20133 only",
+  "outside_plate": false,
+  "print_authorized": true,
+  "fusion_sync": "Pending; native path dialog unresolved"
+}

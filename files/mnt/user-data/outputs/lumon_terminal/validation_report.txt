@@ -1,0 +1,65 @@
+=== PROPORTIONAL CHECK (spec sec.27) ===
+printer/display width  =  73.6%  (spec: ~73.6%)  PASS
+printer/display height = 110.1%  (spec: ~110.1%) PASS
+printer is 11.24 mm taller than the display
+
+=== OVERALL ENVELOPE ===
+width   352.96 mm   spec target 340-350   FAIL
+depth   153.00 mm   spec target 145-160   PASS
+height  130.00 mm   spec target 135-145   FAIL
+
+=== COLLISION / CLEARANCE ===
+display vs printer overlap         0.00 mm3  PASS
+display  vs housing overlap        0.00 mm3  PASS
+printer  vs housing overlap        0.00 mm3  PASS
+pi       vs housing overlap        0.00 mm3  PASS
+psu      vs housing overlap        0.00 mm3  PASS
+spine between display and printer  9.00 mm
+
+=== PRINTABILITY ===
+housing bounding box 353 x 153 x 130 mm
+  fits Ender-3 / Prusa Mini   (220 mm): FAIL
+  fits Bambu P1/X1            (256 mm): FAIL
+  fits Bambu X1E / large      (350 mm): FAIL
+  -> the front shell MUST be split; place the seam deliberately.
+
+=== FUNCTIONAL NOTES FROM PHOTOGRAPHS ===
+  paper exits through the TOP face  -> top aperture, not a front slot
+  clamshell lid needs ~60 mm free above the top face (TBD)
+  printer top is FLUSH with the enclosure top face
+  display driver PCB + DSI ribbon sit on the rear -> display_t is TBD
+
+=== PARAMETERS NOT SAFE TO BUILD AGAINST ===
+  printer_w/d/h : UNVERIFIED - likely the packaging size, measure the unit
+  printer mounting holes, connector positions : NOT MODELLED, do not invent
+  display_t, pi_*, psu_* : TBD placeholders
+
+=== PARAMETER TABLE ===
+display_w                    192.96
+display_h                    110.76
+display_active_w             154.08
+display_active_h              85.92
+display_t                     21.00
+display_clear                  1.00
+display_bezel_overlap          6.00
+printer_w                    142.00
+printer_d                    122.00
+printer_h                    122.00
+printer_clear                  2.00
+printer_lid_swing             60.00
+pi_w                          85.00
+pi_d                          56.00
+pi_h                          30.00
+psu_w                        100.00
+psu_d                         55.00
+psu_h                         35.00
+wall                           3.00
+base_thickness                 4.00
+rib                            6.00
+rear_cavity                   25.00
+foot_h                         4.00
+fillet_main                    6.00
+fillet_top                     3.00
+W                            352.96
+D                            153.00
+H                            130.00

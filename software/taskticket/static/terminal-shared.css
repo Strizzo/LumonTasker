@@ -1,0 +1,11 @@
+/* Both layouts are touch-first; no operating-system pointer appears over them. */
+html, body, *, *::before, *::after { cursor: none !important; }
+.theme-link { display: block; flex: 0 0 auto; color: inherit; }
+.theme-link:focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
+.refinement-field { flex: 0 0 70px; margin-top: 8px; min-width: 0; overflow: hidden; pointer-events: none; }
+.refinement-field canvas { display: block; width: 100%; height: 70px; }
+.session-progress { display: flex; align-items: center; gap: 9px; font-size: 12px; white-space: nowrap; }
+.session-progress .progress-track { width: 65px; height: 7px; border: 1px solid var(--line); padding: 1px; }
+.session-progress #focusProgress { height: 100%; width: 0; background: var(--ink); }
+.workspace-bottom { flex-wrap: wrap; }
+@media (max-width: 640px) { .session-progress { font-size: 10px; } .session-progress .progress-track { width: 45px; } }

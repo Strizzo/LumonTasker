@@ -1,0 +1,85 @@
+{
+  "status": "Integral-mount CAD candidate checked; full-case slicing and physical mounting test pending",
+  "case_mounts": "Four integral arms; no separate brackets or case-side insert bores",
+  "fasteners": {
+    "count": 4,
+    "type": "M3x6 into original metal display lugs",
+    "bearing_pad_mm": 3.9,
+    "nominal_engagement_mm": 2.1,
+    "manufacturer_thread_depth_max_mm": 2.5,
+    "actual_screw_check_required": true
+  },
+  "removed_hardware": {
+    "M3x8_case_screws": 4,
+    "M3_case_heat_set_inserts": 4,
+    "separate_printed_brackets": 4
+  },
+  "service": "Insert display and attached Pi from front, secure four screws from rear. Remove screws to withdraw through front; mounts remain integral.",
+  "opening_mm": [
+    193.4,
+    111.4
+  ],
+  "opening_radius_mm": 8.2,
+  "glass_recess_mm": 1,
+  "metal_lug_plane_y_mm": 6.96,
+  "lug_centres_local_xz": [
+    [
+      47.87000000000001,
+      84.82672184114938
+    ],
+    [
+      47.87000000000001,
+      150.47672184114938
+    ],
+    [
+      174.07000000000002,
+      84.82672184114938
+    ],
+    [
+      174.07000000000002,
+      150.47672184114938
+    ]
+  ],
+  "lug_hole_checks": {
+    "47.87,84.83": {
+      "bore_obstruction_mm3": 0.0,
+      "counterbore_obstruction_mm3": 0.0,
+      "bearing_land_fraction": 0.9999999999999972
+    },
+    "47.87,150.48": {
+      "bore_obstruction_mm3": 0.0,
+      "counterbore_obstruction_mm3": 0.0,
+      "bearing_land_fraction": 1.0000000000000038
+    },
+    "174.07,84.83": {
+      "bore_obstruction_mm3": 0.0,
+      "counterbore_obstruction_mm3": 0.0,
+      "bearing_land_fraction": 0.999999999999997
+    },
+    "174.07,150.48": {
+      "bore_obstruction_mm3": 0.0,
+      "counterbore_obstruction_mm3": 0.0,
+      "bearing_land_fraction": 1.0000000000000038
+    }
+  },
+  "part_intersections_mm3": {},
+  "exact_front_sweep_clashes_mm3": {
+    "glass_1p1mm": {},
+    "chassis_nominal": {},
+    "Pi_nominal": {}
+  },
+  "pi_margin_collision_mm3": 0.0,
+  "cable_allowance_collision_mm3": 237.47906417980624,
+  "body_solid_count": 1,
+  "body_valid": true,
+  "body_watertight": true,
+  "body_and_mounts_volume_increase_vs_V41_mm3": 2658.743096298361,
+  "physical_lug_pattern_or_stack_confirmed": false,
+  "printability": "Integral overhanging arms may need local support depending on full-body orientation. V40 separate-flat-bracket support-free result does not apply; full-body GUI slice review required.",
+  "limits": [
+    "User has validated glass outline only; use existing frame/brackets to check unchanged metal lug pattern and stack",
+    "Screwdriver access with actual cables/power hardware unverified",
+    "Internal power architecture unresolved; inherited divider cable conflict retained",
+    "No new print dispatched; active navy base job unchanged; Fusion remains closed/latestV39"
+  ]
+}

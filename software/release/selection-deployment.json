@@ -1,0 +1,19 @@
+{
+  "deployed_at": "2026-09-26T21:55:40.423918+00:00",
+  "backup": "/home/srizzo/taskticket/backups/local-selection-20260926T215539Z",
+  "changed_files": [
+    "main.py",
+    "terminal_status.py",
+    "core/task_selector.py",
+    "core/task_manager.py",
+    "data_sources/trello.py",
+    "processors/llm_processor.py",
+    "templates/terminal.html",
+    "static/terminal.js",
+    "static/terminal.css"
+  ],
+  "selection_default": "local",
+  "optional_model": "qwen/qwen3.7-flash",
+  "history_unchanged": true,
+  "subscriber_pid_unchanged": true
+}

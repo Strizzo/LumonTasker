@@ -1,0 +1,44 @@
+{
+  "selected": "Original V39 base shape, lighter slicing settings; no CAD pockets",
+  "original_V39_slice": {
+    "file": "cad/output/v39_aligned_rear/03_V39_printer_base.gcode.3mf",
+    "seconds": 10081,
+    "grams": 97.5,
+    "layers": 45,
+    "supports": "false",
+    "sha256": "23a000bf43bb5e4415fbbf6eb577a3e1048d6360a514d4aad852aad61f85e0dd"
+  },
+  "pocketed_candidate": {
+    "file": "cad/output/v42_light_printer_base/01_V42_light_printer_base.gcode.3mf",
+    "seconds": 9517,
+    "grams": 89.01,
+    "layers": 45,
+    "supports": "false",
+    "sha256": "8b2f96dc61cd5aa68dc11dd2388125467bc41e43679d73f78998bad400ee5ee9"
+  },
+  "selected_lean_original": {
+    "file": "cad/output/v42_light_printer_base/02_V42_printer_base_lean.gcode.3mf",
+    "seconds": 7509,
+    "grams": 75.89,
+    "layers": 45,
+    "supports": "false",
+    "sha256": "42694f79e0428f4d64215447d5297e45d9ca7a48843fda94b43c18c0eefd888f"
+  },
+  "grams_saved_vs_V39": 21.61,
+  "mass_saving_percent": 22.16410256410256,
+  "seconds_saved_vs_V39": 2572,
+  "reason": "Pocketing the CAD adds perimeter paths and uses more material than retaining the original shape with the same lean settings.",
+  "settings": {
+    "layer_mm": 0.2,
+    "wall_loops": 3,
+    "top_shell_layers": 4,
+    "top_min_mm": 0.8,
+    "bottom_shell_layers": 4,
+    "infill": "10% gyroid",
+    "supports": false,
+    "prime_tower": false,
+    "colour_swaps": 0
+  },
+  "filament": "A1 Bambu Navy Blue PLA",
+  "release_scope": "Printer base only. Bond pads, outer shape, clearance channels and interface to accepted printer shell unchanged."
+}

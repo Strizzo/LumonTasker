@@ -1,0 +1,87 @@
+{
+  "scope": "Only left tub and rear hatch changed; exact v28 printer geometry retained. Left hardware remains unverified.",
+  "parts": {
+    "tub_left": {
+      "valid": true,
+      "solids": 1,
+      "watertight": true
+    },
+    "top_plate_left": {
+      "valid": true,
+      "solids": 1
+    },
+    "display_retainer": {
+      "valid": true,
+      "solids": 1
+    },
+    "rear_panel_left": {
+      "valid": true,
+      "solids": 1,
+      "watertight": true
+    },
+    "foot_left": {
+      "valid": true,
+      "solids": 1
+    },
+    "display_bezel": {
+      "valid": true,
+      "solids": 1
+    },
+    "shell": {
+      "valid": true,
+      "solids": 1
+    },
+    "cradle_tray": {
+      "valid": true,
+      "solids": 1
+    },
+    "retaining_bar_58": {
+      "valid": true,
+      "solids": 1
+    },
+    "retaining_bar_137": {
+      "valid": true,
+      "solids": 1
+    },
+    "rear_cover": {
+      "valid": true,
+      "solids": 1
+    },
+    "logo": {
+      "valid": true,
+      "solids": 6
+    },
+    "led_diffuser": {
+      "valid": true,
+      "solids": 1
+    }
+  },
+  "interferences": [],
+  "vent_obstructions_mm3": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "hatch_height_mm": 94.0,
+  "vent_to_hatch_gap_mm": 6.0,
+  "rear_screw_centres_xz_mm": [
+    [
+      42.0,
+      22.0
+    ],
+    [
+      122.0,
+      22.0
+    ],
+    [
+      42.0,
+      112.0
+    ],
+    [
+      122.0,
+      112.0
+    ]
+  ]
+}

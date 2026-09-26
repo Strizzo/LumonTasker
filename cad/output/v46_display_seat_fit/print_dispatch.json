@@ -1,0 +1,32 @@
+{
+  "time_local": "2026-09-24T10:39:48.248938+02:00",
+  "job_name": "V46_Display_3mm_Seat_Integral_Mount_Test",
+  "project": "01_V46_display_seat_fit.3mf",
+  "toolpath": "01_V46_display_seat_fit.gcode.3mf",
+  "sha256": "0261f22c93c09a7799b821564a7da2ed0249faee961e7194d5450e0ef37222ae",
+  "printer": "P1S 3DP-01P-994",
+  "user_authorized": true,
+  "user_confirmed_plate_clear": true,
+  "bed_clear_evidence": "User: Print bEd is clear now",
+  "filament_mapping": {
+    "A2": "PolyTerra Cotton White PLA"
+  },
+  "estimated_seconds": 7324,
+  "estimated_grams": 47.29,
+  "layers_including_support_heights": 114,
+  "auto_bed_leveling": false,
+  "timelapse": false,
+  "supports": "Same white PLA under seat and integral arms",
+  "inter_colour_swaps": 0,
+  "send_verified": true,
+  "device_job_verified": true,
+  "device_status": "Matching job active at0/114; waiting for heatbed target,54/55 C; nozzle185/220 C; filament loading",
+  "first_layer_verified": false,
+  "completion_verified": true,
+  "physical_fit_verified": false,
+  "estimated_finish_local": "2026-09-24 12:41",
+  "camera_enabled": true,
+  "completion_evidence": "User supplied photos and fit feedback; Bambu Device shows matching V46 job Finished 100%,114/114.",
+  "physical_fit_status": "User corrected assembly orientation and confirms original mounting holes match. Pocket corner still slightly tight and ledge print quality needs improvement; actual bearing stack not yet accepted.",
+  "hole_alignment_physically_confirmed": true
+}

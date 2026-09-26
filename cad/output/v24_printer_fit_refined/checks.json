@@ -1,0 +1,33 @@
+{
+  "status": "PREPARATION ONLY \u2014 no print dispatch",
+  "offset_datum": "user fit correction: 60mm to centre; 53mm to upper edge",
+  "parts": {
+    "front_template_centre_60": {
+      "watertight": true,
+      "solids": 1,
+      "bounds_mm": [
+        131.0,
+        73.0,
+        3.0
+      ],
+      "solid_volume_cm3": 9.55
+    },
+    "cradle_width_sample": {
+      "watertight": true,
+      "solids": 1,
+      "bounds_mm": [
+        141.0,
+        16.0,
+        20.0
+      ],
+      "solid_volume_cm3": 7.86
+    }
+  },
+  "cradle_guide_gap_mm": 133,
+  "printer_width_mm": 131,
+  "template_aperture_mm": [
+    90,
+    14
+  ],
+  "template_thickness_mm": 3
+}

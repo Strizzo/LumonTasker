@@ -1,0 +1,11 @@
+{
+  "deployed_at": "2026-09-26T22:47:01.835128+00:00",
+  "backup": "/home/srizzo/taskticket/backups/themes-ui-20260926T224648Z",
+  "changed_files": ["main.py", "core/history_manager.py", "templates/terminal.html", "static/terminal.css", "static/terminal.js", "templates/terminal_mdr.html", "static/terminal-mdr.css", "static/terminal-shared.css"],
+  "backed_up_files": ["main.py", "core/history_manager.py", "templates/terminal.html", "static/terminal.css", "static/terminal.js"],
+  "history_unchanged": true,
+  "subscriber_pid_unchanged": true,
+  "version": "Classic default, optional MDR",
+  "selection_mode": "local",
+  "rollback": "Stop taskiosk.service, restore backed_up_files to their relative paths, then start taskiosk.service."
+}
