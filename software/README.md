@@ -69,6 +69,8 @@ Defaults work without changes to the existing Pi configuration:
 | `TASKTICKET_AI_MODEL` | `qwen/qwen3.7-flash` | Optional OpenRouter model. |
 | `TASKTICKET_FOCUS_MINUTES` | `15` | Focus timer duration, bounded to 1–120. |
 | `TASKTICKET_TIMEZONE` | `Europe/Luxembourg` | Selection schedule and UI clock. |
+| `PRINTER_TASK_LOGO` | `1` | Print the Lumon bitmap above task-ticket text; set to `0` for text-only tickets. |
+| `PRINTER_WIDTH_DOTS` | `576` | Printable dot width for centring the logo on the POS80. |
 
 Optional AI uses the existing `OPENROUTER_API_KEY` on the Pi. The prompt is
 bounded to at most 12 eligible cards and 150 output tokens, without goals,
@@ -81,6 +83,21 @@ The local source copy intentionally excludes `.env`, `config/settings.py` and
 task history. Deployment preserved the Pi's credentials and history.
 
 ## Verification
+
+The POS80 also prints graphics. On 27 September, one standalone “LUMON LOGO
+TEST” receipt was sent using ESC/POS `GS v 0`; the user confirmed that the globe
+was clear and complete. Normal task tickets now include the same 320 × 164-dot
+monochrome logo, centred above the text. Logo, text and the final cut form one
+job. Missing artwork or an invalid width setting falls back to text-only output;
+a failed printer write raises an error before the task is recorded as issued.
+The test did not select a Trello card or change task history. The separate
+message-printing service was not changed.
+
+Eight isolated printer checks cover bitmap polarity and placement, both USB
+paths, text-only fallback, a single final cut and failed writes. A route check
+also verifies that a failed ticket does not create an issued-task history entry.
+The deployed printer class was checked by capturing a synthetic job in a
+temporary file, without writing another physical receipt.
 
 Read-only live checks authenticated to Trello, confirmed the board was open,
 and found **11 TODO, 0 DOING and 19 BTN** cards. A dry run using the deployed
@@ -106,6 +123,7 @@ From the project root, with Python 3.9+ and `aiohttp` installed:
 python3 software/preview/check_backend.py
 python3 software/preview/check_selection.py
 python3 software/preview/check_routes.py
+python3 software/preview/check_printer.py
 ```
 
 `preview/server.py` provides an isolated UI preview at `127.0.0.1:8655`.
@@ -124,6 +142,12 @@ triggered during these checks. Tap **New Task** on the terminal to exercise the
 physical task workflow when wanted.
 
 ## Deployment and recovery
+
+The ticket-logo release is recorded in `release/ticket-logo-deployment.json`.
+To undo it, stop `taskiosk.service`, restore its backed-up
+`printer/thermal_printer.py` and `core/task_manager.py`, then start the service.
+The unused logo module and PNG can remain. Setting `PRINTER_TASK_LOGO=0` and
+restarting the kiosk disables the logo without rolling back the release.
 
 Deployment records are saved in `release/ui-deployment.json` and
 `release/selection-deployment.json`; the latest design update is recorded in

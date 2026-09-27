@@ -55,6 +55,13 @@ class Routes(unittest.TestCase):
         self.assertEqual(code,200); self.assertTrue(result['success'])
         self.assertEqual(len(self.manager.printed),1); self.assertEqual(len(self.manager.history.issued),1)
 
+    def test_failed_ticket_does_not_record_an_issued_task(self):
+        def failure(task): raise RuntimeError('Synthetic printer failure')
+        self.manager.print_task_ticket=failure
+        result,code=self.namespace['print_task']()
+        self.assertEqual(code,500); self.assertFalse(result['success'])
+        self.assertEqual(self.manager.history.issued,[])
+
     def test_btn_completion_does_not_move_reusable_card(self):
         self.namespace['request'].json={'task_id':'a','source_list':'BTN'}
         result,code=self.namespace['complete_task']()

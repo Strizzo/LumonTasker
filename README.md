@@ -4,7 +4,7 @@ A working desktop task terminal inspired by *Severance*: a Raspberry Pi 3 Model 
 touchscreen and thermal ticket printer in a custom two-bay enclosure.
 
 The assembled prototype works. The terminal selects tasks from Trello locally,
-prints tickets, and records completion or deferral. Its default UI is a simple
+prints tickets with a monochrome Lumon logo, and records completion or deferral. Its default UI is a simple
 blue monospace screen with the Lumon globe, a focus countdown, elapsed-time
 progress and a small animated number field. An alternate MDR-style layout is
 available by tapping the logo. The separate message-printing integration on the
@@ -60,6 +60,7 @@ From the project root, with the software environment activated:
 python software/preview/check_backend.py
 python software/preview/check_selection.py
 python software/preview/check_routes.py
+python software/preview/check_printer.py
 python software/preview/server.py
 ```
 

@@ -1,0 +1,34 @@
+{
+  "deployed_at": "2026-09-27T06:10:04.817938+00:00",
+  "backup": "/home/srizzo/taskticket/backups/ticket-logo-20260927T060947Z",
+  "changed_files": [
+    "printer/thermal_printer.py",
+    "core/task_manager.py",
+    "printer/logo.py",
+    "static/lumon-print.png"
+  ],
+  "sha256": {
+    "printer/thermal_printer.py": "6f64af9c9a69af15879b85643c9b463a09f4d4cf3a32df7884e6a95c227c6ec3",
+    "core/task_manager.py": "c6343534c6a70059be94c899044935ad0f15e379d1b2b2ad4ab7643f8a4a47fa",
+    "printer/logo.py": "6935caaa2e7a020a5fe12d313695e0424d0f5dd0f975896684147f72c287ea59",
+    "static/lumon-print.png": "d93c46a97627b18ea6ea5352224e6365323718d6f873b0b12f00f13c5f648901"
+  },
+  "logo_enabled": true,
+  "logo_dimensions_dots": [
+    320,
+    164
+  ],
+  "paper_width_dots": 576,
+  "physical_test": "User confirmed the standalone logo receipt was clear and complete.",
+  "synthetic_job_capture_passed": true,
+  "terminal_http_status": 200,
+  "history_unchanged": true,
+  "subscriber_pid_unchanged": true,
+  "real_tasks_printed_during_deployment": 0,
+  "live_services": {
+    "taskiosk.service": "active",
+    "thermal-printer-subscriber.service": "active"
+  },
+  "terminal_status_ok": true,
+  "isolated_checks_passed": 30
+}

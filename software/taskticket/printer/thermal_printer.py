@@ -2,10 +2,15 @@ from escpos.printer import Usb
 from typing import Optional, Dict
 import os
 import sys
+import logging
+from pathlib import Path
 from dotenv import load_dotenv
 import usb.core
 import usb.util
 from dataclasses import dataclass
+from printer.logo import raster_logo
+
+logger = logging.getLogger(__name__)
 
 @dataclass
 class ThermalFormatting:
@@ -114,10 +119,21 @@ class ThermalPrinter:
                 print(f"Printer initialization error: {e}")
                 return False
 
-    def print_text(self, text: str) -> bool:
+    def print_text(self, text: str, logo: bool = False) -> bool:
         """Print text to the thermal printer."""
+        logo_bytes = b''
+        if logo and os.getenv('PRINTER_TASK_LOGO', '1').lower() in ('1', 'true', 'yes'):
+            try:
+                logo_path = Path(__file__).resolve().parents[1] / 'static/lumon-print.png'
+                logo_bytes = raster_logo(logo_path, int(os.getenv('PRINTER_WIDTH_DOTS', '576')))
+            except (OSError, ValueError):
+                # Prepare everything before opening USB. A missing asset must
+                # not prevent the task text from printing.
+                logger.warning('Ticket logo unavailable; printing the task text only.')
         if self.debug_mode:
             print("\n=== DEBUG: PRINTER OUTPUT ===")
+            if logo_bytes:
+                print('[Lumon bitmap logo]')
             print(text)
             print("===========================\n")
             return True
@@ -129,17 +145,16 @@ class ThermalPrinter:
             if self.use_direct_access:
                 # Print using direct file access
                 with open(self.printer_device, 'wb') as f:
-                    # Initialize printer
-                    f.write(self.format.INIT.encode('utf-8', errors='replace'))
-                    
-                    # Print the text
-                    f.write(text.encode('utf-8', errors='replace'))
-                    
-                    # Feed and cut
-                    f.write(self.format.FEED_AND_CUT.encode('utf-8', errors='replace'))
+                    # One job, no reset between image and task, one final cut.
+                    job = (self.format.INIT.encode('utf-8') + logo_bytes +
+                           text.encode('utf-8', errors='replace') +
+                           self.format.FEED_AND_CUT.encode('utf-8'))
+                    f.write(job)
             else:
                 # Print using python-escpos
                 self.printer.text(self.format.INIT)
+                if logo_bytes:
+                    self.printer._raw(logo_bytes)
                 self.printer.text(text)
                 self.printer.text(self.format.FEED_AND_CUT)
                 

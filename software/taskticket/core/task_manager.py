@@ -35,7 +35,8 @@ class TaskTicketManager:
         variation = random.uniform(0.6, 1.4)  # Random factor between 0.6 and 1.4
         value = round(base_value * variation / 10) * 10  # Round to nearest 10
         ticket_text += f"\nValue: {value} EUR\n"
-        self.printer.print_text(ticket_text)
+        if not self.printer.print_text(ticket_text, logo=True):
+            raise RuntimeError('The task ticket could not be printed.')
 
     async def move_task_to_done(self, task_id: str, source_list: str):
         return await self.trello.move_to_done(task_id, source_list)
