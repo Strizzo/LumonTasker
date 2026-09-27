@@ -1,15 +1,14 @@
 # Lumon terminal software
 
 First deployed on 26 September 2026; MDR-inspired UI deployed on 27 September
-local time. The Raspberry Pi is `srizzo@192.168.178.87`
-(`raspberrypi`); the address was discovered on the local network and may change
-if its DHCP lease changes. The active application is
-`/home/srizzo/taskticket/TaskTicket`, managed by `taskiosk.service`.
+local time. The original installation runs on a Raspberry Pi 3 Model B,
+managed by `taskiosk.service`. Paths in the historical deployment records refer
+to that installation; adapt them to your own Pi when setting up the application.
 
 The physical display is 800 × 480. Its default interface is the simple blue
 monospace layout the user preferred, available at
-`http://192.168.178.87:5000/display`. The newer MDR-inspired layout remains
-optional at `http://192.168.178.87:5000/display?theme=mdr`. Tap the Lumon logo
+`http://raspberrypi.local:5000/display`. The newer MDR-inspired layout remains
+optional at `http://raspberrypi.local:5000/display?theme=mdr`. Tap the Lumon logo
 to switch between them. The screenshot from the Pi is
 [preview/pi-themes.png](preview/pi-themes.png).
 

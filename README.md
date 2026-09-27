@@ -11,9 +11,12 @@ available by tapping the logo. The separate message-printing integration on the
 Pi/mothra remains in service; its deployment source has not yet been imported
 into this repository.
 
-![Task terminal preview](software/preview/themes-assignment.png)
+![The assembled Lumon-inspired task terminal](docs/media/lumon-task-terminal.jpg)
 
-This repository is private while the project is being developed.
+![The terminal selecting and printing a task](docs/media/lumon-task-demo.gif)
+
+The demonstration above is the same recording used in the build post, converted
+to an animated GIF for GitHub. See also the [two software layouts](software/preview/themes-assignment.png).
 
 ## Project contents
 
@@ -97,10 +100,16 @@ closed printer-base underside and removal of the identified unused insert hole.
 Those changes are recorded feedback, not changes already applied to the printed
 prototype. See [build status](cad/BUILD_STATUS.md) for the full history.
 
-## Local-only data
+## License
 
-Credentials, `.env`, personal biography/preferences, task history, virtual
-environments, temporary files, deployment bundles and original personal photos
-are excluded by `.gitignore`. Blank configuration examples and font licences
-are included. Third-party scene clips used for visual reference remain local;
-their source links are documented under `software/references/`.
+You may build and modify the enclosure for personal, noncommercial use.
+Commercial printing or selling copies of the enclosure requires separate
+permission. The hardware uses **Open Community License v1.1**, the application
+uses **PolyForm Noncommercial 1.0.0**, and original documentation and media use
+**CC BY-NC 4.0**. These restrictions mean this is a source-available project,
+rather than an unrestricted open-source release.
+
+See [LICENSE](LICENSE) for the scope and full terms, and
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for font licenses and the
+*Severance* / Lumon references. This is an independent fan project with no
+affiliation or endorsement.

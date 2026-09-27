@@ -1,0 +1,48 @@
+LumonTasker licensing
+Copyright (c) 2026 Stefano Giovanni Rizzo
+
+The following licenses apply only to original material in this repository for
+which the project author holds the relevant rights. Third-party material and
+marks are excluded; see THIRD_PARTY_NOTICES.md and any file-specific notices.
+
+1. Hardware and enclosure design
+
+The original enclosure designs, CAD generators and engineering source files in
+cad/ and files/, and their exported STEP, STL, 3MF and sliced print files, are
+licensed under Open Community License (OCL v1.1), without add-on conditions.
+The complete, unmodified license is in licenses/OCL-1.1.txt.
+
+Personal, noncommercial building, modification and sharing are allowed under
+those terms. Shared derivatives must retain OCL. Commercial manufacturing,
+printing for sale, and selling copies or derivatives of these enclosure designs
+require a separate business license from the project author. OCL permits
+internal business use and internal right-to-repair as described in its text;
+it also restricts systematic or automated data mining without permission.
+These examples summarize the license and do not replace its terms.
+
+2. Application software
+
+Original application, preview, test and deployment code in software/ is licensed
+under PolyForm Noncommercial License 1.0.0. The complete, unmodified license is
+in licenses/PolyForm-Noncommercial-1.0.0.md.
+
+Required Notice: Copyright (c) 2026 Stefano Giovanni Rizzo (https://github.com/Strizzo/LumonTasker)
+
+3. Documentation and original media
+
+Original prose, photographs, demonstration recordings, screenshots and other
+documentation assets throughout the repository are licensed under Creative
+Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0).
+The complete, unmodified license is in licenses/CC-BY-NC-4.0.txt.
+Attribution: Stefano Giovanni Rizzo, LumonTasker,
+https://github.com/Strizzo/LumonTasker. Identify modifications when sharing.
+
+4. Exceptions and commercial permission
+
+Bundled fonts retain their existing licenses. External dependencies retain their
+own licenses. No rights in Severance, the Lumon name or globe logo, other third-
+party artwork, trademarks, or purchased electronic components are granted here.
+
+Contact the project author through the repository to request separate commercial
+permission. The licenses do not override rights or exceptions under applicable
+law, and grant only rights the author can license.
