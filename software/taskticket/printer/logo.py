@@ -3,6 +3,27 @@ import struct
 from PIL import Image, ImageOps
 
 
+def raster_image(image, fragment_height=128):
+    """Encode contiguous strips, keeping each bitmap below the POS80 buffer size.
+
+    GS v 0 advances by exactly the image height and returns to the start of the
+    line. No newlines belong between strips: they would add seams to the page.
+    """
+    if image.width % 8 or not 8 <= image.width <= 1024 or image.height < 1:
+        raise ValueError('Invalid raster image dimensions.')
+    if not 1 <= fragment_height <= 512:
+        raise ValueError('Invalid raster fragment height.')
+    mono = image.convert('1', dither=Image.Dither.NONE)
+    dots = ImageOps.invert(mono.convert('L')).convert('1', dither=Image.Dither.NONE).tobytes()
+    row_bytes = image.width // 8
+    chunks = [b'\x1ba\x00']
+    for y in range(0, image.height, fragment_height):
+        height = min(fragment_height, image.height - y)
+        chunks.extend([b'\x1dv0\x00' + struct.pack('<HH', row_bytes, height),
+                       dots[y * row_bytes:(y + height) * row_bytes]])
+    return b''.join(chunks)
+
+
 def raster_logo(path, paper_width=576):
     """Return a centred GS v 0 bitmap, with black pixels encoded as set bits.
 

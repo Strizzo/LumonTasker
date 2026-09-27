@@ -20,7 +20,8 @@ from PIL import Image
 
 APP = Path(__file__).resolve().parents[1] / 'taskticket'
 sys.path.insert(0, str(APP))
-from printer.logo import raster_logo
+from printer.logo import raster_logo, raster_image
+from printer.ticket import render_ticket, format_ticket_text
 
 
 def printer_classes():
@@ -29,7 +30,8 @@ def printer_classes():
     nodes = [node for node in ast.parse(path.read_text()).body
              if isinstance(node, ast.ClassDef)]
     namespace = dict(dataclass=dataclass, Optional=Optional, Dict=Dict, os=os,
-                     Path=Path, raster_logo=raster_logo, __file__=str(path),
+                     Path=Path, raster_logo=raster_logo, raster_image=raster_image,
+                     render_ticket=render_ticket, format_ticket_text=format_ticket_text, __file__=str(path),
                      logger=logging.getLogger('ticket-check'))
     exec(compile(ast.Module(body=nodes, type_ignores=[]), str(path), 'exec'), namespace)
     return namespace
@@ -115,7 +117,7 @@ class TicketPrinting(unittest.TestCase):
         self.assertEqual([kind for kind, _ in calls], ['text', 'raw', 'text', 'text'])
         self.assertEqual(calls[1][1], raster_logo(APP / 'static/lumon-print.png'))
 
-    def test_task_ticket_requests_logo_and_propagates_write_failure(self):
+    def test_task_ticket_renders_full_slip_and_propagates_write_failure(self):
         tree = ast.parse((APP / 'core/task_manager.py').read_text())
         manager = next(node for node in tree.body if isinstance(node, ast.ClassDef) and node.name == 'TaskTicketManager')
         method = next(node for node in manager.body if isinstance(node, ast.FunctionDef) and node.name == 'print_task_ticket')
@@ -124,10 +126,36 @@ class TicketPrinting(unittest.TestCase):
         task = dict(ticket_title='Synthetic verification', estimated_time=15, motivation='Test only')
         namespace['print_task_ticket'](SimpleNamespace(printer=self.printer), task)
         self.assertIn(b'\x1dv0', self.output.read_bytes())
-        self.assertIn(b'Synthetic verification', self.output.read_bytes())
-        with patch.object(self.printer, 'print_text', return_value=False):
+        self.assertTrue(self.output.read_bytes().endswith(b'\n\x1d\x56\x41\x03'))
+        with patch.object(self.printer, 'print_task_ticket', return_value=False):
             with self.assertRaises(RuntimeError):
                 namespace['print_task_ticket'](SimpleNamespace(printer=self.printer), task)
+
+    def test_missing_font_falls_back_before_any_usb_write(self):
+        task=dict(ticket_title='Résumé\x1b@ test',estimated_time=15,selection_method='local')
+        with patch.dict(self.namespace, {'render_ticket':lambda *a,**k: (_ for _ in ()).throw(OSError('font missing'))}):
+            with patch.object(self.printer,'print_text',return_value=True) as fallback:
+                with self.assertLogs('ticket-check',level='WARNING'):
+                    self.assertTrue(self.printer.print_task_ticket(task))
+        self.assertFalse(self.output.exists())
+        text=fallback.call_args.args[0]
+        self.assertIn('WORK ASSIGNMENT',text)
+        self.assertNotIn('\x1b',text)
+
+    def test_image_usb_path_sends_one_complete_job(self):
+        calls=[]
+        self.printer.use_direct_access=False
+        self.printer.printer=SimpleNamespace(_raw=calls.append)
+        image=render_ticket(dict(ticket_title='Synthetic',estimated_time=15,selection_method='local'))
+        payload=raster_image(image)
+        self.assertTrue(self.printer.print_image_job(payload))
+        self.assertEqual(calls,[b'\x1b@'+payload+b'\n\x1d\x56\x41\x03'])
+
+    def test_failed_image_write_is_not_retried_or_reprinted_as_text(self):
+        with patch('builtins.open',side_effect=OSError('synthetic failure')) as writer:
+            with self.assertLogs('ticket-check',level='ERROR'):
+                self.assertFalse(self.printer.print_image_job(b'prepared bitmap'))
+        self.assertEqual(writer.call_count,1)
 
 
 if __name__ == '__main__':

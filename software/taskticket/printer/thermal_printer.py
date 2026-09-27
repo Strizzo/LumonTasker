@@ -8,7 +8,8 @@ from dotenv import load_dotenv
 import usb.core
 import usb.util
 from dataclasses import dataclass
-from printer.logo import raster_logo
+from printer.logo import raster_logo, raster_image
+from printer.ticket import render_ticket, format_ticket_text
 
 logger = logging.getLogger(__name__)
 
@@ -140,7 +141,7 @@ class ThermalPrinter:
             
         if not self.is_initialized and not self.initialize():
             return False
-            
+
         try:
             if self.use_direct_access:
                 # Print using direct file access
@@ -164,6 +165,39 @@ class ThermalPrinter:
             print(f"Printing error: {e}")
             import traceback
             traceback.print_exc()
+            return False
+
+    def print_task_ticket(self, task: Dict) -> bool:
+        """Render the full work slip; prepare all pixels before opening USB."""
+        try:
+            image = render_ticket(task, width=int(os.getenv('PRINTER_WIDTH_DOTS', '576')),
+                                  show_logo=os.getenv('PRINTER_TASK_LOGO', '1').lower() in ('1', 'true', 'yes'))
+            payload = raster_image(image)
+        except (OSError, ValueError):
+            logger.warning('Ticket artwork unavailable; using the native-text work slip.')
+            return self.print_text(format_ticket_text(task), logo=True)
+        return self.print_image_job(payload)
+
+    def print_image_job(self, payload: bytes) -> bool:
+        """Send one already-rendered ticket with one reset and one final cut."""
+        if self.debug_mode:
+            print('DEBUG: Lumon work-slip raster job (%d bytes), no USB write.' % len(payload))
+            return True
+        if not self.is_initialized and not self.initialize():
+            return False
+        # GS V A feeds the image to the cutter; one extra line avoids the
+        # previous four-line blank tail on every graphics-only ticket.
+        job = self.format.INIT.encode() + payload + b'\n\x1d\x56\x41\x03'
+        try:
+            if self.use_direct_access:
+                with open(self.printer_device, 'wb') as device:
+                    if device.write(job) != len(job):
+                        raise OSError('Incomplete ticket write')
+            else:
+                self.printer._raw(job)
+            return True
+        except Exception:
+            logger.exception('Work-slip printing failed; the job will not be retried automatically.')
             return False
 
     def test_printer(self) -> bool:

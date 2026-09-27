@@ -1,0 +1,46 @@
+{
+  "deployed_at": "2026-09-27T06:25:25.741092+00:00",
+  "backup": "/home/srizzo/taskticket/backups/work-slip-20260927T062508Z",
+  "changed_files": [
+    "printer/thermal_printer.py",
+    "core/task_manager.py",
+    "printer/logo.py",
+    "printer/ticket.py",
+    "static/fonts/DejaVuSansMono-Bold.ttf"
+  ],
+  "sha256": {
+    "printer/thermal_printer.py": "e0023ede9390e88ade342fea7ac67d1b4281f876942e5102be33ca1f8fc8e5e5",
+    "core/task_manager.py": "8e3517afeb337b8dbba39073e3d2c231229486e0cf5866cb7c259aea157d82b0",
+    "printer/logo.py": "22cdf3c54b3c63ca0f68e0cfbb9b85611919ac4a498d02a74fef85b393857839",
+    "printer/ticket.py": "8c84fd8d09b86b2f937c6f5cb51ae290fdef7b552b615a27634d8eb78921c96e",
+    "static/fonts/DejaVuSansMono-Bold.ttf": "d9b4f6116035fc25046647e5fea8532021f01c4f89bb2545d0a6dc6e1e9e865d"
+  },
+  "logo_enabled": true,
+  "ticket_style": "Lumon work assignment, FORM MDR / 01",
+  "layout": "576-dot monochrome bitmap with 128-row contiguous strips",
+  "paper_width_dots": 576,
+  "logo_hardware_support": "Previously confirmed clear and complete by the user.",
+  "full_slip_physical_proof": {
+    "attempted_at": "2026-09-27T06:26:04.802255+00:00",
+    "artwork_dimensions": [
+      576,
+      706
+    ],
+    "label": "LAYOUT PROOF / NO TASK ISSUED",
+    "physical_result": "Awaiting visual confirmation",
+    "bytes_prepared": 50890,
+    "usb_job_accepted": true,
+    "history_unchanged": true
+  },
+  "synthetic_job_capture_passed": true,
+  "terminal_http_status": 200,
+  "history_unchanged": true,
+  "subscriber_pid_unchanged": true,
+  "real_tasks_printed_during_deployment": 0,
+  "isolated_checks_passed": 39,
+  "live_services": {
+    "taskiosk.service": "active",
+    "thermal-printer-subscriber.service": "active"
+  },
+  "terminal_status_ok": true
+}

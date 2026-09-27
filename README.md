@@ -61,6 +61,7 @@ python software/preview/check_backend.py
 python software/preview/check_selection.py
 python software/preview/check_routes.py
 python software/preview/check_printer.py
+python software/preview/check_ticket.py
 python software/preview/server.py
 ```
 

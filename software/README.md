@@ -59,6 +59,20 @@ assets to avoid stale pages after an update.
   invalid card ID falls back to local selection, with a ten-minute cooldown
   before trying AI again. Ordinary use currently makes no OpenRouter calls.
 
+## Printed task tickets
+
+Task tickets now use a compact Lumon work-assignment form: globe, department
+heading, issue reference, date, task, focus allowance and completion checkboxes.
+One monospace family, two weights and thin rules keep it restrained. The
+stationery is an original themed design. The old random euro-value line is gone.
+See the [actual printer-width preview and layout notes](preview/tickets/README.md).
+
+The entire slip is rendered as a monochrome bitmap, including accented text.
+Typical artwork is about 85 mm long, plus the cutter margin; longer titles wrap
+and extend the paper. A single synthetic layout-proof receipt was sent without
+issuing a real task. Its physical appearance awaits the user's visual check;
+the raster pixels, margins and USB delivery passed automated verification.
+
 ## Optional settings
 
 Defaults work without changes to the existing Pi configuration:
@@ -69,7 +83,7 @@ Defaults work without changes to the existing Pi configuration:
 | `TASKTICKET_AI_MODEL` | `qwen/qwen3.7-flash` | Optional OpenRouter model. |
 | `TASKTICKET_FOCUS_MINUTES` | `15` | Focus timer duration, bounded to 1–120. |
 | `TASKTICKET_TIMEZONE` | `Europe/Luxembourg` | Selection schedule and UI clock. |
-| `PRINTER_TASK_LOGO` | `1` | Print the Lumon bitmap above task-ticket text; set to `0` for text-only tickets. |
+| `PRINTER_TASK_LOGO` | `1` | Include the Lumon globe on the work slip; set to `0` to omit it. |
 | `PRINTER_WIDTH_DOTS` | `576` | Printable dot width for centring the logo on the POS80. |
 
 Optional AI uses the existing `OPENROUTER_API_KEY` on the Pi. The prompt is
@@ -86,18 +100,17 @@ task history. Deployment preserved the Pi's credentials and history.
 
 The POS80 also prints graphics. On 27 September, one standalone “LUMON LOGO
 TEST” receipt was sent using ESC/POS `GS v 0`; the user confirmed that the globe
-was clear and complete. Normal task tickets now include the same 320 × 164-dot
-monochrome logo, centred above the text. Logo, text and the final cut form one
-job. Missing artwork or an invalid width setting falls back to text-only output;
-a failed printer write raises an error before the task is recorded as issued.
+was clear and complete. The initial release used a 320 × 164-dot globe above
+native printer text. The full work-slip layout now replaces that format.
 The test did not select a Trello card or change task history. The separate
 message-printing service was not changed.
 
-Eight isolated printer checks cover bitmap polarity and placement, both USB
-paths, text-only fallback, a single final cut and failed writes. A route check
-also verifies that a failed ticket does not create an issued-task history entry.
-The deployed printer class was checked by capturing a synthetic job in a
-temporary file, without writing another physical receipt.
+The current release passed 39 isolated checks on the Pi, including eleven
+printer checks and six ticket-layout checks. They cover bitmap polarity, both
+USB paths, native-text fallback, one final cut, failure handling, long and accented
+titles, print margins and lossless raster-strip reconstruction. A failed write
+does not create an issued-task history entry or automatically retry a partial
+ticket. The deployed class also captured a synthetic job in a temporary file.
 
 Read-only live checks authenticated to Trello, confirmed the board was open,
 and found **11 TODO, 0 DOING and 19 BTN** cards. A dry run using the deployed
@@ -124,6 +137,7 @@ python3 software/preview/check_backend.py
 python3 software/preview/check_selection.py
 python3 software/preview/check_routes.py
 python3 software/preview/check_printer.py
+python3 software/preview/check_ticket.py
 ```
 
 `preview/server.py` provides an isolated UI preview at `127.0.0.1:8655`.
@@ -138,10 +152,16 @@ Both `taskiosk.service` and `thermal-printer-subscriber.service` were active
 after deployment. The MQTT subscriber's PID stayed unchanged. The teleprint
 container and broker on mothra were inspected without changes or test messages.
 Physical ticket printing, card completion and Telegram delivery were not
-triggered during these checks. Tap **New Task** on the terminal to exercise the
-physical task workflow when wanted.
+triggered during the earlier UI/backend checks. The subsequent logo and
+work-slip proofs are described above. Tap **New Task** on the terminal to
+exercise the physical task workflow when wanted.
 
 ## Deployment and recovery
+
+The work-slip release is recorded in `release/work-slip-deployment.json`.
+To restore the preceding logo-plus-text layout, stop `taskiosk.service`, restore
+`printer/thermal_printer.py`, `printer/logo.py` and `core/task_manager.py` from
+that backup, then start the kiosk. The unused renderer and bold font can remain.
 
 The ticket-logo release is recorded in `release/ticket-logo-deployment.json`.
 To undo it, stop `taskiosk.service`, restore its backed-up
