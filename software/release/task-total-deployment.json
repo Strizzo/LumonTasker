@@ -1,0 +1,22 @@
+{
+  "deployed_at": "2026-09-29T07:41:53.272807+00:00",
+  "backup": "/home/srizzo/taskticket/backups/task-total-20260929T074139Z",
+  "changed_files": [
+    "main.py",
+    "templates/terminal.html",
+    "templates/terminal_mdr.html",
+    "static/terminal.js",
+    "static/terminal-shared.css"
+  ],
+  "history_unchanged": true,
+  "subscriber_pid_unchanged": true,
+  "deployed_sha256": {
+    "main.py": "620fb4b6f889691ee9b05650577f40bac91d8ccd5ff5d26d85d7fd04333fa55f",
+    "templates/terminal.html": "8d2a93f924291d404c902d7959feba99014d77d0083d04f3ec316a0e93b14c88",
+    "templates/terminal_mdr.html": "da741ffb5c50519677a57cf3551333a7c8db78847100c5aec5c6214e433c00d4",
+    "static/terminal.js": "7c69abb1534ceffb5e4e3e57632aa8a1682ebc32f01fb802214f67e7e181a2ae",
+    "static/terminal-shared.css": "f1779e4deb8203bef7348d6d5fadaa87c5e809bf19c11d2329dea14901f20b10"
+  },
+  "version": "Total focus across regular tasks, excluding BTN",
+  "rollback": "Stop taskiosk.service, restore changed_files from backup, then start taskiosk.service."
+}

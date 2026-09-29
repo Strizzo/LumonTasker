@@ -13,6 +13,7 @@ html, body, *, *::before, *::after { cursor: none !important; }
 .picker-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .picker-heading h2 { font-size: 16px; margin: 0; }
 #pickerPage { white-space: nowrap; font-size: 12px; }
+.picker-summary { display: flex; flex-direction: column; align-items: flex-end; font-size: 12px; line-height: 1.4; white-space: nowrap; }
 #pickerNotice { margin: 0; font-size: 15px; }
 .task-grid { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 8px; }
 .task-card { min-height: 0; min-width: 0; padding: 6px 9px; display: flex; flex-direction: column; justify-content: center; align-items: stretch; text-align: left; gap: 3px; overflow: hidden; }

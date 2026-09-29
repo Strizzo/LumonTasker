@@ -15,6 +15,7 @@
   let pickerPage = 0;
   let pickerGroup = null;
   let pickerRootPage = 0;
+  let pickerFocusMinutes = null;
   let pickerError = false;
   let selectedTask = null;
   const pageSize = 9;
@@ -140,6 +141,20 @@
     el('taskGrid').replaceChildren();
     el('pickerHeading').textContent = pickerGroup ? 'Better Than Nothing' : 'Choose your assignment';
     el('pickerPage').textContent = entries.length ? `${pickerPage + 1}/${pages} · ${entries.length} ${pickerGroup ? 'TASKS' : 'CARDS'}` : '';
+    // Sum the full queue, never the current page or the BTN group card.
+    const regularCount = pickerTasks.filter(task => task.source_list === 'TODO' || task.source_list === 'DOING').length;
+    const showTotal = !pickerGroup && !pickerError && pickerFocusMinutes !== null;
+    el('pickerTotal').hidden = !showTotal;
+    if (showTotal) {
+      const minutes = regularCount * pickerFocusMinutes;
+      const hours = Math.floor(minutes / 60);
+      const duration = hours ? `${hours}h${minutes % 60 ? ` ${minutes % 60}m` : ''}` : `${minutes}m`;
+      el('pickerTotal').textContent = `TOTAL FOCUS: ${duration}`;
+      el('pickerTotal').title = `${regularCount} regular tasks × ${pickerFocusMinutes} min per focus session, across all pages. Better Than Nothing excluded. This is planned focus time, not a completion-time estimate.`;
+    } else {
+      el('pickerTotal').textContent = '';
+      el('pickerTotal').removeAttribute('title');
+    }
     el('pickerNotice').hidden = !pickerError && entries.length > 0;
     if (!pickerError) el('pickerNotice').textContent = pickerGroup ? 'No open tasks in this group. Refresh or return to the main list.' : 'No open tasks in Trello. Add a task, then refresh.';
     for (const task of entries.slice(pickerPage * pageSize, (pickerPage + 1) * pageSize)) {
@@ -183,6 +198,7 @@
     pickerError = false;
     pickerTasks = [];
     pickerPage = 0;
+    pickerFocusMinutes = null;
     renderPicker();
     el('pickerNotice').textContent = 'Retrieving task files…';
     try {
@@ -190,6 +206,7 @@
       const result = await response.json();
       if (!response.ok || !result.success || !Array.isArray(result.tasks)) throw new Error('Tasks unavailable');
       pickerTasks = result.tasks;
+      pickerFocusMinutes = Number.isInteger(result.focus_minutes) && result.focus_minutes > 0 ? result.focus_minutes : null;
       online = true;
     } catch (_) {
       pickerError = true;

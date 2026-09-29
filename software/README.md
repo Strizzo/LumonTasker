@@ -17,6 +17,12 @@ It opens a 3 × 3 grid of Trello cards, with Previous/Next for additional pages.
 DOING and TODO tasks appear directly; **Better Than Nothing** appears as one
 group card showing its task count. Tap it to browse its own 3 × 3 grid.
 **Back to Main** returns to the parent page, and the group itself never prints.
+The main grid shows **Total focus** beside the page count: the number of open
+DOING/TODO tasks across every page multiplied by the configured focus-session
+duration (currently 15 minutes). Better Than Nothing tasks and the group card
+are excluded. This is planned focus time, not a prediction of completion time;
+the app does not currently store individual task-duration estimates. The total
+is hidden inside the nested group, while loading, and on errors.
 Tap a card to read its full title, then **Start & Print** to issue that specific
 task and start its normal focus timer. Back returns to the same grid page.
 Both layouts support the picker; **M** opens it and Escape goes back.
@@ -183,6 +189,10 @@ work-slip proofs are described above. Tap **New Task** on the terminal to
 exercise the physical task workflow when wanted.
 
 ## Deployment and recovery
+
+The grid's total-focus display is recorded in `release/task-total-deployment.json`.
+Restore its five `changed_files` from the recorded backup and restart
+`taskiosk.service` to undo that display and its duration metadata.
 
 The nested Better Than Nothing group is recorded in
 `release/grouped-tasks-deployment.json`. It updates only the shared script and

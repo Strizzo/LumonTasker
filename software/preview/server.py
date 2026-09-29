@@ -7,7 +7,7 @@ from urllib.parse import urlparse, parse_qs
 
 ROOT = Path(__file__).resolve().parents[1] / "taskticket"
 state = {"print_calls": 0, "fail_action": False, "fail_print": False, "offline": False, "current_task": None, "started_at": None,
-         "fail_tasks": False, "empty_tasks": False, "list_calls": 0, "last_print_body": None, "task_filter": None}
+         "fail_tasks": False, "empty_tasks": False, "list_calls": 0, "last_print_body": None, "task_filter": None, "focus_minutes": 15}
 titles = ['Sort the parts on the workbench', 'Take a walk', 'Review the next enclosure revision',
           'Read another chapter', 'Organise the photographs from the last two weekends of building the terminal',
           'Water the plants', 'Back up the project files', 'Prepare tomorrow’s lunch', 'Tidy the desk',
@@ -42,7 +42,7 @@ class Preview(SimpleHTTPRequestHandler):
             if state['task_filter'] == 'btn_only': listed = [t for t in tasks if t['source_list'] == 'BTN']
             if state['task_filter'] == 'without_btn': listed = [t for t in tasks if t['source_list'] != 'BTN']
             if state['task_filter'] == 'single_todo': listed = [tasks[1]] + [t for t in tasks if t['source_list'] == 'BTN']
-            return self.json({'success': False},503) if state['fail_tasks'] else self.json({'success': True, 'tasks': [] if state['empty_tasks'] else listed})
+            return self.json({'success': False},503) if state['fail_tasks'] else self.json({'success': True, 'tasks': [] if state['empty_tasks'] else listed, 'focus_minutes': state['focus_minutes']})
         if url.path == "/current_task":
             return self.json({"task": state["current_task"], "started_at": state["started_at"]})
         if self.path.split("?")[0] == "/terminal_status":

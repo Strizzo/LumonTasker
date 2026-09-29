@@ -257,7 +257,8 @@ def list_tasks():
     """Read-only manual picker: no printing, selection, or history writes."""
     try:
         tasks = asyncio.run(task_manager.selector.list_tasks(task_manager.trello))
-        response = jsonify({'success': True, 'tasks': tasks})
+        response = jsonify({'success': True, 'tasks': tasks,
+                            'focus_minutes': task_manager.selector.focus_minutes})
     except TrelloUnavailable:
         response = jsonify({'success': False, 'message': 'Trello is unavailable. Please try again.'})
         response.status_code = 503

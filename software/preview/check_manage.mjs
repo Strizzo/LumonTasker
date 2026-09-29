@@ -45,7 +45,7 @@ await call('Runtime.enable');
 await call('Emulation.setDeviceMetricsOverride', { width: 800, height: 480, deviceScaleFactor: 1, mobile: false });
 for (const theme of ['classic', 'mdr']) {
   await state({ print_calls: 0, fail_action: false, fail_print: false, offline: false, current_task: null,
-    started_at: null, fail_tasks: false, empty_tasks: false, list_calls: 0, last_print_body: null, task_filter: null });
+    started_at: null, fail_tasks: false, empty_tasks: false, list_calls: 0, last_print_body: null, task_filter: null, focus_minutes: 15 });
   await call('Page.navigate', { url: `http://127.0.0.1:8655/display?theme=${theme}` });
   await until('document.getElementById("connectionState")?.textContent === "STATUS: READY"');
   await evaluate('document.fonts.ready');
@@ -56,6 +56,8 @@ for (const theme of ['classic', 'mdr']) {
   await until('document.getElementById("connectionState").textContent === "STATUS: BROWSING"');
   assert.equal(await evaluate('document.querySelectorAll(".task-card").length'), 9);
   assert.equal(await evaluate('document.getElementById("pickerPage").textContent'), '1/2 · 12 CARDS');
+  assert.equal(await evaluate('document.getElementById("pickerTotal").textContent'), 'TOTAL FOCUS: 2h 45m', 'All 11 regular tasks, including DOING and the next page, count; the 19 BTN tasks do not');
+  assert.equal(await evaluate('document.getElementById("pickerTotal").hidden'), false);
   assert.equal(await evaluate('document.getElementById("pickerPrevious").disabled'), true);
   const bounds = await evaluate(`Array.from(document.querySelectorAll('.task-card')).map(b => {
     const r=b.getBoundingClientRect(); return {x:r.x,y:r.y,w:r.width,h:r.height,right:r.right,bottom:r.bottom,scroll:b.scrollWidth,client:b.clientWidth}; })`);
@@ -66,6 +68,7 @@ for (const theme of ['classic', 'mdr']) {
   assert.equal(await evaluate('Array.from(document.querySelectorAll("button")).every(b => getComputedStyle(b).cursor === "none")'), true);
   await screenshot(`${theme}-grid`);
   await click('pickerNext');
+  assert.equal(await evaluate('document.getElementById("pickerTotal").textContent'), 'TOTAL FOCUS: 2h 45m', 'Changing page preserves the full-queue total');
   assert.equal(await evaluate('document.querySelectorAll(".task-card").length'), 3);
   assert.equal(await evaluate('document.getElementById("pickerNext").disabled'), true);
   assert.equal(await evaluate('document.querySelectorAll("[data-group=BTN]").length'), 1);
@@ -73,6 +76,7 @@ for (const theme of ['classic', 'mdr']) {
   await screenshot(`${theme}-page2`);
   await evaluate('document.querySelector("[data-group=BTN]").click()');
   assert.equal(await evaluate('document.getElementById("pickerHeading").textContent'), 'Better Than Nothing');
+  assert.equal(await evaluate('document.getElementById("pickerTotal").hidden'), true);
   assert.equal(await evaluate('document.getElementById("pickerPage").textContent'), '1/3 · 19 TASKS');
   assert.equal(await evaluate('document.querySelectorAll(".task-card").length'), 9);
   assert.equal(await evaluate('document.getElementById("pickerStart").hidden'), true, 'A group is not a printable task');
@@ -96,6 +100,7 @@ for (const theme of ['classic', 'mdr']) {
   assert.equal(await evaluate('document.getElementById("pickerPage").textContent'), '1/3 · 19 TASKS');
   await click('pickerBack');
   assert.equal(await evaluate('document.getElementById("pickerPage").textContent'), '2/2 · 12 CARDS', 'Back restores the parent page');
+  assert.equal(await evaluate('document.getElementById("pickerTotal").textContent'), 'TOTAL FOCUS: 2h 45m');
   await evaluate('document.querySelector("[data-group=BTN]").click()');
   await evaluate('document.querySelector(".task-card").click()');
   await screenshot(`${theme}-detail`);
@@ -119,12 +124,14 @@ for (const theme of ['classic', 'mdr']) {
   await click('manageBtn');
   await until('!document.getElementById("pickerRetry").disabled');
   assert.equal(await evaluate('document.getElementById("pickerNotice").textContent.includes("Unable to load tasks")'), true);
+  assert.equal(await evaluate('document.getElementById("pickerTotal").hidden'), true, 'Offline must not show a stale or zero total');
   assert.equal(await evaluate('document.querySelectorAll(".task-card").length'), 0);
   await screenshot(`${theme}-offline`);
   await state({ fail_tasks: false, empty_tasks: true });
   await click('pickerRetry');
   await until('document.getElementById("pickerNotice").textContent.includes("No open tasks")');
   assert.equal(await evaluate('document.getElementById("pickerRetry").textContent'), 'REFRESH');
+  assert.equal(await evaluate('document.getElementById("pickerTotal").textContent'), 'TOTAL FOCUS: 0m');
   await state({ empty_tasks: false });
   await click('pickerRetry');
   await until('document.querySelectorAll(".task-card").length === 9');
@@ -132,6 +139,7 @@ for (const theme of ['classic', 'mdr']) {
   await state({ fail_print: true });
   await click('pickerStart');
   await until('document.getElementById("pickerNotice").textContent.includes("no longer available")');
+  assert.equal(await evaluate('document.getElementById("pickerTotal").hidden'), true, 'Stale-card error hides the old total');
   assert.equal(await evaluate('document.getElementById("pickerStart").hidden'), true);
   assert.equal((await state({})).current_task, null);
   await state({ fail_print: false });
@@ -149,6 +157,7 @@ for (const theme of ['classic', 'mdr']) {
     await state({ task_filter: filter });
     await click('manageBtn');
     await until('document.getElementById("connectionState").textContent === "STATUS: BROWSING"');
+    assert.equal(await evaluate('document.getElementById("pickerTotal").textContent'), filter === 'btn_only' ? 'TOTAL FOCUS: 0m' : filter === 'single_todo' ? 'TOTAL FOCUS: 15m' : 'TOTAL FOCUS: 2h 45m');
     if (filter === 'without_btn') {
       await click('pickerNext');
       assert.equal(await evaluate('document.querySelectorAll("[data-group=BTN]").length'), 0);
@@ -164,6 +173,17 @@ for (const theme of ['classic', 'mdr']) {
     await click('pickerBack');
   }
   await state({ task_filter: null });
+  await state({ focus_minutes: 30 });
+  await click('manageBtn');
+  await until('document.getElementById("connectionState").textContent === "STATUS: BROWSING"');
+  assert.equal(await evaluate('document.getElementById("pickerTotal").textContent'), 'TOTAL FOCUS: 5h 30m', 'Use configured duration, not hard-coded 15');
+  await click('pickerBack');
+  await state({ focus_minutes: null });
+  await click('manageBtn');
+  await until('document.getElementById("connectionState").textContent === "STATUS: BROWSING"');
+  assert.equal(await evaluate('document.getElementById("pickerTotal").hidden'), true, 'Missing duration must not invent an estimate');
+  await click('pickerBack');
+  await state({ focus_minutes: 15 });
   await click('newTaskBtn');
   await until('document.getElementById("connectionState").textContent === "STATUS: REFINING"');
   assert.deepEqual((await state({})).last_print_body, {}, 'New Task still uses automatic selection');
@@ -171,6 +191,8 @@ for (const theme of ['classic', 'mdr']) {
 assert.deepEqual(exceptions, []);
 const report = { viewport: '800x480', themes: ['classic', 'mdr'], grid: '3x3',
   btn_group_is_one_card: true, nested_pagination_and_back_restore_parent: true,
+  total_focus_includes_all_regular_pages_excludes_btn: true, total_uses_server_duration: true,
+  total_hidden_in_nested_grid_and_on_errors: true,
   only_btn_no_btn_and_single_todo_checked: true, nested_selection_retains_btn_source: true,
   browsing_never_prints: true, full_title_before_printing: true, double_tap_protected: true,
   manual_restore_preserves_timer: true, empty_offline_stale_and_retry_checked: true,

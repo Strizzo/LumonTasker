@@ -26,7 +26,7 @@ class Manager:
     def __init__(self):
         self.history=History(); self.printed=[]; self.moved=[]; self.current_task=None; self.trello=None
         async def select(*args): return {'task_id':'a','source_list':'TODO'}
-        self.selector=SimpleNamespace(get_next_task=select)
+        self.selector=SimpleNamespace(get_next_task=select, focus_minutes=15)
     def print_task_ticket(self, task): self.printed.append(task)
     async def move_task_to_done(self, id, source): self.moved.append(id); return True
 
@@ -68,8 +68,10 @@ class Routes(unittest.TestCase):
     def test_browsing_does_not_print_or_issue_and_is_not_cached(self):
         async def listing(*args): return [{'task_id':'b','title':'Pick this','source_list':'TODO'}]
         self.manager.selector.list_tasks=listing
+        self.manager.selector.focus_minutes=25
         response=self.namespace['list_tasks']()
         self.assertEqual(response['tasks'][0]['task_id'],'b')
+        self.assertEqual(response['focus_minutes'],25)
         self.assertEqual(response.headers['Cache-Control'],'no-store')
         self.assertEqual(self.manager.printed,[]); self.assertEqual(self.manager.history.issued,[])
 

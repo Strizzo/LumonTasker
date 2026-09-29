@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lumon · Task Refinement</title>
   <link rel="stylesheet" href="/static/terminal-mdr.css?v=4">
-  <link rel="stylesheet" href="/static/terminal-shared.css?v=5">
-  <script defer src="/static/terminal.js?v=6"></script>
+  <link rel="stylesheet" href="/static/terminal-shared.css?v=7">
+  <script defer src="/static/terminal.js?v=7"></script>
 </head>
 <body>
   <main class="terminal">
@@ -24,7 +24,7 @@
         <p id="taskDescription">Select New Task for an assignment, or Manage to choose one.<br>Please enjoy your work equally.</p>
       </div>
       <section class="task-picker" id="taskPicker" hidden aria-label="Choose a task">
-        <div class="picker-heading"><h2 id="pickerHeading">Choose your assignment</h2><span id="pickerPage" aria-live="polite"></span></div>
+        <div class="picker-heading"><h2 id="pickerHeading">Choose your assignment</h2><div class="picker-summary"><span id="pickerPage" aria-live="polite"></span><span id="pickerTotal" hidden></span></div></div>
         <p id="pickerNotice" role="status" hidden></p>
         <div class="task-grid" id="taskGrid"></div>
       </section>
