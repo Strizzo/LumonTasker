@@ -45,7 +45,7 @@ await call('Runtime.enable');
 await call('Emulation.setDeviceMetricsOverride', { width: 800, height: 480, deviceScaleFactor: 1, mobile: false });
 for (const theme of ['classic', 'mdr']) {
   await state({ print_calls: 0, fail_action: false, fail_print: false, offline: false, current_task: null,
-    started_at: null, fail_tasks: false, empty_tasks: false, list_calls: 0, last_print_body: null });
+    started_at: null, fail_tasks: false, empty_tasks: false, list_calls: 0, last_print_body: null, task_filter: null });
   await call('Page.navigate', { url: `http://127.0.0.1:8655/display?theme=${theme}` });
   await until('document.getElementById("connectionState")?.textContent === "STATUS: READY"');
   await evaluate('document.fonts.ready');
@@ -55,7 +55,7 @@ for (const theme of ['classic', 'mdr']) {
   await click('manageBtn');
   await until('document.getElementById("connectionState").textContent === "STATUS: BROWSING"');
   assert.equal(await evaluate('document.querySelectorAll(".task-card").length'), 9);
-  assert.equal(await evaluate('document.getElementById("pickerPage").textContent'), '1/2 · 15 TASKS');
+  assert.equal(await evaluate('document.getElementById("pickerPage").textContent'), '1/2 · 12 CARDS');
   assert.equal(await evaluate('document.getElementById("pickerPrevious").disabled'), true);
   const bounds = await evaluate(`Array.from(document.querySelectorAll('.task-card')).map(b => {
     const r=b.getBoundingClientRect(); return {x:r.x,y:r.y,w:r.width,h:r.height,right:r.right,bottom:r.bottom,scroll:b.scrollWidth,client:b.clientWidth}; })`);
@@ -66,24 +66,46 @@ for (const theme of ['classic', 'mdr']) {
   assert.equal(await evaluate('Array.from(document.querySelectorAll("button")).every(b => getComputedStyle(b).cursor === "none")'), true);
   await screenshot(`${theme}-grid`);
   await click('pickerNext');
-  assert.equal(await evaluate('document.querySelectorAll(".task-card").length'), 6);
+  assert.equal(await evaluate('document.querySelectorAll(".task-card").length'), 3);
   assert.equal(await evaluate('document.getElementById("pickerNext").disabled'), true);
-  assert.equal(await evaluate('document.querySelectorAll(".task-card img").length'), 0, 'Card titles are text, never HTML');
+  assert.equal(await evaluate('document.querySelectorAll("[data-group=BTN]").length'), 1);
+  assert.equal(await evaluate('document.querySelector("[data-group=BTN] .task-card-source").textContent'), '19 TASKS →');
   await screenshot(`${theme}-page2`);
+  await evaluate('document.querySelector("[data-group=BTN]").click()');
+  assert.equal(await evaluate('document.getElementById("pickerHeading").textContent'), 'Better Than Nothing');
+  assert.equal(await evaluate('document.getElementById("pickerPage").textContent'), '1/3 · 19 TASKS');
+  assert.equal(await evaluate('document.querySelectorAll(".task-card").length'), 9);
+  assert.equal(await evaluate('document.getElementById("pickerStart").hidden'), true, 'A group is not a printable task');
+  assert.equal(await evaluate('document.querySelectorAll(".task-card img").length'), 0, 'Card titles are text, never HTML');
+  await screenshot(`${theme}-btn-grid`);
+  await click('pickerNext');
+  await click('pickerNext');
+  assert.equal(await evaluate('document.querySelectorAll(".task-card").length'), 1);
+  assert.equal(await evaluate('document.getElementById("pickerNext").disabled'), true);
+  await click('pickerPrevious');
+  await evaluate('document.querySelector(".task-card").click()');
+  await click('pickerBack');
+  assert.equal(await evaluate('document.getElementById("pickerPage").textContent'), '2/3 · 19 TASKS', 'Detail returns to the same nested page');
+  await click('pickerPrevious');
   assert.equal((await state({})).print_calls, 0, 'Browsing and pagination cannot print');
-  await evaluate('document.querySelectorAll(".task-card")[5].click()');
+  assert.equal((await state({})).list_calls, 1, 'Opening the group needs no extra request');
+  await evaluate('document.querySelectorAll(".task-card")[3].click()');
   assert.equal(await evaluate('document.getElementById("taskTitle").textContent'), 'A_very_long_unbroken_task_title_that_must_wrap_without_expanding_the_card');
   assert.equal((await state({})).print_calls, 0, 'Inspecting a card cannot print');
   await click('pickerBack');
-  assert.equal(await evaluate('document.getElementById("pickerPage").textContent'), '2/2 · 15 TASKS', 'Back preserves the browsing page');
+  assert.equal(await evaluate('document.getElementById("pickerPage").textContent'), '1/3 · 19 TASKS');
+  await click('pickerBack');
+  assert.equal(await evaluate('document.getElementById("pickerPage").textContent'), '2/2 · 12 CARDS', 'Back restores the parent page');
+  await evaluate('document.querySelector("[data-group=BTN]").click()');
   await evaluate('document.querySelector(".task-card").click()');
   await screenshot(`${theme}-detail`);
   await evaluate('document.getElementById("pickerStart").click();document.getElementById("pickerStart").click()');
   await until('document.getElementById("connectionState").textContent === "STATUS: REFINING"');
   let after = await state({});
   assert.equal(after.print_calls, 1, 'Double tap prints only one selected ticket');
-  assert.deepEqual(after.last_print_body, { task_id: 'manual-9' });
-  assert.equal(await evaluate('document.getElementById("taskTitle").textContent'), 'Check the printer paper');
+  assert.deepEqual(after.last_print_body, { task_id: 'manual-11' });
+  assert.equal(after.current_task.source_list, 'BTN', 'Nested selection retains reusable-task semantics');
+  assert.equal(await evaluate('document.getElementById("taskTitle").textContent'), 'Clean the kitchen');
   assert.equal(await evaluate('document.getElementById("manageBtn").hidden'), true);
   assert.equal(await evaluate('!document.getElementById("yesBtn").hidden && !document.getElementById("taskTimer").hidden'), true);
   const start = await evaluate('JSON.parse(sessionStorage.getItem("lumon-task")).started_at');
@@ -123,12 +145,33 @@ for (const theme of ['classic', 'mdr']) {
   await state({ fail_print: false });
   await click('pickerBack');
   await click('pickerBack');
+  for (const filter of ['btn_only', 'without_btn', 'single_todo']) {
+    await state({ task_filter: filter });
+    await click('manageBtn');
+    await until('document.getElementById("connectionState").textContent === "STATUS: BROWSING"');
+    if (filter === 'without_btn') {
+      await click('pickerNext');
+      assert.equal(await evaluate('document.querySelectorAll("[data-group=BTN]").length'), 0);
+      assert.equal(await evaluate('document.getElementById("pickerPage").textContent'), '2/2 · 11 CARDS');
+    } else {
+      assert.equal(await evaluate('document.querySelectorAll(".task-card").length'), filter === 'btn_only' ? 1 : 2);
+      assert.equal(await evaluate('document.querySelectorAll("[data-group=BTN]").length'), 1);
+      if (filter === 'single_todo') await screenshot(`${theme}-grouped-main`);
+      await evaluate('document.querySelector("[data-group=BTN]").click()');
+      assert.equal(await evaluate('document.getElementById("pickerPage").textContent'), '1/3 · 19 TASKS');
+      await click('pickerBack');
+    }
+    await click('pickerBack');
+  }
+  await state({ task_filter: null });
   await click('newTaskBtn');
   await until('document.getElementById("connectionState").textContent === "STATUS: REFINING"');
   assert.deepEqual((await state({})).last_print_body, {}, 'New Task still uses automatic selection');
 }
 assert.deepEqual(exceptions, []);
 const report = { viewport: '800x480', themes: ['classic', 'mdr'], grid: '3x3',
+  btn_group_is_one_card: true, nested_pagination_and_back_restore_parent: true,
+  only_btn_no_btn_and_single_todo_checked: true, nested_selection_retains_btn_source: true,
   browsing_never_prints: true, full_title_before_printing: true, double_tap_protected: true,
   manual_restore_preserves_timer: true, empty_offline_stale_and_retry_checked: true,
   titles_are_plain_text: true, automatic_selection_preserved: true, browser_exceptions: exceptions };

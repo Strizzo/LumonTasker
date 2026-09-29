@@ -1,0 +1,18 @@
+{
+  "deployed_at": "2026-09-29T07:26:23.880877+00:00",
+  "backup": "/home/srizzo/taskticket/backups/grouped-tasks-20260929T072610Z",
+  "changed_files": [
+    "templates/terminal.html",
+    "templates/terminal_mdr.html",
+    "static/terminal.js"
+  ],
+  "history_unchanged": true,
+  "subscriber_pid_unchanged": true,
+  "deployed_sha256": {
+    "templates/terminal.html": "d5d0a81218d540d54dbce882fb842d62e7217d79c354b97a97db98a8e8e1da6b",
+    "templates/terminal_mdr.html": "3bab65c2e0d02653dc3246c777a13d785664ae1cef2524cead452f4532120863",
+    "static/terminal.js": "3be487fc1eb205d5ef90602d462f9d05c3a5b8a30079e491ddf582b4403ae562"
+  },
+  "version": "Nested Better Than Nothing group, both layouts",
+  "rollback": "Stop taskiosk.service, restore changed_files from backup, then start taskiosk.service."
+}

@@ -5,6 +5,10 @@
     "mdr"
   ],
   "grid": "3x3",
+  "btn_group_is_one_card": true,
+  "nested_pagination_and_back_restore_parent": true,
+  "only_btn_no_btn_and_single_todo_checked": true,
+  "nested_selection_retains_btn_source": true,
   "browsing_never_prints": true,
   "full_title_before_printing": true,
   "double_tap_protected": true,

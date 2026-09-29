@@ -14,6 +14,9 @@ to switch between them. The screenshot from the Pi is
 
 On the idle screen, **Manage** replaces the inactive Complete/Skip buttons.
 It opens a 3 × 3 grid of Trello cards, with Previous/Next for additional pages.
+DOING and TODO tasks appear directly; **Better Than Nothing** appears as one
+group card showing its task count. Tap it to browse its own 3 × 3 grid.
+**Back to Main** returns to the parent page, and the group itself never prints.
 Tap a card to read its full title, then **Start & Print** to issue that specific
 task and start its normal focus timer. Back returns to the same grid page.
 Both layouts support the picker; **M** opens it and Escape goes back.
@@ -158,7 +161,7 @@ python3 software/preview/check_ticket.py
 Manual-selection checks are included in `check_selection.py` and
 `check_routes.py`. With the preview server and isolated Chrome running as below,
 `node software/preview/check_manage.mjs` checks both layouts at 800 × 480:
-pagination, full-title inspection, cursor hiding, safe text rendering,
+nested grouping and pagination, parent-page restoration, full-title inspection, cursor hiding, safe text rendering,
 double-tap protection, session restoration, empty/offline/stale-card handling,
 and returning to automatic selection. Results are in
 `preview/manage-ui-check.json`; these checks use synthetic tasks and do not print.
@@ -180,6 +183,11 @@ work-slip proofs are described above. Tap **New Task** on the terminal to
 exercise the physical task workflow when wanted.
 
 ## Deployment and recovery
+
+The nested Better Than Nothing group is recorded in
+`release/grouped-tasks-deployment.json`. It updates only the shared script and
+both templates. Restore its three `changed_files` from the recorded backup and
+restart `taskiosk.service` to return to the previous flat picker.
 
 The manual-picker release is recorded in `release/manage-deployment.json`.
 To undo it, stop `taskiosk.service`, restore the six `changed_files` from the

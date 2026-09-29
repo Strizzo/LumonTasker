@@ -13,6 +13,8 @@
   let pickerView = null;
   let pickerTasks = [];
   let pickerPage = 0;
+  let pickerGroup = null;
+  let pickerRootPage = 0;
   let pickerError = false;
   let selectedTask = null;
   const pageSize = 9;
@@ -98,12 +100,13 @@
     buttons[1].disabled = busy || currentTask === null;
     buttons[2].disabled = busy || currentTask === null;
     el('pickerBack').disabled = busy;
-    el('pickerBack').textContent = pickerView === 'detail' ? 'BACK TO TASKS' : 'BACK';
-    const retry = pickerError || pickerTasks.length === 0;
+    el('pickerBack').textContent = pickerView === 'detail' ? 'BACK TO TASKS' : pickerGroup ? 'BACK TO MAIN' : 'BACK';
+    const entries = pickerEntries();
+    const retry = pickerError || entries.length === 0;
     el('pickerPrevious').hidden = pickerView !== 'grid' || retry;
     el('pickerNext').hidden = pickerView !== 'grid' || retry;
     el('pickerPrevious').disabled = busy || pickerPage === 0;
-    el('pickerNext').disabled = busy || (pickerPage + 1) * pageSize >= pickerTasks.length;
+    el('pickerNext').disabled = busy || (pickerPage + 1) * pageSize >= entries.length;
     el('pickerRetry').hidden = pickerView !== 'grid' || !retry;
     el('pickerRetry').disabled = busy;
     el('pickerRetry').textContent = pickerError ? 'RETRY' : 'REFRESH';
@@ -122,26 +125,45 @@
     el('taskDisplay').scrollTop = 0;
   }
 
+  function pickerEntries() {
+    const grouped = pickerTasks.filter(task => task.source_list === 'BTN');
+    if (pickerGroup === 'BTN') return grouped;
+    const entries = pickerTasks.filter(task => task.source_list !== 'BTN');
+    if (grouped.length) entries.push({ title: 'Better Than Nothing', group: 'BTN', count: grouped.length });
+    return entries;
+  }
+
   function renderPicker() {
-    const pages = Math.max(1, Math.ceil(pickerTasks.length / pageSize));
+    const entries = pickerEntries();
+    const pages = Math.max(1, Math.ceil(entries.length / pageSize));
     pickerPage = Math.min(pickerPage, pages - 1);
     el('taskGrid').replaceChildren();
-    el('pickerPage').textContent = pickerTasks.length ? `${pickerPage + 1}/${pages} · ${pickerTasks.length} TASKS` : '';
-    el('pickerNotice').hidden = !pickerError && pickerTasks.length > 0;
-    if (!pickerError) el('pickerNotice').textContent = 'No open tasks in Trello. Add a task, then refresh.';
-    for (const task of pickerTasks.slice(pickerPage * pageSize, (pickerPage + 1) * pageSize)) {
+    el('pickerHeading').textContent = pickerGroup ? 'Better Than Nothing' : 'Choose your assignment';
+    el('pickerPage').textContent = entries.length ? `${pickerPage + 1}/${pages} · ${entries.length} ${pickerGroup ? 'TASKS' : 'CARDS'}` : '';
+    el('pickerNotice').hidden = !pickerError && entries.length > 0;
+    if (!pickerError) el('pickerNotice').textContent = pickerGroup ? 'No open tasks in this group. Refresh or return to the main list.' : 'No open tasks in Trello. Add a task, then refresh.';
+    for (const task of entries.slice(pickerPage * pageSize, (pickerPage + 1) * pageSize)) {
       const card = document.createElement('button');
       card.className = 'task-card';
-      card.setAttribute('aria-label', `${task.title} — ${sourceNames[task.source_list] || task.source_list}`);
+      if (task.group) card.dataset.group = task.group;
+      card.setAttribute('aria-label', task.group ? `${task.title} — open group of ${task.count} tasks` : `${task.title} — ${sourceNames[task.source_list] || task.source_list}`);
       const title = document.createElement('span');
       title.className = 'task-card-title';
       title.textContent = task.title;
       const source = document.createElement('span');
       source.className = 'task-card-source';
-      source.textContent = sourceNames[task.source_list] || task.source_list;
+      source.textContent = task.group ? `${task.count} TASKS →` : sourceNames[task.source_list] || task.source_list;
       card.append(title, source);
       card.addEventListener('click', () => {
         if (busy) return;
+        if (task.group) {
+          pickerRootPage = pickerPage;
+          pickerGroup = task.group;
+          pickerPage = 0;
+          renderPicker();
+          el('taskGrid').querySelector('button')?.focus();
+          return;
+        }
         selectedTask = task;
         pickerView = 'detail';
         render(task.title, `${sourceNames[task.source_list] || task.source_list}\nSelect Start & Print to begin this assignment.`);
@@ -185,6 +207,11 @@
       selectedTask = null;
       renderPicker();
       (el('taskGrid').querySelector('button') || el('pickerBack')).focus();
+    } else if (pickerGroup) {
+      pickerGroup = null;
+      pickerPage = pickerRootPage;
+      renderPicker();
+      (el('taskGrid').querySelector('[data-group]') || el('pickerBack')).focus();
     } else {
       pickerView = null;
       render('Welcome, Refiner', 'The work is mysterious and important.\nSelect New Task for an assignment, or Manage to choose one.');
@@ -224,6 +251,7 @@
 
   function showTask(task, start = Date.now()) {
     pickerView = null;
+    pickerGroup = null;
     selectedTask = null;
     const estimate = Number.parseFloat(task.estimated_time);
     const challenge = Number.parseFloat(task.challenge_time);
@@ -369,12 +397,17 @@
   buttons[0].addEventListener('click', () => newTask());
   buttons[1].addEventListener('click', () => finishTask('complete'));
   buttons[2].addEventListener('click', () => finishTask('skip'));
-  el('manageBtn').addEventListener('click', loadTasks);
+  el('manageBtn').addEventListener('click', () => {
+    if (busy || currentTask) return;
+    pickerGroup = null;
+    pickerRootPage = 0;
+    loadTasks();
+  });
   el('pickerBack').addEventListener('click', pickerBack);
   el('pickerRetry').addEventListener('click', loadTasks);
   el('pickerStart').addEventListener('click', () => { if (selectedTask) newTask(selectedTask); });
   el('pickerPrevious').addEventListener('click', () => { if (!busy && pickerPage > 0) { pickerPage--; renderPicker(); } });
-  el('pickerNext').addEventListener('click', () => { if (!busy && (pickerPage + 1) * pageSize < pickerTasks.length) { pickerPage++; renderPicker(); } });
+  el('pickerNext').addEventListener('click', () => { if (!busy && (pickerPage + 1) * pageSize < pickerEntries().length) { pickerPage++; renderPicker(); } });
   document.querySelector('.theme-link').addEventListener('click', event => {
     if (busy) event.preventDefault();
   });

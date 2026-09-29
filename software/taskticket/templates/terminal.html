@@ -6,7 +6,7 @@
   <title>Lumon · Macrodata Refinement</title>
   <link rel="stylesheet" href="/static/terminal.css?v=4">
   <link rel="stylesheet" href="/static/terminal-shared.css?v=5">
-  <script defer src="/static/terminal.js?v=5"></script>
+  <script defer src="/static/terminal.js?v=6"></script>
 </head>
 <body>
   <main class="terminal">
@@ -23,7 +23,7 @@
         <p id="taskDescription">The work is mysterious and important.<br>Select New Task for an assignment, or Manage to choose one.</p>
       </div>
       <section class="task-picker" id="taskPicker" hidden aria-label="Choose a task">
-        <div class="picker-heading"><h2>Choose your assignment</h2><span id="pickerPage" aria-live="polite"></span></div>
+        <div class="picker-heading"><h2 id="pickerHeading">Choose your assignment</h2><span id="pickerPage" aria-live="polite"></span></div>
         <p id="pickerNotice" role="status" hidden></p>
         <div class="task-grid" id="taskGrid"></div>
       </section>
