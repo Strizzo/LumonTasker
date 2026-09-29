@@ -8,4 +8,18 @@ html, body, *, *::before, *::after { cursor: none !important; }
 .session-progress .progress-track { width: 65px; height: 7px; border: 1px solid var(--line); padding: 1px; }
 .session-progress #focusProgress { height: 100%; width: 0; background: var(--ink); }
 .workspace-bottom { flex-wrap: wrap; }
+.wide-action { grid-column: span 2; }
+.task-picker { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 9px; }
+.picker-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.picker-heading h2 { font-size: 16px; margin: 0; }
+#pickerPage { white-space: nowrap; font-size: 12px; }
+#pickerNotice { margin: 0; font-size: 15px; }
+.task-grid { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.task-card { min-height: 0; min-width: 0; padding: 6px 9px; display: flex; flex-direction: column; justify-content: center; align-items: stretch; text-align: left; gap: 3px; overflow: hidden; }
+.task-card::before { display: none; }
+.task-card-title { font-size: 14px; line-height: 1.25; overflow-wrap: anywhere; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.task-card-source { font-size: 10px; line-height: 1.2; letter-spacing: .06em; }
+.task-card:active:not(:disabled), .picker-actions button:active:not(:disabled) { background: var(--ink); color: var(--bg); }
+body.picking .workspace { padding: 12px; }
+body.picking .workspace-bottom { display: none; }
 @media (max-width: 640px) { .session-progress { font-size: 10px; } .session-progress .progress-track { width: 45px; } }

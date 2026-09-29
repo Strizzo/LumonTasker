@@ -48,6 +48,27 @@ class Checks(unittest.TestCase):
         self.assertEqual(result['selection_method'], 'local')
         self.assertEqual(ai.calls, 0)
 
+    def test_manual_list_keeps_all_open_cards_in_list_order(self):
+        trello = Trello(todo=[card('recent'),card('skipped'),card('closed',closed=True),{'id':'no-title'}],
+                        doing=[card('in-progress')],btn=[card('reusable'),card('recent')])
+        ai = FakeAI('anything'); self.selector.llm = ai
+        listed = asyncio.run(self.selector.list_tasks(trello))
+        self.assertEqual([t['task_id'] for t in listed],['in-progress','recent','skipped','reusable'])
+        self.assertEqual(listed[-1]['source_list'],'BTN')
+        self.assertEqual(ai.calls,0)
+
+    def test_manual_selection_revalidates_cards_and_never_uses_ai(self):
+        self.selector.use_ai = True
+        ai = FakeAI('anything'); self.selector.llm = ai
+        trello = Trello(todo=[card('a',name='Current title')])
+        task = asyncio.run(self.selector.get_task_by_id(trello,'a'))
+        self.assertEqual(task['ticket_title'],'Current title')
+        self.assertEqual(task['selection_method'],'manual')
+        self.assertEqual(task['estimated_time'],'15')
+        trello.todo = []
+        self.assertIsNone(asyncio.run(self.selector.get_task_by_id(trello,'a')))
+        self.assertEqual(ai.calls,0)
+
     def test_in_progress_before_nonurgent_tasks(self):
         result = self.select(Trello(todo=[card('a')], doing=[card('b')], btn=[card('c')]))
         self.assertEqual(result['task_id'], 'b')

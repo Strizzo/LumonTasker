@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { writeFile } from 'node:fs/promises';
 
 const pages = await (await fetch('http://127.0.0.1:9226/json')).json();
-const prefix = 'themes-';
+const prefix = process.env.PREVIEW_PREFIX || 'themes-';
 const page = pages.find(p => p.type === 'page');
 const socket = new WebSocket(page.webSocketDebuggerUrl);
 await new Promise(resolve => socket.addEventListener('open', resolve, { once: true }));
@@ -56,7 +56,7 @@ assert.equal(await evaluate('document.querySelector("h1").textContent'), 'Macrod
 assert.equal(await evaluate('document.getElementById("numberField").hidden'), true);
 assert.equal(await evaluate('document.getElementById("progressSummary").hidden'), true);
 assert.equal(await evaluate('Array.from(document.querySelectorAll("body,button,a,img")).every(e => getComputedStyle(e).cursor === "none")'), true);
-const bounds = await evaluate('Array.from(document.querySelectorAll("button")).map(b => ({x:b.getBoundingClientRect().x, y:b.getBoundingClientRect().y, h:b.getBoundingClientRect().height, bottom:b.getBoundingClientRect().bottom}))');
+const bounds = await evaluate('Array.from(document.querySelectorAll("button")).filter(b => b.getBoundingClientRect().height > 0).map(b => ({x:b.getBoundingClientRect().x, y:b.getBoundingClientRect().y, h:b.getBoundingClientRect().height, bottom:b.getBoundingClientRect().bottom}))');
 assert(bounds.every(b => b.h >= 55 && b.bottom < 480));
 await screenshot('standby');
 
@@ -139,6 +139,6 @@ assert.equal(await evaluate('document.getElementById("connectionState").title.in
 await screenshot('offline');
 assert.deepEqual(exceptions, [], 'No browser exceptions');
 const report = { version: 'Classic default, optional MDR', viewport: '800x480', touch_target_height: 55, cursor_hidden_in_both_layouts: true, layout_switch_preserves_task_and_timer_without_printing: true, double_tap_print_calls: 1, elapsed_progress_tracks_focus_timer: true, numbers_animate_during_focus: true, animation_pauses_at_timer_end_and_for_reduced_motion: true, elapsed_timer_does_not_auto_complete: true, failed_complete_and_skip_keep_assignment: true, success_completion: true, no_suitable_task_distinct_from_offline: true, api_outage_does_not_claim_ticket_printed: true, offline_clears_counts: true, browser_exceptions: exceptions };
-await writeFile(new URL('./themes-ui-check.json', import.meta.url), JSON.stringify(report, null, 2));
+await writeFile(new URL(`./${prefix}ui-check.json`, import.meta.url), JSON.stringify(report, null, 2));
 console.log(JSON.stringify(report));
 socket.close();

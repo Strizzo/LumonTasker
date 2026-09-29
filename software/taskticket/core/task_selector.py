@@ -78,6 +78,31 @@ class TaskSelector:
                 'motivation': 'A %s-minute focus session. One task at a time.' % self.focus_minutes,
                 'source_list': card['_source'], 'selection_method': method}
 
+    async def list_tasks(self, trello_client):
+        """Manual choices include skipped/recent cards, but never closed cards.
+
+        Keep Trello's order within each list. Browsing does not select via AI,
+        print, or change history. Only return fields needed by the picker.
+        """
+        todos = await trello_client.get_tasks()
+        btn = await trello_client.get_btn_tasks()
+        tasks, seen = [], set()
+        for source, cards in [('DOING', todos['doing']), ('TODO', todos['todo']), ('BTN', btn)]:
+            for card in cards:
+                if card.get('id') and card.get('name') and not card.get('closed', False) and card['id'] not in seen:
+                    seen.add(card['id'])
+                    tasks.append({'task_id': card['id'], 'title': card['name'], 'source_list': source})
+        return tasks
+
+    async def get_task_by_id(self, trello_client, task_id):
+        # Re-read the open lists when issuing: a displayed card may since have
+        # been completed, archived or renamed. Never trust a browser's title/list.
+        tasks = await self.list_tasks(trello_client)
+        task = next((task for task in tasks if task['task_id'] == task_id), None)
+        if task is None:
+            return None
+        return self._ticket({'id': task['task_id'], 'name': task['title'], '_source': task['source_list']}, 'manual')
+
     async def _ai_choice(self, candidates, now):
         if not self.use_ai or time.monotonic() < self._ai_retry_at:
             return None

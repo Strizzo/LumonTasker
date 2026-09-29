@@ -37,9 +37,11 @@ class Routes(unittest.TestCase):
                         'request':SimpleNamespace(json={},args={}), 'logger':SimpleNamespace(error=lambda *a,**kw:None),
                         'datetime':datetime, 'time':time, 'asyncio':asyncio,
                         'render_template':lambda name:{'template':name}, 'make_response':Response}
+        self.namespace['request'].get_json = lambda **kw: self.namespace['request'].json
+        self.namespace['request'].get_data = lambda: b''
         tree=ast.parse((Path(__file__).resolve().parents[1]/'taskticket/main.py').read_text())
         for function in tree.body:
-            if isinstance(function,ast.FunctionDef) and function.name in ('print_task','complete_task','get_current_task','display'):
+            if isinstance(function,ast.FunctionDef) and function.name in ('print_task','list_tasks','complete_task','get_current_task','display'):
                 function.decorator_list=[]
                 exec(compile(ast.Module(body=[function],type_ignores=[]),'main.py','exec'),self.namespace)
 
@@ -61,6 +63,62 @@ class Routes(unittest.TestCase):
         result,code=self.namespace['print_task']()
         self.assertEqual(code,500); self.assertFalse(result['success'])
         self.assertEqual(self.manager.history.issued,[])
+        self.assertIsNone(self.manager.current_task)
+
+    def test_browsing_does_not_print_or_issue_and_is_not_cached(self):
+        async def listing(*args): return [{'task_id':'b','title':'Pick this','source_list':'TODO'}]
+        self.manager.selector.list_tasks=listing
+        response=self.namespace['list_tasks']()
+        self.assertEqual(response['tasks'][0]['task_id'],'b')
+        self.assertEqual(response.headers['Cache-Control'],'no-store')
+        self.assertEqual(self.manager.printed,[]); self.assertEqual(self.manager.history.issued,[])
+
+    def test_manual_issue_uses_server_task_not_browser_title_or_list(self):
+        async def manual(trello, task_id):
+            self.assertEqual(task_id,'b')
+            return {'task_id':'b','title':'Trusted title','source_list':'BTN','selection_method':'manual'}
+        async def automatic(*args): self.fail('Manual choice must not invoke automatic selection')
+        self.manager.selector.get_task_by_id=manual
+        self.manager.selector.get_next_task=automatic
+        self.namespace['request'].json={'task_id':'b','title':'Forged','source_list':'DONE'}
+        response,code=self.namespace['print_task']()
+        self.assertEqual(code,200)
+        self.assertEqual(response['task']['title'],'Trusted title')
+        self.assertEqual(response['task']['source_list'],'BTN')
+        self.assertEqual(len(self.manager.printed),1); self.assertEqual(len(self.manager.history.issued),1)
+        self.assertEqual(self.manager.current_task,response['task'])
+
+    def test_manual_stale_card_never_falls_back_to_another_task(self):
+        async def missing(*args): return None
+        self.manager.selector.get_task_by_id=missing
+        self.namespace['request'].json={'task_id':'gone'}
+        response,code=self.namespace['print_task']()
+        self.assertEqual(code,404)
+        self.assertIn('no longer available',response['message'])
+        self.assertEqual(self.manager.printed,[]); self.assertEqual(self.manager.history.issued,[])
+
+    def test_manual_outage_returns_error_without_printing(self):
+        async def failure(*args): raise Unavailable('redacted')
+        self.manager.selector.get_task_by_id=failure
+        self.manager.selector.list_tasks=failure
+        self.namespace['request'].json={'task_id':'b'}
+        self.assertEqual(self.namespace['print_task']()[1],503)
+        listing=self.namespace['list_tasks']()
+        self.assertEqual(listing.status_code,503)
+        self.assertFalse(listing['success'])
+        self.assertEqual(self.manager.printed,[]); self.assertEqual(self.manager.history.issued,[])
+
+    def test_invalid_manual_ids_are_rejected_before_selection(self):
+        for data in [{'task_id':None},{'task_id':''},{'task_id':[]},{'task_id':' '},['a']]:
+            self.namespace['request'].json=data
+            self.assertEqual(self.namespace['print_task']()[1],400)
+        self.assertEqual(self.manager.printed,[])
+
+    def test_malformed_json_cannot_accidentally_issue_an_automatic_task(self):
+        self.namespace['request'].json=None
+        self.namespace['request'].get_data=lambda: b'{"task_id":'
+        self.assertEqual(self.namespace['print_task']()[1],400)
+        self.assertEqual(self.manager.printed,[])
 
     def test_btn_completion_does_not_move_reusable_card(self):
         self.namespace['request'].json={'task_id':'a','source_list':'BTN'}

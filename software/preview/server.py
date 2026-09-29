@@ -6,7 +6,16 @@ import time
 from urllib.parse import urlparse, parse_qs
 
 ROOT = Path(__file__).resolve().parents[1] / "taskticket"
-state = {"print_calls": 0, "fail_action": False, "fail_print": False, "offline": False, "current_task": None, "started_at": None}
+state = {"print_calls": 0, "fail_action": False, "fail_print": False, "offline": False, "current_task": None, "started_at": None,
+         "fail_tasks": False, "empty_tasks": False, "list_calls": 0, "last_print_body": None}
+titles = ['Sort the parts on the workbench', 'Take a walk', 'Review the next enclosure revision',
+          'Read another chapter', 'Organise the photographs from the last two weekends of building the terminal',
+          'Water the plants', 'Back up the project files', 'Prepare tomorrow’s lunch', 'Tidy the desk',
+          'Check the printer paper', 'Write a short project update', 'Clean the kitchen',
+          '<img src=x onerror=alert(1)> Literal task text', 'Écrire une note pour demain',
+          'A_very_long_unbroken_task_title_that_must_wrap_without_expanding_the_card']
+tasks = [{'task_id': 'manual-%s' % i, 'title': title, 'source_list': 'DOING' if i == 0 else 'TODO' if i < 11 else 'BTN'}
+         for i,title in enumerate(titles)]
 
 
 class Preview(SimpleHTTPRequestHandler):
@@ -26,6 +35,9 @@ class Preview(SimpleHTTPRequestHandler):
 
     def do_GET(self):
         url = urlparse(self.path)
+        if url.path == '/tasks':
+            state['list_calls'] += 1
+            return self.json({'success': False},503) if state['fail_tasks'] else self.json({'success': True, 'tasks': [] if state['empty_tasks'] else tasks})
         if url.path == "/current_task":
             return self.json({"task": state["current_task"], "started_at": state["started_at"]})
         if self.path.split("?")[0] == "/terminal_status":
@@ -41,11 +53,17 @@ class Preview(SimpleHTTPRequestHandler):
             state.update(json.loads(self.rfile.read(int(self.headers.get("Content-Length", "0")))))
             return self.json(state)
         if self.path == "/print_task":
+            data = json.loads(self.rfile.read(int(self.headers.get('Content-Length', '0'))) or '{}')
+            state['last_print_body'] = data
             state["print_calls"] += 1
             if state["fail_print"]:
                 code = 503 if state["fail_print"] == 503 else 404
                 return self.json({"success": False, "message": "No suitable task found" if code == 404 else "Trello unavailable"}, code)
             state["current_task"] = {"task_id": "preview-task", "ticket_title": "Review the next enclosure revision", "estimated_time": "15", "challenge_time": "10", "motivation": "Consider the lighter walls and the glass seat.\nYour contribution is appreciated.", "source_list": "TODO"}
+            if 'task_id' in data:
+                chosen = next((task for task in tasks if task['task_id'] == data['task_id']),None)
+                if chosen is None: return self.json({'success':False},404)
+                state['current_task'] = {**chosen, 'ticket_title':chosen['title'], 'estimated_time':'15', 'selection_method':'manual'}
             state["started_at"] = time.time() * 1000
             return self.json({"success": True, "task": state["current_task"]})
         if self.path in ("/complete_task", "/skip_task"):

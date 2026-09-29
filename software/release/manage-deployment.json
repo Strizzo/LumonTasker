@@ -1,0 +1,24 @@
+{
+  "deployed_at": "2026-09-29T07:16:21.836874+00:00",
+  "backup": "/home/srizzo/taskticket/backups/manage-ui-20260929T071607Z",
+  "changed_files": [
+    "main.py",
+    "core/task_selector.py",
+    "templates/terminal.html",
+    "templates/terminal_mdr.html",
+    "static/terminal.js",
+    "static/terminal-shared.css"
+  ],
+  "history_unchanged": true,
+  "subscriber_pid_unchanged": true,
+  "deployed_sha256": {
+    "main.py": "937ab5ebe5ed0a2cbf6a98d7484dc83e0d73f03d95755fea2a673e12a4b9ec93",
+    "core/task_selector.py": "2091f167b74a7a7f020b1cc8e5a781c3bee2a7a3dc52545308c8f3eaed2d4ce7",
+    "templates/terminal.html": "2f95f651594addc66426eb65d3b28effd0685d21d262de43b598b14c2a9808ba",
+    "templates/terminal_mdr.html": "4d23e1aa1167abe40adb0bc1f2c80c7fdb3ea2311b478c9e69fe85b141dcb6e9",
+    "static/terminal.js": "2db1797e1c905f5c02cca348fc14aebcfd6bacb5b4891d4cb215145c8389ef61",
+    "static/terminal-shared.css": "e0371068c8a4943959c4ead1f79de2fb6871563e755ddfc626d296b0a2eb2556"
+  },
+  "version": "Manual task picker, 3x3, both layouts",
+  "rollback": "Stop taskiosk.service, restore changed_files from backup, then start taskiosk.service."
+}

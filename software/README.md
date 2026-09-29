@@ -12,6 +12,22 @@ optional at `http://raspberrypi.local:5000/display?theme=mdr`. Tap the Lumon log
 to switch between them. The screenshot from the Pi is
 [preview/pi-themes.png](preview/pi-themes.png).
 
+On the idle screen, **Manage** replaces the inactive Complete/Skip buttons.
+It opens a 3 × 3 grid of Trello cards, with Previous/Next for additional pages.
+Tap a card to read its full title, then **Start & Print** to issue that specific
+task and start its normal focus timer. Back returns to the same grid page.
+Both layouts support the picker; **M** opens it and Escape goes back.
+Complete and Skip return when an assignment is active.
+
+The picker includes all open DOING, TODO and Better Than Nothing cards in
+Trello's list order, including recently skipped or issued cards. Manual selection
+deliberately bypasses the automatic selector's cooldown and weighting, and never
+uses AI. Merely browsing or inspecting a card does not print or update history.
+The server rechecks open cards before printing, so a card completed or archived
+elsewhere cannot silently issue an unrelated task. Tickets record
+`selection_method=manual`; completion, timer restoration and printing use the
+existing workflow. [Picker preview with synthetic tasks](preview/manage-classic-grid.png).
+
 Both layouts hide the mouse pointer, including over controls. The kiosk also
 runs `unclutter-xfixes` with a one-second idle timeout to hide the native X11
 pointer before Chromium receives its first mouse-motion event. Its process is
@@ -139,6 +155,14 @@ python3 software/preview/check_printer.py
 python3 software/preview/check_ticket.py
 ```
 
+Manual-selection checks are included in `check_selection.py` and
+`check_routes.py`. With the preview server and isolated Chrome running as below,
+`node software/preview/check_manage.mjs` checks both layouts at 800 × 480:
+pagination, full-title inspection, cursor hiding, safe text rendering,
+double-tap protection, session restoration, empty/offline/stale-card handling,
+and returning to automatic selection. Results are in
+`preview/manage-ui-check.json`; these checks use synthetic tasks and do not print.
+
 `preview/server.py` provides an isolated UI preview at `127.0.0.1:8655`.
 `preview/check_ui.mjs` exercises that preview through an isolated Chrome
 debugging port at `127.0.0.1:9226`; it requires Node with built-in WebSocket
@@ -156,6 +180,11 @@ work-slip proofs are described above. Tap **New Task** on the terminal to
 exercise the physical task workflow when wanted.
 
 ## Deployment and recovery
+
+The manual-picker release is recorded in `release/manage-deployment.json`.
+To undo it, stop `taskiosk.service`, restore the six `changed_files` from the
+recorded backup, then start the service. Credentials, task history and the
+separate message-printer service are not part of this update.
 
 The work-slip release is recorded in `release/work-slip-deployment.json`.
 To restore the preceding logo-plus-text layout, stop `taskiosk.service`, restore

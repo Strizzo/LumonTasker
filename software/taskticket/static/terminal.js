@@ -10,6 +10,13 @@
   let challengeSeconds = 0;
   let online = null;
   let timezone = 'Europe/Luxembourg';
+  let pickerView = null;
+  let pickerTasks = [];
+  let pickerPage = 0;
+  let pickerError = false;
+  let selectedTask = null;
+  const pageSize = 9;
+  const sourceNames = { DOING: 'IN PROGRESS', TODO: 'TO DO', BTN: 'BETTER THAN NOTHING' };
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const numberCanvas = el('numberCanvas');
   const numberContext = numberCanvas.getContext('2d');
@@ -77,11 +84,35 @@
   }
 
   function updateControls() {
+    const picking = pickerView !== null;
+    document.body.classList.toggle('picking', picking);
+    document.querySelector('nav.actions').hidden = picking;
+    el('pickerActions').hidden = !picking;
+    el('taskPicker').hidden = pickerView !== 'grid';
+    el('taskDisplay').hidden = pickerView === 'grid';
+    el('manageBtn').hidden = currentTask !== null;
+    el('manageBtn').disabled = busy || currentTask !== null;
+    buttons[1].hidden = currentTask === null;
+    buttons[2].hidden = currentTask === null;
     buttons[0].disabled = busy;
     buttons[1].disabled = busy || currentTask === null;
     buttons[2].disabled = busy || currentTask === null;
+    el('pickerBack').disabled = busy;
+    el('pickerBack').textContent = pickerView === 'detail' ? 'BACK TO TASKS' : 'BACK';
+    const retry = pickerError || pickerTasks.length === 0;
+    el('pickerPrevious').hidden = pickerView !== 'grid' || retry;
+    el('pickerNext').hidden = pickerView !== 'grid' || retry;
+    el('pickerPrevious').disabled = busy || pickerPage === 0;
+    el('pickerNext').disabled = busy || (pickerPage + 1) * pageSize >= pickerTasks.length;
+    el('pickerRetry').hidden = pickerView !== 'grid' || !retry;
+    el('pickerRetry').disabled = busy;
+    el('pickerRetry').textContent = pickerError ? 'RETRY' : 'REFRESH';
+    el('pickerStart').hidden = pickerView !== 'detail';
+    el('pickerStart').disabled = busy || !selectedTask;
+    el('taskPicker').setAttribute('aria-busy', String(busy));
+    document.querySelectorAll('.task-card').forEach(card => { card.disabled = busy; });
     document.querySelector('.theme-link').setAttribute('aria-disabled', String(busy));
-    el('connectionState').textContent = 'STATUS: ' + (busy ? 'WORKING' : online === false ? 'OFFLINE' : online === null ? 'CHECKING' : currentTask ? 'REFINING' : 'READY');
+    el('connectionState').textContent = 'STATUS: ' + (busy ? 'WORKING' : online === false ? 'OFFLINE' : online === null ? 'CHECKING' : currentTask ? 'REFINING' : picking ? 'BROWSING' : 'READY');
     el('connectionState').classList.toggle('unavailable', online === false);
   }
 
@@ -89,6 +120,77 @@
     el('taskTitle').textContent = title;
     el('taskDescription').textContent = description;
     el('taskDisplay').scrollTop = 0;
+  }
+
+  function renderPicker() {
+    const pages = Math.max(1, Math.ceil(pickerTasks.length / pageSize));
+    pickerPage = Math.min(pickerPage, pages - 1);
+    el('taskGrid').replaceChildren();
+    el('pickerPage').textContent = pickerTasks.length ? `${pickerPage + 1}/${pages} · ${pickerTasks.length} TASKS` : '';
+    el('pickerNotice').hidden = !pickerError && pickerTasks.length > 0;
+    if (!pickerError) el('pickerNotice').textContent = 'No open tasks in Trello. Add a task, then refresh.';
+    for (const task of pickerTasks.slice(pickerPage * pageSize, (pickerPage + 1) * pageSize)) {
+      const card = document.createElement('button');
+      card.className = 'task-card';
+      card.setAttribute('aria-label', `${task.title} — ${sourceNames[task.source_list] || task.source_list}`);
+      const title = document.createElement('span');
+      title.className = 'task-card-title';
+      title.textContent = task.title;
+      const source = document.createElement('span');
+      source.className = 'task-card-source';
+      source.textContent = sourceNames[task.source_list] || task.source_list;
+      card.append(title, source);
+      card.addEventListener('click', () => {
+        if (busy) return;
+        selectedTask = task;
+        pickerView = 'detail';
+        render(task.title, `${sourceNames[task.source_list] || task.source_list}\nSelect Start & Print to begin this assignment.`);
+        updateControls();
+        el('pickerStart').focus();
+      });
+      el('taskGrid').append(card);
+    }
+    updateControls();
+  }
+
+  async function loadTasks() {
+    if (busy || currentTask) return;
+    busy = true;
+    pickerView = 'grid';
+    selectedTask = null;
+    pickerError = false;
+    pickerTasks = [];
+    pickerPage = 0;
+    renderPicker();
+    el('pickerNotice').textContent = 'Retrieving task files…';
+    try {
+      const response = await fetch('/tasks', { cache: 'no-store' });
+      const result = await response.json();
+      if (!response.ok || !result.success || !Array.isArray(result.tasks)) throw new Error('Tasks unavailable');
+      pickerTasks = result.tasks;
+      online = true;
+    } catch (_) {
+      pickerError = true;
+      el('pickerNotice').textContent = 'Unable to load tasks from Trello. Please try again.';
+    } finally {
+      busy = false;
+      renderPicker();
+    }
+  }
+
+  function pickerBack() {
+    if (busy) return;
+    if (pickerView === 'detail') {
+      pickerView = 'grid';
+      selectedTask = null;
+      renderPicker();
+      (el('taskGrid').querySelector('button') || el('pickerBack')).focus();
+    } else {
+      pickerView = null;
+      render('Welcome, Refiner', 'The work is mysterious and important.\nSelect New Task for an assignment, or Manage to choose one.');
+      updateControls();
+      el('manageBtn').focus();
+    }
   }
 
   function stopTimer() {
@@ -121,6 +223,8 @@
   }
 
   function showTask(task, start = Date.now()) {
+    pickerView = null;
+    selectedTask = null;
     const estimate = Number.parseFloat(task.estimated_time);
     const challenge = Number.parseFloat(task.challenge_time);
     estimatedSeconds = Number.isFinite(estimate) && estimate > 0 ? estimate * 60 : 15 * 60;
@@ -156,20 +260,29 @@
     return result;
   }
 
-  async function newTask() {
+  async function newTask(chosenTask = null) {
     if (busy) return;
     const previousTask = currentTask;
     busy = true;
     updateControls();
     render('Retrieving assignment', 'Please wait. Your ticket will print when ready.');
     try {
-      const result = await request('/print_task');
+      const result = await request('/print_task', chosenTask ? { task_id: chosenTask.task_id } : undefined);
       stopTimer();
       currentTask = result.task;
       showTask(currentTask);
     } catch (error) {
       currentTask = previousTask;
-      render('System notice', error.status === 404 ? 'No eligible task is available. Try again later.' : error.status === 503 ? 'Trello is unavailable. No ticket was printed.' : 'Unable to retrieve an assignment. Check the connection before retrying; a ticket may already have printed.');
+      if (chosenTask && error.status === 404) {
+        pickerView = 'grid';
+        pickerTasks = [];
+        selectedTask = null;
+        pickerError = true;
+        el('pickerNotice').textContent = 'That task is no longer available. Retry to refresh the list.';
+        renderPicker();
+      } else {
+        render(chosenTask ? chosenTask.title : 'System notice', error.status === 404 ? 'No eligible task is available. Try again later.' : error.status === 503 ? 'Trello is unavailable. No ticket was printed.' : 'Unable to retrieve an assignment. Check the connection before retrying; a ticket may already have printed.');
+      }
     } finally {
       busy = false;
       updateControls();
@@ -253,14 +366,27 @@
     }
   }
 
-  buttons[0].addEventListener('click', newTask);
+  buttons[0].addEventListener('click', () => newTask());
   buttons[1].addEventListener('click', () => finishTask('complete'));
   buttons[2].addEventListener('click', () => finishTask('skip'));
+  el('manageBtn').addEventListener('click', loadTasks);
+  el('pickerBack').addEventListener('click', pickerBack);
+  el('pickerRetry').addEventListener('click', loadTasks);
+  el('pickerStart').addEventListener('click', () => { if (selectedTask) newTask(selectedTask); });
+  el('pickerPrevious').addEventListener('click', () => { if (!busy && pickerPage > 0) { pickerPage--; renderPicker(); } });
+  el('pickerNext').addEventListener('click', () => { if (!busy && (pickerPage + 1) * pageSize < pickerTasks.length) { pickerPage++; renderPicker(); } });
   document.querySelector('.theme-link').addEventListener('click', event => {
     if (busy) event.preventDefault();
   });
   document.addEventListener('keydown', event => {
     if (event.repeat || event.ctrlKey || event.metaKey || event.altKey || /INPUT|TEXTAREA|SELECT/.test(event.target.tagName)) return;
+    if (pickerView) {
+      if (event.key === 'Escape') { event.preventDefault(); pickerBack(); }
+      if (pickerView === 'grid' && event.key === 'ArrowLeft') { event.preventDefault(); el('pickerPrevious').click(); }
+      if (pickerView === 'grid' && event.key === 'ArrowRight') { event.preventDefault(); el('pickerNext').click(); }
+      return;
+    }
+    if (event.key.toLowerCase() === 'm') { event.preventDefault(); el('manageBtn').click(); return; }
     const index = { n: 0, c: 1, s: 2, y: 1, x: 2 }[event.key.toLowerCase()];
     if (index !== undefined) { event.preventDefault(); buttons[index].click(); }
   });

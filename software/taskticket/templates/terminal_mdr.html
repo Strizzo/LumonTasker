@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lumon · Task Refinement</title>
   <link rel="stylesheet" href="/static/terminal-mdr.css?v=4">
-  <link rel="stylesheet" href="/static/terminal-shared.css?v=4">
-  <script defer src="/static/terminal.js?v=4"></script>
+  <link rel="stylesheet" href="/static/terminal-shared.css?v=5">
+  <script defer src="/static/terminal.js?v=5"></script>
 </head>
 <body>
   <main class="terminal">
@@ -21,8 +21,13 @@
     <section class="workspace" aria-label="Current assignment">
       <div class="assignment" id="taskDisplay" aria-live="polite">
         <h2 id="taskTitle">Welcome, Refiner.</h2>
-        <p id="taskDescription">Select New Task to open a task file.<br>Please enjoy your work equally.</p>
+        <p id="taskDescription">Select New Task for an assignment, or Manage to choose one.<br>Please enjoy your work equally.</p>
       </div>
+      <section class="task-picker" id="taskPicker" hidden aria-label="Choose a task">
+        <div class="picker-heading"><h2>Choose your assignment</h2><span id="pickerPage" aria-live="polite"></span></div>
+        <p id="pickerNotice" role="status" hidden></p>
+        <div class="task-grid" id="taskGrid"></div>
+      </section>
       <div class="refinement-field" id="numberField" hidden aria-hidden="true"><canvas id="numberCanvas"></canvas></div>
       <div class="workspace-bottom">
         <span class="file-label">Macrodata Refinement</span>
@@ -34,8 +39,16 @@
     </section>
     <nav class="actions" aria-label="Task actions">
       <button id="newTaskBtn" aria-label="New Task, shortcut N"><span class="bin-number" aria-hidden="true">01</span><span class="bin-action">New Task</span></button>
-      <button id="yesBtn" disabled aria-label="Complete task, shortcut C"><span class="bin-number" aria-hidden="true">02</span><span class="bin-action">Complete</span></button>
-      <button id="noBtn" disabled aria-label="Skip task, shortcut S"><span class="bin-number" aria-hidden="true">03</span><span class="bin-action">Skip</span></button>
+      <button id="manageBtn" class="wide-action" aria-label="Manage tasks, shortcut M"><span class="bin-number" aria-hidden="true">02</span><span class="bin-action">Manage</span></button>
+      <button id="yesBtn" disabled hidden aria-label="Complete task, shortcut C"><span class="bin-number" aria-hidden="true">02</span><span class="bin-action">Complete</span></button>
+      <button id="noBtn" disabled hidden aria-label="Skip task, shortcut S"><span class="bin-number" aria-hidden="true">03</span><span class="bin-action">Skip</span></button>
+    </nav>
+    <nav class="actions picker-actions" id="pickerActions" hidden aria-label="Browse tasks">
+      <button id="pickerBack">Back</button>
+      <button id="pickerPrevious">Previous</button>
+      <button id="pickerNext">Next</button>
+      <button id="pickerRetry" class="wide-action" hidden>Retry</button>
+      <button id="pickerStart" class="wide-action" hidden>Start &amp; Print</button>
     </nav>
     <footer class="status-bar">
       <span>MDR-775</span>

@@ -1,0 +1,16 @@
+{
+  "viewport": "800x480",
+  "themes": [
+    "classic",
+    "mdr"
+  ],
+  "grid": "3x3",
+  "browsing_never_prints": true,
+  "full_title_before_printing": true,
+  "double_tap_protected": true,
+  "manual_restore_preserves_timer": true,
+  "empty_offline_stale_and_retry_checked": true,
+  "titles_are_plain_text": true,
+  "automatic_selection_preserved": true,
+  "browser_exceptions": []
+}

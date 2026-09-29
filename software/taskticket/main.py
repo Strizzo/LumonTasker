@@ -216,14 +216,22 @@ def invoke_skill():
 @app.route("/print_task", methods=['POST'])
 def print_task():
     try:
-        task = loop.run_until_complete(
-            task_manager.selector.get_next_task(task_manager.trello, task_manager.history)
-        )
+        data = request.get_json(silent=True)
+        if (data is None and request.get_data()) or (data is not None and not isinstance(data, dict)):
+            return jsonify({'success': False, 'message': 'Invalid task request.'}), 400
+        data = data or {}
+        if 'task_id' in data:
+            task_id = data['task_id']
+            if not isinstance(task_id, str) or not task_id.strip():
+                return jsonify({'success': False, 'message': 'Invalid task ID.'}), 400
+            task = asyncio.run(task_manager.selector.get_task_by_id(task_manager.trello, task_id))
+        else:
+            task = asyncio.run(task_manager.selector.get_next_task(task_manager.trello, task_manager.history))
         
         if task:
-            task_manager.current_task = task
             task_manager.print_task_ticket(task)
             task_manager.history.add_task(task)
+            task_manager.current_task = task
             return jsonify({
                 "success": True,
                 "message": "Task printed successfully",
@@ -232,7 +240,7 @@ def print_task():
         else:
             return jsonify({
                 "success": False,
-                "message": "No suitable task found"
+                "message": "This task is no longer available. Refresh the task list." if 'task_id' in data else "No suitable task found"
             }), 404
             
     except TrelloUnavailable:
@@ -243,7 +251,23 @@ def print_task():
             "success": False,
             "message": f"Error: {str(e)}"
         }), 500
-        
+
+@app.route("/tasks", methods=['GET'])
+def list_tasks():
+    """Read-only manual picker: no printing, selection, or history writes."""
+    try:
+        tasks = asyncio.run(task_manager.selector.list_tasks(task_manager.trello))
+        response = jsonify({'success': True, 'tasks': tasks})
+    except TrelloUnavailable:
+        response = jsonify({'success': False, 'message': 'Trello is unavailable. Please try again.'})
+        response.status_code = 503
+    except Exception:
+        logger.error('Error loading the manual task list', exc_info=True)
+        response = jsonify({'success': False, 'message': 'Unable to load tasks. Please try again.'})
+        response.status_code = 500
+    response.headers['Cache-Control'] = 'no-store'
+    return response
+
 @app.route("/display", methods=['GET'])
 def display():
     theme = request.args.get('theme', 'classic')
