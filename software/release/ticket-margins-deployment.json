@@ -1,0 +1,19 @@
+{
+  "deployed_at": "2026-09-29T09:49:18.261391+00:00",
+  "backup": "/home/srizzo/taskticket/backups/ticket-margins-20260929T094901Z",
+  "changed_files": [
+    "printer/ticket.py"
+  ],
+  "deployed_sha256": {
+    "printer/ticket.py": "c1447e72e47ab5997d649e38b7bf504aed62ed995439ecd6dd6a904bbb8c7aab"
+  },
+  "artwork_top_margin_dots": 8,
+  "added_bottom_padding_dots": 96,
+  "net_added_paper_dots": 80,
+  "synthetic_job_capture_passed": true,
+  "history_unchanged": true,
+  "subscriber_pid_unchanged": true,
+  "physical_tickets_printed": 0,
+  "physical_margin_check": "Pending the next printed ticket.",
+  "rollback": "Stop taskiosk.service, restore printer/ticket.py from backup, then start taskiosk.service."
+}

@@ -17,6 +17,11 @@ from PIL import Image, ImageDraw, ImageFont
 
 ASSETS = Path(__file__).resolve().parents[1] / 'static'
 MOTTO = 'The work is mysterious and important.'
+# The POS80 leaves a leading margin between its print head and cutter. Keep
+# only 1 mm of artwork above the logo, and add 12 mm to the former footer
+# padding to balance the physical ticket. At 203 dpi, eight dots are about 1 mm.
+TOP_MARGIN_DOTS = 8
+BOTTOM_PADDING_DOTS = 112
 
 
 def clean_text(value):
@@ -85,7 +90,7 @@ class Receipt:
         self.width = width
         self.margin = 30
         self.inner = width - 2 * self.margin
-        self.y = 24
+        self.y = TOP_MARGIN_DOTS
         self.operations = []
 
     def text(self, text, size=18, align='left', bold=False, gap=0):
@@ -127,7 +132,7 @@ class Receipt:
         self.y += 32
 
     def image(self):
-        image = Image.new('L', (self.width, self.y + 16), 255)
+        image = Image.new('L', (self.width, self.y + BOTTOM_PADDING_DOTS), 255)
         draw = ImageDraw.Draw(image)
         for operation in self.operations:
             kind, position, *args = operation

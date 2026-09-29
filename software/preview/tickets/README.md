@@ -17,10 +17,19 @@ The random euro-value line and duplicate focus-session sentence are removed.
 
 Rendering happens at the actual 576-dot printable width, with 30-dot side
 margins. Normal task text is 28 dots high; supporting fields are 16–22 dots.
-At 203 dpi, the illustrated two-line assignment uses roughly 85 mm of artwork
+At 203 dpi, the illustrated two-line assignment uses roughly 95 mm of artwork
 plus the printer's cutter margin. Long titles grow the slip rather than being
 clipped or abbreviated. Accented text is rendered directly, avoiding the
 printer firmware's inconsistent handling of UTF-8.
+
+The revised artwork starts 8 dots (about 1 mm) below its top, reduced from 24.
+Its bottom padding is 96 dots (about 12 mm) larger. This adds approximately
+10 mm to each slip overall. The uneven bitmap margins compensate for the
+leading blank paper visible on the physical printer; the PNG does not include
+that mechanical margin. The current
+[ESC/POS feed-and-cut command](https://download4.epson.biz/sec_pubs/pos/reference_en/escpos/gs_cv.html)
+feeds to the cutter without reverse feeding. The next physical ticket should
+confirm the balance; the POS80's exact head-to-cutter distance is not measured.
 
 The same 1-bit pixels are used for the preview and USB job. They are sent as
 contiguous 128-row raster strips with no intervening newlines, then one final

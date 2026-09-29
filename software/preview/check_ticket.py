@@ -49,11 +49,11 @@ class WorkSlips(unittest.TestCase):
                 box=black.getbbox()
                 self.assertGreaterEqual(box[0],29)
                 self.assertLessEqual(box[2],width-29)
-                self.assertGreaterEqual(box[1],23)
-                self.assertLess(box[3],image.height-10)
+                self.assertEqual(box[1],8)
+                self.assertGreaterEqual(image.height-box[3],112)
         image=render_ticket(self.task,self.stamp)
         self.assertEqual(image.width,576)
-        self.assertLess(image.height,800)
+        self.assertLess(image.height,880)
 
     def test_raster_strips_reconstruct_exact_preview_without_blank_seams(self):
         image=render_ticket(self.task,self.stamp)

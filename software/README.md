@@ -94,10 +94,11 @@ stationery is an original themed design. The old random euro-value line is gone.
 See the [actual printer-width preview and layout notes](preview/tickets/README.md).
 
 The entire slip is rendered as a monochrome bitmap, including accented text.
-Typical artwork is about 85 mm long, plus the cutter margin; longer titles wrap
-and extend the paper. A single synthetic layout-proof receipt was sent without
-issuing a real task. Its physical appearance awaits the user's visual check;
-the raster pixels, margins and USB delivery passed automated verification.
+Typical artwork is about 95 mm long, plus the cutter margin; longer titles wrap
+and extend the paper. Following physical feedback, the artwork's top padding
+was reduced by about 2 mm and its bottom padding increased by about 12 mm to
+balance the printer's leading blank space. The revised physical balance awaits
+the next ticket; rendering and isolated printer-delivery checks pass.
 
 ## Optional settings
 
@@ -193,6 +194,11 @@ work-slip proofs are described above. Tap **New Task** on the terminal to
 exercise the physical task workflow when wanted.
 
 ## Deployment and recovery
+
+The ticket margin adjustment is recorded in `release/ticket-margins-deployment.json`.
+Restore `printer/ticket.py` from its recorded backup and restart
+`taskiosk.service` to undo it. Deployment captures a synthetic job in a temporary
+file and does not issue a physical ticket or change task history.
 
 The simplified task screen and larger task cards are recorded in
 `release/compact-grid-deployment.json`. Restore its four `changed_files` from
