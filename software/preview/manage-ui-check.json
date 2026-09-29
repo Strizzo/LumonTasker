@@ -15,8 +15,10 @@
   "browsing_never_prints": true,
   "full_title_before_printing": true,
   "double_tap_protected": true,
-  "manual_restore_preserves_timer": true,
+  "manual_restore_preserves_assignment": true,
   "empty_offline_stale_and_retry_checked": true,
+  "task_screen_has_no_fixed_focus_countdown_or_progress": true,
+  "grid_header_hidden_and_cards_at_least_75px": true,
   "titles_are_plain_text": true,
   "automatic_selection_preserved": true,
   "browser_exceptions": []

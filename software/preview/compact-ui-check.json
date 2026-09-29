@@ -1,0 +1,18 @@
+{
+  "version": "Task screen without fixed focus timer",
+  "viewport": "800x480",
+  "touch_target_height": 55,
+  "cursor_hidden_in_both_layouts": true,
+  "layout_switch_preserves_assignment_without_printing": true,
+  "double_tap_print_calls": 1,
+  "task_screen_has_no_fixed_focus_countdown_or_progress": true,
+  "numbers_animate_while_assignment_active": true,
+  "animation_respects_reduced_motion": true,
+  "elapsed_time_does_not_auto_complete": true,
+  "failed_complete_and_skip_keep_assignment": true,
+  "success_completion": true,
+  "no_suitable_task_distinct_from_offline": true,
+  "api_outage_does_not_claim_ticket_printed": true,
+  "offline_clears_counts": true,
+  "browser_exceptions": []
+}

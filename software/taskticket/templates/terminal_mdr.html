@@ -5,17 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lumon · Task Refinement</title>
   <link rel="stylesheet" href="/static/terminal-mdr.css?v=4">
-  <link rel="stylesheet" href="/static/terminal-shared.css?v=7">
-  <script defer src="/static/terminal.js?v=7"></script>
+  <link rel="stylesheet" href="/static/terminal-shared.css?v=8">
+  <script defer src="/static/terminal.js?v=8"></script>
 </head>
 <body>
   <main class="terminal">
     <header class="masthead">
       <h1>Task Refinement</h1>
-      <div class="file-progress" aria-label="Focus session elapsed">
-        <span class="progress-label" id="sessionProgress">Awaiting task</span>
-        <div class="progress-track"><div id="focusProgress"></div></div>
-      </div>
       <a class="theme-link" href="/display?theme=classic" aria-label="Switch terminal layout" title="Switch terminal layout"><img class="logo" src="/static/lumon.svg" alt="Lumon Industries" width="76" height="38"></a>
     </header>
     <section class="workspace" aria-label="Current assignment">
@@ -31,10 +27,6 @@
       <div class="refinement-field" id="numberField" hidden aria-hidden="true"><canvas id="numberCanvas"></canvas></div>
       <div class="workspace-bottom">
         <span class="file-label">Macrodata Refinement</span>
-        <aside class="timer" id="taskTimer" hidden aria-label="Assignment timer">
-          <span>Focus <span class="timer-value" id="estimatedTimeDisplay">--:--</span></span>
-          <span class="challenge" id="challengeRow" hidden>Challenge <span id="challengeTimeDisplay">--:--</span></span>
-        </aside>
       </div>
     </section>
     <nav class="actions" aria-label="Task actions">

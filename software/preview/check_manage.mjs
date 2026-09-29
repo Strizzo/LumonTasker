@@ -54,6 +54,7 @@ for (const theme of ['classic', 'mdr']) {
   await screenshot(`${theme}-home`);
   await click('manageBtn');
   await until('document.getElementById("connectionState").textContent === "STATUS: BROWSING"');
+  assert.equal(await evaluate('document.querySelector(".masthead").getBoundingClientRect().height'), 0, 'Browsing hides the logo and station header');
   assert.equal(await evaluate('document.querySelectorAll(".task-card").length'), 9);
   assert.equal(await evaluate('document.getElementById("pickerPage").textContent'), '1/2 · 12 CARDS');
   assert.equal(await evaluate('document.getElementById("pickerTotal").textContent'), 'TOTAL FOCUS: 2h 45m', 'All 11 regular tasks, including DOING and the next page, count; the 19 BTN tasks do not');
@@ -63,7 +64,7 @@ for (const theme of ['classic', 'mdr']) {
     const r=b.getBoundingClientRect(); return {x:r.x,y:r.y,w:r.width,h:r.height,right:r.right,bottom:r.bottom,scroll:b.scrollWidth,client:b.clientWidth}; })`);
   assert.equal(new Set(bounds.map(b => b.x)).size, 3);
   assert.equal(new Set(bounds.map(b => b.y)).size, 3);
-  assert(bounds.every(b => b.h >= 55 && b.x >= 0 && b.right <= 800 && b.bottom < 390 && b.scroll === b.client));
+  assert(bounds.every(b => b.h >= 75 && b.x >= 0 && b.right <= 800 && b.bottom < 390 && b.scroll === b.client), 'The reclaimed header space increases every card to at least 75px');
   assert.equal(await evaluate('document.documentElement.scrollHeight'), 480);
   assert.equal(await evaluate('Array.from(document.querySelectorAll("button")).every(b => getComputedStyle(b).cursor === "none")'), true);
   await screenshot(`${theme}-grid`);
@@ -76,6 +77,7 @@ for (const theme of ['classic', 'mdr']) {
   await screenshot(`${theme}-page2`);
   await evaluate('document.querySelector("[data-group=BTN]").click()');
   assert.equal(await evaluate('document.getElementById("pickerHeading").textContent'), 'Better Than Nothing');
+  assert.equal(await evaluate('document.querySelector(".masthead").getBoundingClientRect().height'), 0, 'The nested grid also uses the extra space');
   assert.equal(await evaluate('document.getElementById("pickerTotal").hidden'), true);
   assert.equal(await evaluate('document.getElementById("pickerPage").textContent'), '1/3 · 19 TASKS');
   assert.equal(await evaluate('document.querySelectorAll(".task-card").length'), 9);
@@ -94,6 +96,7 @@ for (const theme of ['classic', 'mdr']) {
   assert.equal((await state({})).print_calls, 0, 'Browsing and pagination cannot print');
   assert.equal((await state({})).list_calls, 1, 'Opening the group needs no extra request');
   await evaluate('document.querySelectorAll(".task-card")[3].click()');
+  assert.equal(await evaluate('document.querySelector(".masthead").getBoundingClientRect().height > 0'), true, 'Header returns for task details');
   assert.equal(await evaluate('document.getElementById("taskTitle").textContent'), 'A_very_long_unbroken_task_title_that_must_wrap_without_expanding_the_card');
   assert.equal((await state({})).print_calls, 0, 'Inspecting a card cannot print');
   await click('pickerBack');
@@ -112,12 +115,17 @@ for (const theme of ['classic', 'mdr']) {
   assert.equal(after.current_task.source_list, 'BTN', 'Nested selection retains reusable-task semantics');
   assert.equal(await evaluate('document.getElementById("taskTitle").textContent'), 'Clean the kitchen');
   assert.equal(await evaluate('document.getElementById("manageBtn").hidden'), true);
-  assert.equal(await evaluate('!document.getElementById("yesBtn").hidden && !document.getElementById("taskTimer").hidden'), true);
+  assert.equal(await evaluate('!document.getElementById("yesBtn").hidden && !document.getElementById("noBtn").hidden'), true);
+  assert.equal(await evaluate('document.getElementById("taskTimer")'), null);
+  assert.equal(await evaluate('document.getElementById("sessionProgress")'), null);
+  assert.equal(await evaluate('document.getElementById("taskDescription").textContent'), 'One task at a time.');
+  await screenshot(`${theme}-active`);
   const start = await evaluate('JSON.parse(sessionStorage.getItem("lumon-task")).started_at');
   await call('Page.reload');
   await until('document.getElementById("connectionState")?.textContent === "STATUS: REFINING"');
   assert(Math.abs(await evaluate('JSON.parse(sessionStorage.getItem("lumon-task")).started_at') - start) < 1000);
   assert.equal((await state({})).print_calls, 1, 'Restoring a manual assignment never reprints');
+  assert.equal(await evaluate('document.getElementById("taskDescription").textContent'), 'One task at a time.', 'Saved focus boilerplate stays hidden after reload');
   await click('yesBtn');
   await until('document.getElementById("connectionState").textContent === "STATUS: READY"');
   await state({ fail_tasks: true });
@@ -195,7 +203,8 @@ const report = { viewport: '800x480', themes: ['classic', 'mdr'], grid: '3x3',
   total_hidden_in_nested_grid_and_on_errors: true,
   only_btn_no_btn_and_single_todo_checked: true, nested_selection_retains_btn_source: true,
   browsing_never_prints: true, full_title_before_printing: true, double_tap_protected: true,
-  manual_restore_preserves_timer: true, empty_offline_stale_and_retry_checked: true,
+  manual_restore_preserves_assignment: true, empty_offline_stale_and_retry_checked: true,
+  task_screen_has_no_fixed_focus_countdown_or_progress: true, grid_header_hidden_and_cards_at_least_75px: true,
   titles_are_plain_text: true, automatic_selection_preserved: true, browser_exceptions: exceptions };
 await writeFile(new URL('./manage-ui-check.json', import.meta.url), JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify(report));

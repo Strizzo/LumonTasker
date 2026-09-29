@@ -17,6 +17,9 @@ It opens a 3 × 3 grid of Trello cards, with Previous/Next for additional pages.
 DOING and TODO tasks appear directly; **Better Than Nothing** appears as one
 group card showing its task count. Tap it to browse its own 3 × 3 grid.
 **Back to Main** returns to the parent page, and the group itself never prints.
+The logo/station header is hidden in both grids to give the cards more vertical
+space and up to three lines for their titles. It returns on the welcome,
+task-detail and active-task screens; the connection footer remains visible.
 The main grid shows **Total focus** beside the page count: the number of open
 DOING/TODO tasks across every page multiplied by the configured focus-session
 duration (currently 15 minutes). Better Than Nothing tasks and the group card
@@ -24,7 +27,7 @@ are excluded. This is planned focus time, not a prediction of completion time;
 the app does not currently store individual task-duration estimates. The total
 is hidden inside the nested group, while loading, and on errors.
 Tap a card to read its full title, then **Start & Print** to issue that specific
-task and start its normal focus timer. Back returns to the same grid page.
+task. Back returns to the same grid page.
 Both layouts support the picker; **M** opens it and Escape goes back.
 Complete and Skip return when an assignment is active.
 
@@ -34,19 +37,18 @@ deliberately bypasses the automatic selector's cooldown and weighting, and never
 uses AI. Merely browsing or inspecting a card does not print or update history.
 The server rechecks open cards before printing, so a card completed or archived
 elsewhere cannot silently issue an unrelated task. Tickets record
-`selection_method=manual`; completion, timer restoration and printing use the
+`selection_method=manual`; completion, assignment restoration and printing use the
 existing workflow. [Picker preview with synthetic tasks](preview/manage-classic-grid.png).
 
 Both layouts hide the mouse pointer, including over controls. The kiosk also
 runs `unclutter-xfixes` with a one-second idle timeout to hide the native X11
 pointer before Chromium receives its first mouse-motion event. Its process is
-supervised by the existing kiosk launcher. During an active
-task, a percentage and progress bar show elapsed focus-session time, alongside
-the countdown. This does not claim to measure task completion and reaching 100%
-does not complete the task. A small field of drifting numbers evokes *Severance*
-without covering task text or controls. It renders at roughly seven frames per
-second and pauses at timer expiry, in a hidden tab, or with reduced motion.
-The decorative numbers are not task data.
+supervised by the existing kiosk launcher. The active-task screen omits the
+fixed focus-session sentence, countdown and percentage bar, including when
+restoring an older assignment. A small field of drifting numbers evokes
+*Severance* without covering task text or controls. It renders at roughly seven
+frames per second while an assignment is active and pauses in a hidden tab or
+with reduced motion. The decorative numbers are not task data.
 
 Switching layouts or reloading restores the latest open assignment and original
 start time without selecting or printing another ticket. Newly issued tasks
@@ -66,7 +68,7 @@ assets to avoid stale pages after an update.
 ## What changed
 
 - The preferred blue terminal interface with the enclosure's Lumon globe,
-  large touch buttons, a focus timer and the newer layout available as an option.
+  large touch buttons, decorative numbers and the newer layout available as an option.
 - Real Trello connection status and queue data, refreshed every minute.
   API failures appear as unavailable rather than an empty queue.
 - Task selection runs locally by default. It excludes tasks skipped within
@@ -105,7 +107,7 @@ Defaults work without changes to the existing Pi configuration:
 | --- | --- | --- |
 | `TASKTICKET_USE_AI` | `0` | Set to `1` to try AI before local fallback. |
 | `TASKTICKET_AI_MODEL` | `qwen/qwen3.7-flash` | Optional OpenRouter model. |
-| `TASKTICKET_FOCUS_MINUTES` | `15` | Focus timer duration, bounded to 1–120. |
+| `TASKTICKET_FOCUS_MINUTES` | `15` | Focus allowance for tickets and the grid total, bounded to 1–120. |
 | `TASKTICKET_TIMEZONE` | `Europe/Luxembourg` | Selection schedule and UI clock. |
 | `PRINTER_TASK_LOGO` | `1` | Include the Lumon globe on the work slip; set to `0` to omit it. |
 | `PRINTER_WIDTH_DOTS` | `576` | Printable dot width for centring the logo on the POS80. |
@@ -143,7 +145,7 @@ creating an AI client, modifying history or invoking the printer.
 
 Twenty-one Python checks passed: three status checks, nine selection checks and
 nine route/history checks. Browser checks passed at 800 × 480, including
-55-pixel default touch targets, timers and assignment text without overflow,
+55-pixel default touch targets and assignment text without overflow,
 pointer hiding in both layouts, preserved sessions when switching, double-tap
 protection, animation and reduced-motion behavior, failed-action retry,
 completion state and offline status. These tests use
@@ -169,14 +171,16 @@ Manual-selection checks are included in `check_selection.py` and
 `node software/preview/check_manage.mjs` checks both layouts at 800 × 480:
 nested grouping and pagination, parent-page restoration, full-title inspection, cursor hiding, safe text rendering,
 double-tap protection, session restoration, empty/offline/stale-card handling,
-and returning to automatic selection. Results are in
+hidden grid headers, cards at least 75 pixels tall, and returning to automatic selection. Results are in
 `preview/manage-ui-check.json`; these checks use synthetic tasks and do not print.
 
 `preview/server.py` provides an isolated UI preview at `127.0.0.1:8655`.
 `preview/check_ui.mjs` exercises that preview through an isolated Chrome
 debugging port at `127.0.0.1:9226`; it requires Node with built-in WebSocket
-support. The current result is saved in `preview/themes-ui-check.json`, including
-elapsed-progress/timer and animation checks. `preview/mdr-ui-check.json` records
+support. The current result is saved in `preview/compact-ui-check.json`, including
+removal of the fixed focus display, restoration of older assignments, and
+animation checks. `preview/themes-ui-check.json` records the earlier timer
+release. `preview/mdr-ui-check.json` records
 the earlier optional layout release. `preview/simple-ui-check.json` and
 `preview/ui-check.json` record the previous designs' checks.
 
@@ -189,6 +193,10 @@ work-slip proofs are described above. Tap **New Task** on the terminal to
 exercise the physical task workflow when wanted.
 
 ## Deployment and recovery
+
+The simplified task screen and larger task cards are recorded in
+`release/compact-grid-deployment.json`. Restore its four `changed_files` from
+the recorded backup and restart `taskiosk.service` to undo this UI update.
 
 The grid's total-focus display is recorded in `release/task-total-deployment.json`.
 Restore its five `changed_files` from the recorded backup and restart

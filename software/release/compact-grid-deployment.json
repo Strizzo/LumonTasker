@@ -1,0 +1,20 @@
+{
+  "deployed_at": "2026-09-29T09:43:49.761398+00:00",
+  "backup": "/home/srizzo/taskticket/backups/compact-grid-20260929T094336Z",
+  "changed_files": [
+    "templates/terminal.html",
+    "templates/terminal_mdr.html",
+    "static/terminal.js",
+    "static/terminal-shared.css"
+  ],
+  "history_unchanged": true,
+  "subscriber_pid_unchanged": true,
+  "deployed_sha256": {
+    "templates/terminal.html": "1a313f2b0c284f886c2bbe072a7585961dbd46854eb149ad0199d0bdccd844b9",
+    "templates/terminal_mdr.html": "3de809aa465f686c43ff59fc8f5d4c50ae75cfc8329d37f078378582bd19c7a4",
+    "static/terminal.js": "6370fa832be8d9454ebb922da8114defe28bd609d0e7235adcda232c3e4525be",
+    "static/terminal-shared.css": "3ad10517c82f766404e00d9e4693994e7c7bd5a83305e610f7254bf9b42f5d0c"
+  },
+  "version": "Larger task cards; no fixed focus UI on active tasks",
+  "rollback": "Stop taskiosk.service, restore changed_files from backup, then start taskiosk.service."
+}

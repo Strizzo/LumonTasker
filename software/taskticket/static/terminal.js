@@ -4,10 +4,7 @@
   const buttons = [el('newTaskBtn'), el('yesBtn'), el('noBtn')];
   let currentTask = null;
   let busy = false;
-  let timer = null;
   let startedAt = 0;
-  let estimatedSeconds = 0;
-  let challengeSeconds = 0;
   let online = null;
   let timezone = 'Europe/Luxembourg';
   let pickerView = null;
@@ -54,7 +51,7 @@
       numberCells = Array.from({ length: columns * rows }, () => ({ digit: Math.floor(random() * 10), phase: random() * Math.PI * 2 }));
     }
     const style = getComputedStyle(document.body);
-    const moving = !reducedMotion.matches && estimatedSeconds > 0 && Date.now() - startedAt < estimatedSeconds * 1000;
+    const moving = !reducedMotion.matches && currentTask !== null;
     if (moving) numberTime = performance.now() / 6000;
     numberContext.setTransform(scale, 0, 0, scale, 0, 0);
     numberContext.clearRect(0, 0, width, height);
@@ -81,7 +78,7 @@
     pauseNumbers();
     if (!currentTask || el('numberField').hidden) return;
     drawNumbers();
-    if (!reducedMotion.matches && !document.hidden && Date.now() - startedAt < estimatedSeconds * 1000) {
+    if (!reducedMotion.matches && !document.hidden) {
       numberInterval = setInterval(drawNumbers, 150);
     }
   }
@@ -89,6 +86,7 @@
   function updateControls() {
     const picking = pickerView !== null;
     document.body.classList.toggle('picking', picking);
+    document.body.classList.toggle('browsing-grid', pickerView === 'grid');
     document.querySelector('nav.actions').hidden = picking;
     el('pickerActions').hidden = !picking;
     el('taskPicker').hidden = pickerView !== 'grid';
@@ -237,51 +235,21 @@
     }
   }
 
-  function stopTimer() {
-    if (timer !== null) clearInterval(timer);
-    timer = null;
-    el('taskTimer').hidden = true;
-    if (el('progressSummary')) el('progressSummary').hidden = true;
+  function stopTaskDisplay() {
     pauseNumbers();
     el('numberField').hidden = true;
-    el('sessionProgress').textContent = 'Awaiting task';
-    el('focusProgress').style.width = '0%';
-    document.body.classList.remove('time-warning', 'time-danger');
-  }
-
-  function formatTime(seconds) {
-    const value = Math.max(0, Math.ceil(seconds));
-    return `${String(Math.floor(value / 60)).padStart(2, '0')}:${String(value % 60).padStart(2, '0')}`;
-  }
-
-  function updateTimer() {
-    const elapsed = (Date.now() - startedAt) / 1000;
-    const percent = Math.min(100, Math.max(0, Math.floor(elapsed / estimatedSeconds * 100)));
-    el('sessionProgress').textContent = `${percent}% Elapsed`;
-    el('focusProgress').style.width = `${percent}%`;
-    el('estimatedTimeDisplay').textContent = formatTime(estimatedSeconds - elapsed);
-    el('challengeTimeDisplay').textContent = formatTime(challengeSeconds - elapsed);
-    document.body.classList.toggle('time-warning', elapsed >= estimatedSeconds);
-    document.body.classList.toggle('time-danger', challengeSeconds > 0 && elapsed >= challengeSeconds);
-    if (percent >= 100) pauseNumbers();
   }
 
   function showTask(task, start = Date.now()) {
     pickerView = null;
     pickerGroup = null;
     selectedTask = null;
-    const estimate = Number.parseFloat(task.estimated_time);
-    const challenge = Number.parseFloat(task.challenge_time);
-    estimatedSeconds = Number.isFinite(estimate) && estimate > 0 ? estimate * 60 : 15 * 60;
-    challengeSeconds = Number.isFinite(challenge) && challenge > 0 ? challenge * 60 : 0;
-    render(task.ticket_title || task.title || 'Your assignment', task.motivation || 'Please proceed with your important work.');
-    el('taskTimer').hidden = false;
-    if (el('progressSummary')) el('progressSummary').hidden = false;
-    el('challengeRow').hidden = challengeSeconds === 0;
+    // Older saved assignments also contain this fixed-session boilerplate.
+    const description = String(task.motivation || 'Please proceed with your important work.')
+      .replace(/^A \d+(?:\.\d+)?-minute focus session\.\s*/i, '');
+    render(task.ticket_title || task.title || 'Your assignment', description);
     startedAt = Number.isFinite(start) ? Math.min(start, Date.now()) : Date.now();
     saveSession();
-    updateTimer();
-    timer = setInterval(updateTimer, 1000);
     numberSeed = task.task_id || task.ticket_title || '';
     numberCells = [];
     numberTime = 0;
@@ -313,7 +281,7 @@
     render('Retrieving assignment', 'Please wait. Your ticket will print when ready.');
     try {
       const result = await request('/print_task', chosenTask ? { task_id: chosenTask.task_id } : undefined);
-      stopTimer();
+      stopTaskDisplay();
       currentTask = result.task;
       showTask(currentTask);
     } catch (error) {
@@ -343,7 +311,7 @@
       await request(action === 'complete' ? '/complete_task' : '/skip_task', {
         task_id: currentTask.task_id, source_list: currentTask.source_list
       });
-      stopTimer();
+      stopTaskDisplay();
       currentTask = null;
       saveSession();
       if (action === 'complete') {
@@ -352,7 +320,7 @@
         render('Assignment deferred', 'This task will be held for seven days.\nSelect New Task to continue your work.');
       }
     } catch (error) {
-      // Keep the current task and timer so failed actions can be retried.
+      // Keep the current task so failed actions can be retried.
       render('System notice', 'The assignment remains open here. Its update could not be confirmed; check Trello before retrying.');
     } finally {
       busy = false;

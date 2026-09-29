@@ -68,7 +68,7 @@ class Preview(SimpleHTTPRequestHandler):
             if 'task_id' in data:
                 chosen = next((task for task in tasks if task['task_id'] == data['task_id']),None)
                 if chosen is None: return self.json({'success':False},404)
-                state['current_task'] = {**chosen, 'ticket_title':chosen['title'], 'estimated_time':'15', 'selection_method':'manual'}
+                state['current_task'] = {**chosen, 'ticket_title':chosen['title'], 'estimated_time':'15', 'selection_method':'manual', 'motivation':'A 15-minute focus session. One task at a time.'}
             state["started_at"] = time.time() * 1000
             return self.json({"success": True, "task": state["current_task"]})
         if self.path in ("/complete_task", "/skip_task"):
